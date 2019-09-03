@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<mvx:MvxContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:res="clr-namespace:MyApp.Resources;assembly=MyApp"
+             xmlns:mvx="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+             xmlns:graphics="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"
+             xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+             xmlns:xForms="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             x:Class="MyApp.Pages.Category"
+             Title="{res:Translate Category}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="{res:Translate Home}"
+                     Command="{Binding ToolbarHomeCommand}"
+                     Order="Primary"
+                     Priority="1"
+                     IconImageSource="home.png" />
+        <ToolbarItem Text="{res:Translate Search}"
+                     Command="{Binding ToolbarSearchCommand}"
+                     Order="Primary"
+                     Priority="0"
+                     IconImageSource="loupe.png" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <Grid>
+            <graphics:SfGradientView>
+                <graphics:SfGradientView.BackgroundBrush>
+                    <graphics:SfLinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                        <graphics:SfLinearGradientBrush.GradientStops>
+                            <graphics:SfGradientStop Color="{StaticResource orange1}" Offset="0.0" />
+                            <graphics:SfGradientStop Color="{StaticResource gray1}" Offset="0.1" />
+                            <graphics:SfGradientStop Color="{StaticResource gray2}" Offset="0.5" />
+                            <graphics:SfGradientStop Color="{StaticResource gray3}" Offset="1.0" />
+                        </graphics:SfLinearGradientBrush.GradientStops>
+                    </graphics:SfLinearGradientBrush>
+                </graphics:SfGradientView.BackgroundBrush>
+            </graphics:SfGradientView>
+            <Grid>
+                <StackLayout>
+                    <xForms:SfListView Orientation="Vertical"
+                                                   VerticalOptions="FillAndExpand"
+                                                   IsScrollBarVisible="False"
+                                                   HorizontalOptions="FillAndExpand"
+                                                   Margin="0,15,0,0"
+                                                   Padding="0"
+                                                   ItemSpacing="5"
+                                                   ItemSize="130"
+                                                   ItemsSource="{Binding Cats}">
+                        <xForms:SfListView.LayoutManager>
+                            <xForms:GridLayout SpanCount = "2"/>
+                        </xForms:SfListView.LayoutManager>
+                        <xForms:SfListView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout>
+                                    <border:SfBorder 
+                                        HorizontalOptions="Center" 
+                                        VerticalOptions="Center"
+                                        CornerRadius="15"
+                                        Margin="0" 
+                                        Padding="0"
+                                        BorderColor="Transparent"
+                                        BorderWidth="1">
+                                        <ContentView>
+                                            <Grid HorizontalOptions="Center"
+                                              VerticalOptions="Center"
+                                              Padding="0">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="*"/>
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <forms:CachedImage
+                                                HorizontalOptions="FillAndExpand"
+                                                VerticalOptions="FillAndExpand"
+                                                Grid.Row="0"
+                                                Grid.Column="0"
+                                                RetryCount="3"
+                                                RetryDelay="250"
+                                                Margin="0"
+                                                Aspect="AspectFill"
+                                                DownsampleToViewSize="true"
+                                                LoadingPlaceholder="loading.png"
+                                                ErrorPlaceholder="warning.png"
+                                                FadeAnimationEnabled="True"
+                                                Source = "{Binding Image}">
+                                                </forms:CachedImage>
+
+                                                <Frame
+                                                    Grid.Row="0"
+                                                    Grid.Column="0"
+                                                    Margin="0"
+                                                    Padding="0"
+                                                    Opacity="0.9">
+                                                    <Grid Margin="0" Padding="0">
+                                                        <graphics:SfGradientView>
+                                                            <graphics:SfGradientView.BackgroundBrush>
+                                                                <graphics:SfLinearGradientBrush>
+                                                                    <graphics:SfLinearGradientBrush.GradientStops>
+                                                                        <graphics:SfGradientStop Color="{StaticResource orange1}" Offset="0.0" />
+                                                                        <graphics:SfGradientStop Color="{StaticResource purple1}" Offset="0.6" />
+                                                                        <graphics:SfGradientStop Color="{StaticResource purple2}" Offset="1.0" />
+                                                                    </graphics:SfLinearGradientBrush.GradientStops>
+                                                                </graphics:SfLinearGradientBrush>
+                                                            </graphics:SfGradientView.BackgroundBrush>
+                                                        </graphics:SfGradientView>
+                                                        <graphics:SfGradientView/>
+                                                    </Grid>
+                                                </Frame>
+
+                                                <Label 
+                                                    HorizontalOptions="StartAndExpand"
+                                                    VerticalOptions="EndAndExpand"
+                                                    Text="{Binding Title}"
+                                                    TextColor="{StaticResource white}"
+                                                    Margin="10"
+                                                    Grid.Row="0"
+                                                    Grid.Column="0"/>
+                                            </Grid>
+                                        </ContentView>
+                                    </border:SfBorder>
+                                </StackLayout>
+                            </DataTemplate>
+                        </xForms:SfListView.ItemTemplate>
+                    </xForms:SfListView>
+                </StackLayout>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</mvx:MvxContentPage>

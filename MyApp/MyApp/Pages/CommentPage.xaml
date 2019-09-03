@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<mvx:MvxContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:res="clr-namespace:MyApp.Resources;assembly=MyApp"
+             xmlns:mvx="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+             xmlns:graphics="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"
+             xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+             xmlns:xForms="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             x:Class="MyApp.Pages.CommentPage"
+             BackgroundColor="{StaticResource white}"
+             Title="{res:Translate Comment}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="{res:Translate Post}"
+                     Command="{Binding ToolbarPostCommand}"
+                     Order="Primary"
+                     Priority="2"
+                     IconImageSource="post.png" />
+        <ToolbarItem Text="{res:Translate Home}"
+                     Command="{Binding ToolbarHomeCommand}"
+                     Order="Primary"
+                     Priority="1"
+                     IconImageSource="home.png" />
+        <ToolbarItem Text="{res:Translate Search}"
+                     Command="{Binding ToolbarSearchCommand}"
+                     Order="Primary"
+                     Priority="0"
+                     IconImageSource="loupe.png" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <Grid>
+            <StackLayout Margin="0">
+                <Grid>
+                    <ScrollView Orientation="Vertical" VerticalOptions="FillAndExpand">
+                        <StackLayout>
+                            <Grid HeightRequest="300">
+                                <graphics:SfGradientView>
+                                    <graphics:SfGradientView.BackgroundBrush>
+                                        <graphics:SfLinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                            <graphics:SfLinearGradientBrush.GradientStops>
+                                                <graphics:SfGradientStop Color="{StaticResource orange1}" Offset="0.0" />
+                                                <graphics:SfGradientStop Color="{StaticResource orange2}" Offset="0.5" />
+                                                <graphics:SfGradientStop Color="{StaticResource orange3}" Offset="1.0" />
+                                            </graphics:SfLinearGradientBrush.GradientStops>
+                                        </graphics:SfLinearGradientBrush>
+                                    </graphics:SfGradientView.BackgroundBrush>
+                                </graphics:SfGradientView>
+                                <StackLayout>
+                                    <border:SfBorder 
+                                        BackgroundColor="Transparent"
+                                        BorderColor="Transparent"
+                                        HorizontalOptions="CenterAndExpand" 
+                                        VerticalOptions="StartAndExpand"
+                                        CornerRadius="30"
+                                        Margin="0">
+                                        <ContentView>
+                                            <forms:CachedImage HorizontalOptions="Center"
+                                                               VerticalOptions="Center"
+                                                               WidthRequest="190"
+                                                               HeightRequest="190"
+                                                               DownsampleToViewSize="true"
+                                                               FadeAnimationEnabled="True"
+                                                               Source = "{Binding SinglePost.Image}">
+                                            </forms:CachedImage>
+                                        </ContentView>
+                                    </border:SfBorder>
+                                </StackLayout>
+                                <StackLayout>
+                                    <Label HorizontalOptions="CenterAndExpand"
+                                           VerticalOptions="EndAndExpand"
+                                           Margin="5,0,5,75"
+                                           Text="{Binding SinglePost.Title}"
+                                           TextColor="{StaticResource white}"
+                                           FontSize="Title"/>
+                                </StackLayout>
+                            </Grid>
+                            <StackLayout>
+                                <xForms:SfListView Orientation="Vertical"
+                                                   VerticalOptions="FillAndExpand"
+                                                   IsScrollBarVisible="False"
+                                                   HorizontalOptions="Fill"
+                                                   Margin="0,8,0,8"
+                                                   Padding="0"
+                                                   HeightRequest="50"
+                                                   ItemSpacing="5"
+                                                   ItemSize="100"
+                                                   FlowDirection="LeftToRight"
+                                                   ItemsSource="{Binding Comments}" >
+                                    <xForms:SfListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <border:SfBorder 
+                                                BackgroundColor="{StaticResource white1}"
+                                                BorderColor="{StaticResource white1}"
+                                                HorizontalOptions="Center" 
+                                                VerticalOptions="Center"
+                                                CornerRadius="90"
+                                                WidthRequest="120">
+                                                <ContentView Padding="9">
+                                                    <Label Text="{Binding Title}"
+                                                           FontFamily="{StaticResource FontFamily.TeshrinRegular}"
+                                                           HorizontalOptions="Center"
+                                                           VerticalOptions="Center"
+                                                           TextColor="{StaticResource orange3}"/>
+                                                </ContentView>
+                                            </border:SfBorder>
+                                        </DataTemplate>
+                                    </xForms:SfListView.ItemTemplate>
+                                </xForms:SfListView>
+                            </StackLayout>
+                        </StackLayout>
+                    </ScrollView>
+                </Grid>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</mvx:MvxContentPage>

@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<mvx:MvxContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:res="clr-namespace:MyApp.Resources;assembly=MyApp"
+             xmlns:mvx="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+             xmlns:graphics="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"
+             xmlns:accordion="clr-namespace:Syncfusion.XForms.Accordion;assembly=Syncfusion.Expander.XForms"
+             x:Class="MyApp.Pages.HelpPage"
+             Title="{res:Translate Help}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="{res:Translate Home}"
+                     Command="{Binding ToolbarHomeCommand}"
+                     Order="Primary"
+                     Priority="1"
+                     IconImageSource="home.png" />
+        <ToolbarItem Text="{res:Translate Search}"
+                     Command="{Binding ToolbarSearchCommand}"
+                     Order="Primary"
+                     Priority="0"
+                     IconImageSource="loupe.png" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <Grid>
+            <graphics:SfGradientView>
+                <graphics:SfGradientView.BackgroundBrush>
+                    <graphics:SfLinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                        <graphics:SfLinearGradientBrush.GradientStops>
+                            <graphics:SfGradientStop Color="{StaticResource orange1}" Offset="0.0" />
+                            <graphics:SfGradientStop Color="{StaticResource orange2}" Offset="0.5" />
+                            <graphics:SfGradientStop Color="{StaticResource orange3}" Offset="1.0" />
+                        </graphics:SfLinearGradientBrush.GradientStops>
+                    </graphics:SfLinearGradientBrush>
+                </graphics:SfGradientView.BackgroundBrush>
+            </graphics:SfGradientView>
+            <ScrollView Orientation="Vertical" VerticalOptions="FillAndExpand">
+                <StackLayout Margin="0">
+                    <accordion:SfAccordion BindableLayout.ItemsSource="{Binding Info}"
+                                            ItemSpacing="15" Margin="2">
+                        <accordion:SfAccordion.Items>
+                            <accordion:AccordionItem HeaderBackgroundColor="{StaticResource white}"/>
+                        </accordion:SfAccordion.Items>
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <accordion:AccordionItem>
+                                    <accordion:AccordionItem.Header>
+                                        <Grid Padding="5,1,5,1">
+                                            <Label Text="{Binding Name}"
+                                                    Margin="5,1,5,1"
+                                                    FontSize="Title"/>
+                                        </Grid>
+                                    </accordion:AccordionItem.Header>
+                                    <accordion:AccordionItem.Content>
+                                        <Grid Padding="8,1,8,1">
+                                            <Label Text="{Binding Description}"
+                                                    Margin="10,1,10,1"
+                                                    TextColor="{StaticResource black}"
+                                                    FontSize="Medium"/>
+                                        </Grid>
+                                    </accordion:AccordionItem.Content>
+                                </accordion:AccordionItem>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </accordion:SfAccordion>
+                </StackLayout>
+            </ScrollView>
+        </Grid>
+    </ContentPage.Content>
+</mvx:MvxContentPage>

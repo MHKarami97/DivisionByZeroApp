@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<mvx:MvxContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:res="clr-namespace:MyApp.Resources;assembly=MyApp"
+             xmlns:mvx="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+             xmlns:graphics="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"
+             xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             x:Class="MyApp.Pages.AboutPage"
+             Title="{res:Translate About}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="{res:Translate Home}"
+                     Command="{Binding ToolbarHomeCommand}"
+                     Order="Primary"
+                     Priority="1"
+                     IconImageSource="home.png" />
+        <ToolbarItem Text="{res:Translate Search}"
+                     Command="{Binding ToolbarSearchCommand}"
+                     Order="Primary"
+                     Priority="0"
+                     IconImageSource="loupe.png" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <Grid>
+            <graphics:SfGradientView>
+                <graphics:SfGradientView.BackgroundBrush>
+                    <graphics:SfLinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                        <graphics:SfLinearGradientBrush.GradientStops>
+                            <graphics:SfGradientStop Color="{StaticResource orange1}" Offset="0.0" />
+                            <graphics:SfGradientStop Color="{StaticResource orange2}" Offset="0.5" />
+                            <graphics:SfGradientStop Color="{StaticResource orange3}" Offset="1.0" />
+                        </graphics:SfLinearGradientBrush.GradientStops>
+                    </graphics:SfLinearGradientBrush>
+                </graphics:SfGradientView.BackgroundBrush>
+            </graphics:SfGradientView>
+            <StackLayout Margin="0">
+                <StackLayout>
+                    <border:SfBorder 
+                        BackgroundColor="Transparent"
+                        BorderColor="Transparent"
+                        HorizontalOptions="CenterAndExpand" 
+                        VerticalOptions="StartAndExpand"
+                        CornerRadius="30"
+                        Margin="0,20,0,5">
+                        <ContentView>
+                            <forms:CachedImage HorizontalOptions="Center"
+                                               VerticalOptions="Center"
+                                               WidthRequest="160"
+                                               HeightRequest="160"
+                                               DownsampleToViewSize="true"
+                                               FadeAnimationEnabled="True"
+                                               Source = "Logo.png">
+                            </forms:CachedImage>
+                        </ContentView>
+                    </border:SfBorder>
+                </StackLayout>
+                <StackLayout>
+                    <Label HorizontalOptions="CenterAndExpand"
+                           VerticalOptions="CenterAndExpand"
+                           Margin="10,5,10,5"
+                           Text="{res:Translate AppName}"
+                           TextColor="{StaticResource white}"
+                           FontSize="Title"/>
+                    <Label HorizontalOptions="CenterAndExpand"
+                           VerticalOptions="CenterAndExpand"
+                           Margin="10,5,10,5"
+                           Text="{Binding Version}"
+                           TextColor="{StaticResource white}"
+                           FontSize="Medium"/>
+                    <Label HorizontalOptions="CenterAndExpand"
+                            VerticalOptions="CenterAndExpand"
+                            Margin="10,5,10,5"
+                            Text="{res:Translate AboutText}"
+                            TextColor="{StaticResource white}"
+                            FontSize="Small"/>
+                </StackLayout>
+                <StackLayout
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="EndAndExpand">
+                    <buttons:SfButton Text="{res:Translate CallByPhone}"
+                                      Command="{Binding CallByPhoneCommand}"
+                                      CornerRadius="20"
+                                      Margin="8">
+                        <buttons:SfButton.BackgroundGradient>
+                            <graphics:SfRadialGradientBrush Radius="1.5">
+                                <graphics:SfRadialGradientBrush.GradientStops>
+                                    <graphics:SfGradientStop Color="#2F9BDF" Offset="0"/>
+                                    <graphics:SfGradientStop Color="#935EF2" Offset="1"/>
+                                </graphics:SfRadialGradientBrush.GradientStops>
+                            </graphics:SfRadialGradientBrush>
+                        </buttons:SfButton.BackgroundGradient>
+                    </buttons:SfButton>
+
+                    <buttons:SfButton Text="{res:Translate CallByEmail}"
+                                      Command="{Binding CallByEmailCommand}"
+                                      CornerRadius="20"
+                                      Margin="8">
+                        <buttons:SfButton.BackgroundGradient>
+                            <graphics:SfRadialGradientBrush Radius="1.5">
+                                <graphics:SfRadialGradientBrush.GradientStops>
+                                    <graphics:SfGradientStop Color="#2F9BDF" Offset="0"/>
+                                    <graphics:SfGradientStop Color="#935EF2" Offset="1"/>
+                                </graphics:SfRadialGradientBrush.GradientStops>
+                            </graphics:SfRadialGradientBrush>
+                        </buttons:SfButton.BackgroundGradient>
+                    </buttons:SfButton>
+                </StackLayout>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</mvx:MvxContentPage>

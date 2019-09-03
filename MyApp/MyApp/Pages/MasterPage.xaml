@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<mvx:MvxContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+                       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                       xmlns:res="clr-namespace:MyApp.Resources;assembly=MyApp"
+                       xmlns:mvx="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+                       xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+                       xmlns:graphics="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"
+                       x:Class="MyApp.Pages.MasterPage"
+                       x:Name="MainContent"
+                       Title="master"
+                       IconImageSource="ic_menu_grey600.png">
+    <ContentPage.Content>
+        <Grid>
+            <graphics:SfGradientView>
+                <graphics:SfGradientView.BackgroundBrush>
+                    <graphics:SfLinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                        <graphics:SfLinearGradientBrush.GradientStops>
+                            <graphics:SfGradientStop Color="{StaticResource orange1}" Offset="0.0" />
+                            <graphics:SfGradientStop Color="{StaticResource orange2}" Offset="0.5" />
+                            <graphics:SfGradientStop Color="{StaticResource orange3}" Offset="1.0" />
+                        </graphics:SfLinearGradientBrush.GradientStops>
+                    </graphics:SfLinearGradientBrush>
+                </graphics:SfGradientView.BackgroundBrush>
+            </graphics:SfGradientView>
+            <Grid>
+                <StackLayout>
+                    <StackLayout HeightRequest="70">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer
+                        Command="{Binding MenuLogoCommand}">
+                            </TapGestureRecognizer>
+                        </StackLayout.GestureRecognizers>
+                        <StackLayout.IsVisible>
+                            <OnPlatform x:TypeArguments="x:Boolean">
+                                <On Platform="Android, iOS" Value="True" />
+                            </OnPlatform>
+                        </StackLayout.IsVisible>
+                        <StackLayout.Margin>
+                            <OnPlatform x:TypeArguments="Thickness">
+                                <On Platform="iOS" Value="0,20,0,0" />
+                            </OnPlatform>
+                        </StackLayout.Margin>
+                        <Grid>
+                            <forms:CachedImage HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"
+                                       WidthRequest="60" HeightRequest="60"
+                                       DownsampleToViewSize="true"
+                                       FadeAnimationEnabled="True"
+                                       Margin="5,5,5,5"
+                                       Source = "logo.png">
+                            </forms:CachedImage>
+                            <Label Text="{res:Translate AppName}" Margin="65,5,5,5" TextColor="{StaticResource white}" VerticalOptions="Center" HorizontalOptions="Start" FontSize="Medium" />
+                            <Label Text="{Binding Time}" Margin="65,5,5,5" TextColor="{StaticResource white}" VerticalOptions="Center" HorizontalOptions="End" FontSize="Medium" />
+                        </Grid>
+                    </StackLayout>
+                    <ListView ItemsSource="{Binding MenuItemList}" SeparatorVisibility="None" RowHeight="50">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout Padding="10" VerticalOptions="EndAndExpand" HorizontalOptions="EndAndExpand">
+                                        <Grid>
+                                            <forms:CachedImage HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand"
+                                                           WidthRequest="30" HeightRequest="30"
+                                                           DownsampleToViewSize="true"
+                                                           FadeAnimationEnabled="True"
+                                                           Source = "{Binding Icon}">
+                                            </forms:CachedImage>
+                                            <Label Text="{Binding Title}" Margin="0,0,35,0" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" FontSize="16" TextColor="{StaticResource lightGray}" />
+                                        </Grid>
+                                        <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer
+                                        Command="{Binding BindingContext.DataContext.ShowDetailPageAsyncCommand, Source={x:Reference MainContent}}"
+                                        CommandParameter="{Binding Target}">
+                                            </TapGestureRecognizer>
+                                        </StackLayout.GestureRecognizers>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</mvx:MvxContentPage>

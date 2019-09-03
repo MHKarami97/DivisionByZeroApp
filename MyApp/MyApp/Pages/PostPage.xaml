@@ -1,0 +1,178 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<mvx:MvxContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:res="clr-namespace:MyApp.Resources;assembly=MyApp"
+             xmlns:mvx="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+             xmlns:graphics="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"
+             xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+             x:Class="MyApp.Pages.PostPage"
+             BackgroundColor="{StaticResource white}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="{res:Translate Home}"
+                     Command="{Binding ToolbarHomeCommand}"
+                     Order="Primary"
+                     Priority="1"
+                     IconImageSource="home.png" />
+        <ToolbarItem Text="{res:Translate Search}"
+                     Command="{Binding ToolbarSearchCommand}"
+                     Order="Primary"
+                     Priority="0"
+                     IconImageSource="loupe.png" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <Grid>
+            <StackLayout Margin="0">
+                <Grid>
+                    <ScrollView Orientation="Vertical" VerticalOptions="FillAndExpand">
+                        <StackLayout>
+                            <Grid HeightRequest="300">
+                                <graphics:SfGradientView>
+                                    <graphics:SfGradientView.BackgroundBrush>
+                                        <graphics:SfLinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                            <graphics:SfLinearGradientBrush.GradientStops>
+                                                <graphics:SfGradientStop Color="{StaticResource orange1}" Offset="0.0" />
+                                                <graphics:SfGradientStop Color="{StaticResource orange2}" Offset="0.5" />
+                                                <graphics:SfGradientStop Color="{StaticResource orange3}" Offset="1.0" />
+                                            </graphics:SfLinearGradientBrush.GradientStops>
+                                        </graphics:SfLinearGradientBrush>
+                                    </graphics:SfGradientView.BackgroundBrush>
+                                </graphics:SfGradientView>
+                                <StackLayout>
+                                    <border:SfBorder 
+                                        BackgroundColor="Transparent"
+                                        BorderColor="Transparent"
+                                        HorizontalOptions="CenterAndExpand" 
+                                        VerticalOptions="StartAndExpand"
+                                        CornerRadius="30"
+                                        Margin="0">
+                                        <ContentView>
+                                            <forms:CachedImage HorizontalOptions="Center"
+                                                               VerticalOptions="Center"
+                                                               WidthRequest="190"
+                                                               HeightRequest="190"
+                                                               DownsampleToViewSize="true"
+                                                               FadeAnimationEnabled="True"
+                                                               Source = "{Binding SinglePost.Image}">
+                                            </forms:CachedImage>
+                                        </ContentView>
+                                    </border:SfBorder>
+                                </StackLayout>
+                                <StackLayout>
+                                    <Label HorizontalOptions="CenterAndExpand"
+                                           VerticalOptions="EndAndExpand"
+                                           Margin="5,0,5,75"
+                                           Text="{Binding SinglePost.Title}"
+                                           TextColor="{StaticResource white}"
+                                           FontSize="Title"/>
+                                </StackLayout>
+                            </Grid>
+                            <StackLayout>
+                                <border:SfBorder 
+                                        BackgroundColor="{StaticResource white1}"
+                                        BorderColor="{StaticResource white1}"
+                                        HorizontalOptions="Center" 
+                                        VerticalOptions="Center"
+                                        HasShadow="True"
+                                        CornerRadius="20"
+                                        Margin="20,-40,20,5">
+                                    <ContentView Padding="4">
+                                        <Grid HeightRequest="60">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*" />
+                                                <RowDefinition Height="*" />
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="1" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="1" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+
+                                            <Label 
+                                                   HorizontalOptions="CenterAndExpand"
+                                                   VerticalOptions="CenterAndExpand"
+                                                   Grid.Row="0"
+                                                   Grid.Column="0"
+                                                   FontSize="Large"
+                                                   Text="{Binding SinglePost.Visit}"/>
+
+                                            <BoxView
+                                                     Grid.Row="0"
+                                                     Grid.Column="1"
+                                                     WidthRequest="1"
+                                                     Opacity="0.1"
+                                                     BackgroundColor="{StaticResource black}"
+                                                     CornerRadius="2"/>
+
+                                            <Label 
+                                                   HorizontalOptions="CenterAndExpand"
+                                                   VerticalOptions="CenterAndExpand"
+                                                   Grid.Row="0"
+                                                   Grid.Column="2"
+                                                   FontSize="Large"
+                                                   Text="{Binding SinglePost.Comment}"/>
+
+                                            <BoxView 
+                                                     Grid.Row="0"
+                                                     Grid.Column="3"
+                                                     WidthRequest="2"
+                                                     Opacity="0.1"
+                                                     BackgroundColor="{StaticResource black}"
+                                                     CornerRadius="2"/>
+
+                                            <Label 
+                                                   HorizontalOptions="CenterAndExpand"
+                                                   VerticalOptions="CenterAndExpand"
+                                                   Grid.Row="0"
+                                                   Grid.Column="4"
+                                                   FontSize="Large"
+                                                   Text="{Binding SinglePost.Like}"/>
+
+         
+                                            <Label 
+                                                   HorizontalOptions="CenterAndExpand"
+                                                   VerticalOptions="CenterAndExpand"
+                                                   Grid.Row="1"
+                                                   Grid.Column="0"
+                                                   FontSize="Small"
+                                                   Text="{res:Translate Visit}"/>
+
+                                            <Label 
+                                                   HorizontalOptions="CenterAndExpand"
+                                                   VerticalOptions="CenterAndExpand"
+                                                   Grid.Row="1"
+                                                   Grid.Column="2"
+                                                   FontSize="Small"
+                                                   Text="{res:Translate Comment}"/>
+
+                                            <Label
+                                                   HorizontalOptions="CenterAndExpand"
+                                                   VerticalOptions="CenterAndExpand"
+                                                   Grid.Row="1"
+                                                   Grid.Column="4"
+                                                   FontSize="Small"
+                                                   Text="{res:Translate Like}"/>
+
+                                        </Grid>
+                                    </ContentView>
+                                </border:SfBorder>
+                            </StackLayout>
+                            <StackLayout Padding="10">
+                                <Label 
+                                       HorizontalOptions="StartAndExpand"
+                                       FontSize="Title"
+                                       Text="{Binding SinglePost.ShortContent}"/>
+                                <Label
+                                       HorizontalOptions="StartAndExpand"
+                                       FontSize="18"
+                                       Text="{Binding SinglePost.Content}"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </ScrollView>
+                </Grid>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</mvx:MvxContentPage>

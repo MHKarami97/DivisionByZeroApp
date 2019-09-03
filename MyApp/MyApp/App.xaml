@@ -1,20 +1,126 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<Application xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d"
-             x:Class="MyApp.App">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<mvx:MvxFormsApplication 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="MyApp.App"
+    xmlns:mvx="clr-namespace:MvvmCross.Forms.Core;assembly=MvvmCross.Forms"
+    xmlns:resources="clr-namespace:XF.Material.Forms.Resources;assembly=XF.Material.Forms"
+    xmlns:typography="clr-namespace:XF.Material.Forms.Resources.Typography;assembly=XF.Material.Forms">
+	<mvx:MvxFormsApplication.Resources>
+		<ResourceDictionary>
+			<Color x:Key="white">#f2f2f2</Color>
+			<Color x:Key="white1">#eeeeee</Color>
+			<Color x:Key="black">#444444</Color>
+			<Color x:Key="orange1">#ff7955</Color>
+			<Color x:Key="orange2">#fe6161</Color>
+			<Color x:Key="orange3">#d23078</Color>
+			<Color x:Key="orange4">#e9486d</Color>
+			<Color x:Key="gray1">#DBDBDB</Color>
+			<Color x:Key="gray2">#EAEAEA</Color>
+			<Color x:Key="gray3">#CFCFCF</Color>
+			<Color x:Key="purple1">#C638A8</Color>
+			<Color x:Key="purple2">#935EF2</Color>
 
-    <Application.Resources>
-        <ResourceDictionary>
-            <!--Global Styles-->
-            <Color x:Key="NavigationPrimary">#2196F3</Color>
-            <Style TargetType="NavigationPage">
-                <Setter Property="BarBackgroundColor" Value="{StaticResource NavigationPrimary}" />
-                <Setter Property="BarTextColor" Value="White" />
+			<Color x:Key="Primary">#7b1fa2</Color>
+            <Color x:Key="PrimaryDark">#6a1b9a</Color>
+            <Color x:Key="Accent">#d23078</Color>
+            <Color x:Key="LightBackgroundColor">#f3e5f5</Color>
+            <Color x:Key="DarkBackgroundColor">#e1bee7</Color>
+            <Color x:Key="MediumGrayTextColor">#4d4d4d</Color>
+            <Color x:Key="LightTextColor">#f3e5f5</Color>
+            <Color x:Key="BackgroundPurple">#ba68c8</Color>
+
+			<Color x:Key="purple">#8e24aa</Color>
+			<Color x:Key="darkPurple">#5c007a</Color>
+			<Color x:Key="pink">#d81b60</Color>
+			<Color x:Key="red">#e53935</Color>
+			<Color x:Key="blue">#1e88e5</Color>
+			<Color x:Key="indigo">#3949ab</Color>
+			<Color x:Key="deepPurple">#5e35b1</Color>
+			<Color x:Key="teal">#00897b</Color>
+			<Color x:Key="cyan">#00acc1</Color>
+			<Color x:Key="lightBlue">#039be5</Color>
+			<Color x:Key="lime">#c0ca33</Color>
+			<Color x:Key="lightGreen">#7cb342</Color>
+			<Color x:Key="green">#43a047</Color>
+			<Color x:Key="light">#f3e5f5</Color>
+			<Color x:Key="lightGray">#F5F5F5</Color>
+			<Color x:Key="blackBrown">#263238</Color>
+
+			<Style TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
+                <Setter Property="TextColor" Value="{StaticResource LightTextColor}" />
             </Style>
-        </ResourceDictionary>
-    </Application.Resources>
-    
-</Application>
+			<Style TargetType="NavigationPage">
+				<Setter Property="BarTextColor" Value="{StaticResource white}"/>
+			</Style>
+
+            <OnPlatform x:Key="FontFamily.RobotoRegular"
+                        x:TypeArguments="x:String"
+                        Android="Fonts/Roboto-Regular.ttf#Roboto-Regular"
+                        iOS="Roboto-Regular" />
+            <OnPlatform x:Key="FontFamily.RobotoMedium"
+                        x:TypeArguments="x:String"
+                        Android="Fonts/Roboto-Medium.ttf#Roboto-Medium"
+                        iOS="Roboto-Medium" />
+
+            <OnPlatform x:Key="FontFamily.TeshrinRegular"
+                        x:TypeArguments="x:String"
+                        Android="Fonts/TeshrinARLT-Regular.ttf#TeshrinARLT-Regular"
+                        iOS="TeshrinARLT-Regular" />
+            <OnPlatform x:Key="FontFamily.TeshrinMedium"
+                        x:TypeArguments="x:String"
+                        Android="Fonts/TeshrinARLT-Medium.ttf#TeshrinARLT-Medium"
+                        iOS="TeshrinARLT-Medium" />
+
+            <typography:MaterialFontConfiguration x:Key="Material.pFont"
+                                                Body1="{StaticResource FontFamily.RobotoRegular}"
+                                                Body2="{StaticResource FontFamily.RobotoRegular}"
+                                                Button="{StaticResource FontFamily.RobotoMedium}"
+                                                Caption="{StaticResource FontFamily.RobotoRegular}"
+                                                H1="{StaticResource FontFamily.RobotoRegular}"
+                                                H2="{StaticResource FontFamily.RobotoRegular}"
+                                                H3="{StaticResource FontFamily.RobotoRegular}"
+                                                H4="{StaticResource FontFamily.RobotoRegular}"
+                                                H5="{StaticResource FontFamily.RobotoRegular}"
+                                                H6="{StaticResource FontFamily.RobotoMedium}"
+                                                Overline="{StaticResource FontFamily.RobotoRegular}"
+                                                Subtitle1="{StaticResource FontFamily.RobotoRegular}"
+                                                Subtitle2="{StaticResource FontFamily.RobotoMedium}" />
+
+            <typography:MaterialFontConfiguration x:Key="Material.Font"
+                                                Body1="{StaticResource FontFamily.TeshrinRegular}"
+                                                Body2="{StaticResource FontFamily.TeshrinRegular}"
+                                                Button="{StaticResource FontFamily.TeshrinMedium}"
+                                                Caption="{StaticResource FontFamily.TeshrinRegular}"
+                                                H1="{StaticResource FontFamily.TeshrinRegular}"
+                                                H2="{StaticResource FontFamily.TeshrinRegular}"
+                                                H3="{StaticResource FontFamily.TeshrinRegular}"
+                                                H4="{StaticResource FontFamily.TeshrinRegular}"
+                                                H5="{StaticResource FontFamily.TeshrinRegular}"
+                                                H6="{StaticResource FontFamily.TeshrinMedium}"
+                                                Overline="{StaticResource FontFamily.TeshrinRegular}"
+                                                Subtitle1="{StaticResource FontFamily.TeshrinRegular}"
+                                                Subtitle2="{StaticResource FontFamily.TeshrinMedium}" />
+
+            <resources:MaterialColorConfiguration x:Key="Material.Color"
+                                             Background="#F5F5F5"
+                                             Error="#d32f2f"
+                                             OnBackground="#E1BEE7"
+                                             OnError="#1A237E"
+                                             OnPrimary="#CE93D8"
+                                             OnSecondary="#f2f2f2"
+                                             OnSurface="#3E2723"
+                                             Primary="#fe6161"
+                                             PrimaryVariant="#d23078"
+                                             Secondary="#673AB7"
+                                             SecondaryVariant="#4527A0"
+                                             Surface="#F3E5F5" />
+
+            <resources:MaterialConfiguration x:Key="Material.Configuration"
+                                             ColorConfiguration="{StaticResource Material.Color}"
+                                             FontConfiguration="{StaticResource Material.Font}" />
+
+		</ResourceDictionary>
+	</mvx:MvxFormsApplication.Resources>
+</mvx:MvxFormsApplication>
