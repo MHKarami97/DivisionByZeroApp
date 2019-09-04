@@ -1,5 +1,4 @@
-﻿using BaHamBekhanim.Core;
-using Foundation;
+﻿using Foundation;
 using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
@@ -11,7 +10,7 @@ namespace MyApp.iOS
     // The UIApplicationDelegate for the application. This class is responsible for launching the
     // User Interface of the application, as well as listening (and optionally responding) to application events from iOS.
     [Register("AppDelegate")]
-    public class AppDelegate : MvxFormsApplicationDelegate<Setup, MvxApp, FormsApp>
+    public class AppDelegate : MvxFormsApplicationDelegate<Setup, MvxApp, App>
     {
         // class-level declarations
 

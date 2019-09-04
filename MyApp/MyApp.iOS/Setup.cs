@@ -2,6 +2,7 @@
 using MvvmCross.Logging;
 using MyApp.iOS.Services;
 using MvvmCross.Forms.Platforms.Ios.Core;
+using Serilog;
 
 namespace MyApp.iOS
 {
@@ -18,10 +19,10 @@ namespace MyApp.iOS
 
         protected override IMvxLogProvider CreateLogProvider()
         {
-            //Log.Logger = new LoggerConfiguration()
-            //            .MinimumLevel.Debug()
-            //            .WriteTo.NSLog()
-            //            .CreateLogger();
+            Log.Logger = new LoggerConfiguration()
+                        .MinimumLevel.Debug()
+                        //.WriteTo.NSLog()
+                        .CreateLogger();
 
             return base.CreateLogProvider();
         }

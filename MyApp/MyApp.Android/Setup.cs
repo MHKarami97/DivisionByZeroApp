@@ -2,6 +2,7 @@
 using MvvmCross.Forms.Platforms.Android.Core;
 using MvvmCross.Logging;
 using MyApp.Droid.Services;
+using Serilog;
 
 namespace MyApp.Droid
 {
@@ -18,10 +19,10 @@ namespace MyApp.Droid
 
         protected override IMvxLogProvider CreateLogProvider()
         {
-            //Log.Logger = new LoggerConfiguration()
-            //            .MinimumLevel.Debug()
-            //            .WriteTo.AndroidLog()
-            //            .CreateLogger();
+            Log.Logger = new LoggerConfiguration()
+                        .MinimumLevel.Debug()
+                        //.WriteTo.AndroidLog()
+                        .CreateLogger();
 
             return base.CreateLogProvider();
         }
