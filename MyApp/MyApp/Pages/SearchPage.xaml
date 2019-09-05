@@ -25,8 +25,8 @@
                         <graphics:SfLinearGradientBrush.GradientStops>
                             <graphics:SfGradientStop Color="{StaticResource gray1}" Offset="0.0" />
                             <graphics:SfGradientStop Color="{StaticResource gray2}" Offset="0.4" />
-                            <graphics:SfGradientStop Color="{StaticResource gray3}" Offset="0.8" />
-                            <graphics:SfGradientStop Color="{StaticResource orange3}" Offset="1.0" />
+                            <graphics:SfGradientStop Color="{StaticResource gray3}" Offset="0.9" />
+                            <graphics:SfGradientStop Color="{StaticResource black}" Offset="1.0" />
                         </graphics:SfLinearGradientBrush.GradientStops>
                     </graphics:SfLinearGradientBrush>
                 </graphics:SfGradientView.BackgroundBrush>

@@ -30,7 +30,7 @@
                             <graphics:SfGradientStop Color="{StaticResource orange1}" Offset="0.0" />
                             <graphics:SfGradientStop Color="{StaticResource gray1}" Offset="0.1" />
                             <graphics:SfGradientStop Color="{StaticResource gray2}" Offset="0.5" />
-                            <graphics:SfGradientStop Color="{StaticResource gray3}" Offset="1.0" />
+                            <graphics:SfGradientStop Color="{StaticResource gray3}" Offset="0.8" />
                         </graphics:SfLinearGradientBrush.GradientStops>
                     </graphics:SfLinearGradientBrush>
                 </graphics:SfGradientView.BackgroundBrush>
@@ -55,7 +55,7 @@
                                     <border:SfBorder 
                                         HorizontalOptions="Center" 
                                         VerticalOptions="Center"
-                                        CornerRadius="15"
+                                        CornerRadius="8"
                                         Margin="0" 
                                         Padding="0"
                                         BorderColor="Transparent"

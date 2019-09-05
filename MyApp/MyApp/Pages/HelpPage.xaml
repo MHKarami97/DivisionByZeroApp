@@ -35,7 +35,7 @@
             <ScrollView Orientation="Vertical" VerticalOptions="FillAndExpand">
                 <StackLayout Margin="0">
                     <accordion:SfAccordion BindableLayout.ItemsSource="{Binding Info}"
-                                            ItemSpacing="15" Margin="2">
+                                            ItemSpacing="8" Margin="2">
                         <accordion:SfAccordion.Items>
                             <accordion:AccordionItem HeaderBackgroundColor="{StaticResource white}"/>
                         </accordion:SfAccordion.Items>

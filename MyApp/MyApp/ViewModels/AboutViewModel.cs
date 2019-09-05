@@ -18,7 +18,7 @@ namespace MyApp.ViewModels
         {
             _navigationService = navigationService;
 
-            Version = Mvx.IoCProvider.Resolve<ILocalizeService>().Translate("Version") + VersionTracking.CurrentVersion;
+            Version = Mvx.IoCProvider.Resolve<ILocalizeService>().Translate("Version")+" " + VersionTracking.CurrentVersion;
         }
 
         #region Property
