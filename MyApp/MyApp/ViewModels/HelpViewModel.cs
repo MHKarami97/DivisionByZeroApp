@@ -1,30 +1,28 @@
-﻿using System.Collections.Generic;
+﻿using MyApp.Models;
 using Acr.UserDialogs;
-using MyApp.Models;
 using MvvmCross.Commands;
 using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
-using MyApp.Services;
+using System.Collections.Generic;
 
 namespace MyApp.ViewModels
 {
     public class HelpViewModel : MvxViewModel
     {
-        private readonly IMvxNavigationService navigationService;
-        private readonly ILocalizeService localizeService;
-        private readonly Services.IAppSettings settings;
-        private readonly IUserDialogs userDialogs;
+        private readonly IMvxNavigationService _navigationService;
+        private readonly IUserDialogs _userDialogs;
 
-        public HelpViewModel(IMvxNavigationService navigationService, IAppSettings settings, IUserDialogs userDialogs, ILocalizeService localizeService)
+        public HelpViewModel(IMvxNavigationService navigationService, IUserDialogs userDialogs)
         {
-            this.navigationService = navigationService;
-            this.localizeService = localizeService;
-            this.userDialogs = userDialogs;
-            this.settings = settings;
+            _userDialogs = userDialogs;
+            _navigationService = navigationService;
+        }
 
+        public override async void Start()
+        {
             var infoItem = new List<HelpModel>();
 
-            using (userDialogs.Loading("Loading"))
+            using (_userDialogs.Loading("Loading"))
             {
                 infoItem.Add(new HelpModel
                 {
@@ -51,18 +49,32 @@ namespace MyApp.ViewModels
             Info = infoItem;
         }
 
+        #region Property
+
         public List<HelpModel> Info { get; set; }
+
+        #endregion
+
+        #region Events
+
+
+
+        #endregion
+
+        #region Toolbar
 
         public IMvxAsyncCommand ToolbarSearchCommand =>
             new MvxAsyncCommand(async () =>
             {
-                await navigationService.Navigate<SearchViewModel>();
+                await _navigationService.Navigate<SearchViewModel>();
             });
 
         public IMvxAsyncCommand ToolbarHomeCommand =>
             new MvxAsyncCommand(async () =>
             {
-                await navigationService.Navigate<RootViewModel>();
+                await _navigationService.Navigate<RootViewModel>();
             });
+
+        #endregion
     }
 }

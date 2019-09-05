@@ -1,29 +1,25 @@
 ﻿using System;
+using MvvmCross;
+using MyApp.Models;
+using MyApp.Helpers;
+using MyApp.Services;
 using Acr.UserDialogs;
 using MvvmCross.Commands;
 using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
-using MyApp.Helpers;
-using MyApp.Services;
 using System.Collections.Generic;
-using MyApp.Models;
-using MvvmCross;
 
 namespace MyApp.ViewModels
 {
     public class CategoryViewModel : MvxViewModel
     {
-        private readonly IMvxNavigationService navigationService;
-        private readonly Services.IAppSettings settings;
-        private readonly IUserDialogs userDialogs;
-        private readonly ILocalizeService localizeService;
+        private readonly IMvxNavigationService _navigationService;
+        private readonly IUserDialogs _userDialogs;
 
-        public CategoryViewModel(IMvxNavigationService navigationService, IAppSettings settings, IUserDialogs userDialogs, ILocalizeService localizeService)
+        public CategoryViewModel(IMvxNavigationService navigationService, IUserDialogs userDialogs)
         {
-            this.settings = settings;
-            this.userDialogs = userDialogs;
-            this.localizeService = localizeService;
-            this.navigationService = navigationService;
+            _userDialogs = userDialogs;
+            _navigationService = navigationService;
         }
 
         public override async void Start()
@@ -32,7 +28,7 @@ namespace MyApp.ViewModels
             {
                 var cats = new List<CategoryModel>();
 
-                using (userDialogs.Loading("Loading"))
+                using (_userDialogs.Loading("Loading"))
                 {
                     cats.Add(new CategoryModel
                     {
@@ -100,36 +96,38 @@ namespace MyApp.ViewModels
             }
             catch (Exception e)
             {
-                await userDialogs.AlertAsync(e.Message, Mvx.IoCProvider.Resolve<ILocalizeService>().Translate("Error"), Mvx.IoCProvider.Resolve<Services.ILocalizeService>().Translate("Ok"));
+                await _userDialogs.AlertAsync(e.Message, Mvx.IoCProvider.Resolve<ILocalizeService>().Translate("Error"), Mvx.IoCProvider.Resolve<ILocalizeService>().Translate("Ok"));
 
                 throw;
             }
         }
 
-        private List<CategoryModel> _cats;
+        #region Property
 
-        public List<CategoryModel> Cats
-        {
-            get
-            {
-                return _cats;
-            }
-            set
-            {
-                _cats = value;
-            }
-        }
+        public List<CategoryModel> Cats { get; set; }
+
+        #endregion
+
+        #region Events
+
+
+
+        #endregion
+
+        #region Toolbar
 
         public IMvxAsyncCommand ToolbarSearchCommand =>
             new MvxAsyncCommand(async () =>
             {
-                await navigationService.Navigate<SearchViewModel>();
+                await _navigationService.Navigate<SearchViewModel>();
             });
 
         public IMvxAsyncCommand ToolbarHomeCommand =>
             new MvxAsyncCommand(async () =>
             {
-                await navigationService.Navigate<RootViewModel>();
+                await _navigationService.Navigate<RootViewModel>();
             });
+
+        #endregion
     }
 }

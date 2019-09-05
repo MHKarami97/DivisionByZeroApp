@@ -10,7 +10,7 @@ using System.Windows.Input;
 
 namespace MyApp.iOS
 {
-    [Foundation.Preserve(AllMembers = true)]
+    [Preserve(AllMembers = true)]
     public class LinkerPleaseInclude
     {
         public void Include(MvxTaskBasedBindingContext c)

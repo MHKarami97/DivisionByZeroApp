@@ -24,19 +24,19 @@ namespace MyApp.Droid
             ToolbarResource = Resource.Layout.Toolbar;
             TabLayoutResource = Resource.Layout.Tabbar;
 
-            Window.AddFlags(WindowManagerFlags.Fullscreen);
+            //Window.AddFlags(WindowManagerFlags.Fullscreen);
 
-            SetContentView(Resource.Layout.Tabbar);
+            //SetContentView(Resource.Layout.Tabbar);
 
-            var uiOptions = (int)Window.DecorView.SystemUiVisibility;
+            //var uiOptions = (int)Window.DecorView.SystemUiVisibility;
 
-            uiOptions |= (int)SystemUiFlags.LowProfile;
-            uiOptions |= (int)SystemUiFlags.HideNavigation;
-            uiOptions |= (int)SystemUiFlags.ImmersiveSticky;
-            uiOptions |= (int)SystemUiFlags.Fullscreen;
+            //uiOptions |= (int)SystemUiFlags.LowProfile;
+            //uiOptions |= (int)SystemUiFlags.HideNavigation;
+            //uiOptions |= (int)SystemUiFlags.ImmersiveSticky;
+            //uiOptions |= (int)SystemUiFlags.Fullscreen;
 
-            Window.DecorView.SystemUiVisibility =
-                (StatusBarVisibility)uiOptions;
+            //Window.DecorView.SystemUiVisibility =
+            //    (StatusBarVisibility)uiOptions;
             
             //if (Build.VERSION.SdkInt >= Build.VERSION_CODES.Lollipop)
             //{

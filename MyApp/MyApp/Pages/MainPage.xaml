@@ -106,7 +106,6 @@
                                                    SelectionBackgroundColor="Transparent"
                                                    FlowDirection="LeftToRight"
                                                    TapCommand="{Binding CardTappedCommand}"
-                                                   TapCommandParameter="{Binding Id}"
                                                    ItemsSource="{Binding BlogPosts}">
                                         <xForms:SfListView.ItemTemplate>
                                             <DataTemplate>
@@ -199,7 +198,6 @@
                                            FontFamily="{StaticResource FontFamily.TeshrinRegular}"/>
                                     <cards:SfCardLayout BindableLayout.ItemsSource="{Binding BlogPosts}"
                                                         CardTappedCommand="{Binding CardTappedCommand}"
-                                                        CardTappedCommandParameter="{Binding Id}"
                                                         Margin="1"
                                                         Padding="1"
                                                         HeightRequest="185">
@@ -297,7 +295,7 @@
                                            FontFamily="{StaticResource FontFamily.TeshrinRegular}"/>
                                     <cards:SfCardLayout
                                         BindableLayout.ItemsSource="{Binding BlogPosts}"
-                                        CardTappedCommand="{Binding CardTappedCommands}"
+                                        CardTappedCommand="{Binding CardTappedCommand}"
                                         Margin="1"
                                         Padding="1"
                                         HeightRequest="185">

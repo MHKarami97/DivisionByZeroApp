@@ -7,8 +7,7 @@
                        xmlns:graphics="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"
                        x:Class="MyApp.Pages.MasterPage"
                        x:Name="MainContent"
-                       Title="master"
-                       IconImageSource="ic_menu_grey600.png">
+                       Title="master">
     <ContentPage.Content>
         <Grid>
             <graphics:SfGradientView>
@@ -49,7 +48,7 @@
                                        Source = "logo.png">
                             </forms:CachedImage>
                             <Label Text="{res:Translate AppName}" Margin="65,5,5,5" TextColor="{StaticResource white}" VerticalOptions="Center" HorizontalOptions="Start" FontSize="Medium" />
-                            <Label Text="{Binding Time}" Margin="65,5,5,5" TextColor="{StaticResource white}" VerticalOptions="Center" HorizontalOptions="End" FontSize="Medium" />
+                            <!--<Label Text="{Binding Time}" Margin="65,5,5,5" TextColor="{StaticResource white}" VerticalOptions="Center" HorizontalOptions="End" FontSize="Medium" />-->
                         </Grid>
                     </StackLayout>
                     <ListView ItemsSource="{Binding MenuItemList}" SeparatorVisibility="None" RowHeight="50">

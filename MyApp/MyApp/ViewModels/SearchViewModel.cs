@@ -1,28 +1,20 @@
-﻿using System.Collections.Generic;
-using Acr.UserDialogs;
+﻿using Acr.UserDialogs;
 using MvvmCross.Commands;
-using MvvmCross.Logging;
 using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
+using System.Collections.Generic;
 
 namespace MyApp.ViewModels
 {
     public class SearchViewModel : MvxViewModel
     {
-        private readonly IMvxNavigationService navigationService;
-        private readonly IMvxLogProvider mvxLogProvider;
-        private readonly Services.IAppSettings settings;
-        private readonly IUserDialogs userDialogs;
-        private readonly IMvxLog log;
+        private readonly IMvxNavigationService _navigationService;
+        private readonly IUserDialogs _userDialogs;
 
-        public SearchViewModel(IMvxNavigationService navigationService, IMvxLogProvider mvxLogProvider, Services.IAppSettings settings, IUserDialogs userDialogs)
+        public SearchViewModel(IMvxNavigationService navigationService, IUserDialogs userDialogs)
         {
-            this.navigationService = navigationService;
-            this.mvxLogProvider = mvxLogProvider;
-            this.userDialogs = userDialogs;
-            this.settings = settings;
-
-            log = mvxLogProvider.GetLogFor(GetType());
+            _navigationService = navigationService;
+            _userDialogs = userDialogs;
         }
 
         public override async void Start()
@@ -37,24 +29,26 @@ namespace MyApp.ViewModels
             };
         }
 
-        private List<string> _searchDataSource;
+        #region Property
 
-        public List<string> SearchDataSource
-        {
-            get
-            {
-                return _searchDataSource;
-            }
-            set
-            {
-                _searchDataSource = value;
-            }
-        }
+        public List<string> SearchDataSource { get; set; }
+
+        #endregion
+
+        #region Events
+
+
+
+        #endregion
+
+        #region Toolbar
 
         public IMvxAsyncCommand ToolbarHomeCommand =>
             new MvxAsyncCommand(async () =>
             {
-                await navigationService.Navigate<RootViewModel>();
+                await _navigationService.Navigate<RootViewModel>();
             });
+
+        #endregion
     }
 }

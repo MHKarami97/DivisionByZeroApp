@@ -6,7 +6,7 @@ using Serilog;
 
 namespace MyApp.Droid
 {
-    public class Setup : MvxFormsAndroidSetup<MvxApp, MyApp.App>
+    public class Setup : MvxFormsAndroidSetup<MvxApp, App>
     {
         protected override void InitializeFirstChance()
         {

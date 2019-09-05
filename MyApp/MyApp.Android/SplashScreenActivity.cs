@@ -1,16 +1,15 @@
-﻿using Acr.UserDialogs;
-using Android.App;
-using Android.Content.PM;
+﻿using MvvmCross;
 using Android.OS;
-using MvvmCross;
-using MvvmCross.Forms.Platforms.Android.Views;
-using MvvmCross.Platforms.Android;
+using Android.App;
 using Xamarin.Forms;
-using System.Threading.Tasks;
-using Android.Views;
+using Acr.UserDialogs;
+using Android.Content.PM;
 using Microsoft.AppCenter;
-using Microsoft.AppCenter.Analytics;
+using System.Threading.Tasks;
 using Microsoft.AppCenter.Crashes;
+using MvvmCross.Platforms.Android;
+using Microsoft.AppCenter.Analytics;
+using MvvmCross.Forms.Platforms.Android.Views;
 
 namespace MyApp.Droid
 {
@@ -19,7 +18,6 @@ namespace MyApp.Droid
         , MainLauncher = true
         , Theme = "@style/Theme.Splash"
         , NoHistory = true
-        , ConfigurationChanges = ConfigChanges.ScreenSize
         , ScreenOrientation = ScreenOrientation.Portrait)]
     public class SplashScreenActivity : MvxFormsSplashScreenAppCompatActivity<Setup, MvxApp, App>
     {
@@ -30,8 +28,8 @@ namespace MyApp.Droid
 
         protected override void OnCreate(Bundle bundle)
         {
-            Window.AddFlags(WindowManagerFlags.Fullscreen);
-            Window.DecorView.SystemUiVisibility = (StatusBarVisibility)SystemUiFlags.HideNavigation;
+            //Window.AddFlags(WindowManagerFlags.Fullscreen);
+            //Window.DecorView.SystemUiVisibility = (StatusBarVisibility)SystemUiFlags.HideNavigation;
 
             UserDialogs.Init(() => Mvx.IoCProvider.Resolve<IMvxAndroidCurrentTopActivity>().Activity);
 

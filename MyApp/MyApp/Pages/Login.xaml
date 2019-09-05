@@ -10,9 +10,9 @@
              x:Class="MyApp.Pages.Login"
              Title="{res:Translate Login}">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="{Binding Time}"
+        <!--<ToolbarItem Text="{Binding Time}"
                      Order="Primary"
-                     Priority="1"/>
+                     Priority="1"/>-->
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <Grid>

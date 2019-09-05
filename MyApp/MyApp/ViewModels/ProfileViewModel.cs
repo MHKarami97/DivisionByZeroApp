@@ -1,31 +1,23 @@
 ﻿using System;
-using Acr.UserDialogs;
 using MvvmCross;
-using MvvmCross.Logging;
+using MyApp.Models;
+using MyApp.Helpers;
+using Acr.UserDialogs;
 using MvvmCross.Commands;
 using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
-using MyApp.Helpers;
-using MyApp.Models;
 
 namespace MyApp.ViewModels
 {
     public class ProfileViewModel : MvxViewModel
     {
-        private readonly IMvxNavigationService navigationService;
-        private readonly IMvxLogProvider mvxLogProvider;
-        private readonly Services.IAppSettings settings;
-        private readonly IUserDialogs userDialogs;
-        private readonly IMvxLog log;
+        private readonly IMvxNavigationService _navigationService;
+        private readonly IUserDialogs _userDialogs;
 
-        public ProfileViewModel(IMvxNavigationService navigationService, IMvxLogProvider mvxLogProvider, Services.IAppSettings settings, IUserDialogs userDialogs)
+        public ProfileViewModel(IMvxNavigationService navigationService, IUserDialogs userDialogs)
         {
-            this.navigationService = navigationService;
-            this.mvxLogProvider = mvxLogProvider;
-            this.userDialogs = userDialogs;
-            this.settings = settings;
-
-            log = mvxLogProvider.GetLogFor(GetType());
+            _navigationService = navigationService;
+            _userDialogs = userDialogs;
         }
 
         public override async void Start()
@@ -41,37 +33,37 @@ namespace MyApp.ViewModels
             };
         }
 
-        private UserModel _user;
+        #region Property
 
-        public UserModel User
-        {
-            get
-            {
-                return _user;
-            }
-            set
-            {
-                _user = value;
-            }
-        }
+        public UserModel User { get; set; }
+
+        #endregion
+
+        #region Events
 
         public IMvxAsyncCommand UpdateCommand =>
             new MvxAsyncCommand(async () =>
             {
                 try
                 {
-                    await navigationService.Navigate<RootViewModel>();
+                    await _navigationService.Navigate<RootViewModel>();
                 }
                 catch (Exception e)
                 {
-                    await userDialogs.AlertAsync(e.Message, Mvx.IoCProvider.Resolve<Services.ILocalizeService>().Translate("Error"), Mvx.IoCProvider.Resolve<Services.ILocalizeService>().Translate("Ok"));
+                    await _userDialogs.AlertAsync(e.Message, Mvx.IoCProvider.Resolve<Services.ILocalizeService>().Translate("Error"), Mvx.IoCProvider.Resolve<Services.ILocalizeService>().Translate("Ok"));
                 }
             });
+
+        #endregion
+
+        #region Toolbar
 
         public IMvxAsyncCommand ToolbarHomeCommand =>
             new MvxAsyncCommand(async () =>
             {
-                await navigationService.Navigate<RootViewModel>();
+                await _navigationService.Navigate<RootViewModel>();
             });
+
+        #endregion
     }
 }

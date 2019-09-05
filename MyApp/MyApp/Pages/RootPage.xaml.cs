@@ -11,7 +11,7 @@ namespace MyApp.Pages
         {
             InitializeComponent();
 
-            this.IsPresentedChanged += RootPage_IsPresentedChanged;
+            IsPresentedChanged += RootPage_IsPresentedChanged;
         }
 
         private void RootPage_IsPresentedChanged(object sender, EventArgs e)

@@ -1,11 +1,11 @@
-﻿using System.Globalization;
-using Acr.UserDialogs;
-using MvvmCross;
-using MvvmCross.Base;
+﻿using MvvmCross;
 using MvvmCross.IoC;
-using MvvmCross.Plugin.Json;
+using MvvmCross.Base;
+using Acr.UserDialogs;
 using MvvmCross.ViewModels;
 using Plugin.SecureStorage;
+using System.Globalization;
+using MvvmCross.Plugin.Json;
 
 namespace MyApp
 {
@@ -25,7 +25,7 @@ namespace MyApp
 
             Mvx.IoCProvider.RegisterType<Services.IAppSettings, Services.AppSettings>();
             Mvx.IoCProvider.RegisterType<IMvxJsonConverter, MvxJsonConverter>();
-            Mvx.IoCProvider.RegisterSingleton<IUserDialogs>(() => UserDialogs.Instance);
+            Mvx.IoCProvider.RegisterSingleton(() => UserDialogs.Instance);
 
             Resources.AppResources.Culture = CrossSecureStorage.Current.GetValue("lang") != null ? new CultureInfo(CrossSecureStorage.Current.GetValue("lang")) : Mvx.IoCProvider.Resolve<Services.ILocalizeService>().GetCurrentCultureInfo();
 

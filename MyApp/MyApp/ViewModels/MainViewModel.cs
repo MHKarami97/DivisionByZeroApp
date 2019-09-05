@@ -1,13 +1,11 @@
 ﻿using System;
 using Acr.UserDialogs;
-using MvvmCross.Logging;
 using MvvmCross.Commands;
 using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
 using MyApp.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using System.Windows.Input;
 using MvvmCross;
 using Plugin.SecureStorage;
 using MyApp.Helpers;
@@ -25,30 +23,16 @@ namespace MyApp.ViewModels
     public class MainViewModel : MvxViewModel<Dictionary<string, string>>
     {
         private readonly IMvxNavigationService navigationService;
-        private readonly IMvxLogProvider mvxLogProvider;
-        private readonly Services.IAppSettings settings;
         private readonly IUserDialogs userDialogs;
-        private readonly IMvxLog log;
 
-        public MainViewModel(IMvxNavigationService navigationService, IMvxLogProvider mvxLogProvider, Services.IAppSettings settings, IUserDialogs userDialogs)
+        public MainViewModel(IMvxNavigationService navigationService, IUserDialogs userDialogs)
         {
             this.navigationService = navigationService;
-            this.mvxLogProvider = mvxLogProvider;
-            this.settings = settings;
             this.userDialogs = userDialogs;
-
-            log = mvxLogProvider.GetLogFor(GetType());
-
-            CardTappedCommands = new Command<object>(CardTappedEvent);
-            //CardTappedCommands = new Command<object>(CardTappedEvent); 
-            //DeleteCommand = new Command<object>(async (model) => await DeleteExec(model));
         }
-
-        private Dictionary<string, string> _parameter;
 
         public override void Prepare(Dictionary<string, string> parameter)
         {
-            _parameter = parameter;
         }
 
         public override async void Start()
@@ -222,59 +206,24 @@ namespace MyApp.ViewModels
             }
             catch (Exception e)
             {
-                await userDialogs.AlertAsync(e.Message, Mvx.IoCProvider.Resolve<Services.ILocalizeService>().Translate("Error"), Mvx.IoCProvider.Resolve<Services.ILocalizeService>().Translate("Ok"));
+                await userDialogs.AlertAsync(e.Message, Mvx.IoCProvider.Resolve<ILocalizeService>().Translate("Error"), Mvx.IoCProvider.Resolve<ILocalizeService>().Translate("Ok"));
 
                 throw;
             }
         }
 
-        private List<CarouselModel> imageCollection = new List<CarouselModel>();
-        public List<CarouselModel> ImageCollection
+        #region Events
+
+        private async Task CardTapped(object args)
         {
-            get { return imageCollection; }
-            set { imageCollection = value; }
-        }
+            var cardView = (args as TappedEventArgs)?.Parameter as SfCardView;
+            var cardLayout = cardView?.Parent as SfCardLayout;
 
-        private List<Post> _blogPosts;
+            var index = cardLayout?.VisibleCardIndex;
 
-        public List<Post> BlogPosts
-        {
-            get
-            {
-                return _blogPosts;
-            }
-            set
-            {
-                _blogPosts = value;
-            }
-        }
+            var item = BlogPosts[index ?? 0];
 
-        private List<CategoryModel> _cats;
-
-        public List<CategoryModel> Cats
-        {
-            get
-            {
-                return _cats;
-            }
-            set
-            {
-                _cats = value;
-            }
-        }
-
-        private bool _isRefresh;
-
-        public bool IsRefresh
-        {
-            get
-            {
-                return _isRefresh;
-            }
-            set
-            {
-                _isRefresh = value;
-            }
+            await navigationService.Navigate<PostViewModel, object>(item.Id);
         }
 
         //public IMvxAsyncCommand PullingEvent =>
@@ -309,6 +258,33 @@ namespace MyApp.ViewModels
         //        IsRefresh = false;
         //    });
 
+        #endregion
+
+        #region Property
+
+        public List<CarouselModel> ImageCollection { get; set; } = new List<CarouselModel>();
+
+        private IMvxAsyncCommand<object> _cardTappedCommand;
+
+        public IMvxAsyncCommand<object> CardTappedCommand
+        {
+            get
+            {
+                _cardTappedCommand = _cardTappedCommand ?? new MvxAsyncCommand<object>(CardTapped);
+                return _cardTappedCommand;
+            }
+        }
+
+        public List<CategoryModel> Cats { get; set; }
+
+        public List<Post> BlogPosts { get; set; }
+
+        public bool IsRefresh { get; set; }
+
+        #endregion
+
+        #region Toolbar
+
         public IMvxAsyncCommand ToolbarProfileCommand =>
             new MvxAsyncCommand(async () =>
             {
@@ -338,9 +314,9 @@ namespace MyApp.ViewModels
                 };
 
                 await MaterialDialog.Instance.ShowCustomContentAsync(view,
-                    Mvx.IoCProvider.Resolve<Services.ILocalizeService>().Translate("SelectLanguage"),
+                    Mvx.IoCProvider.Resolve<ILocalizeService>().Translate("SelectLanguage"),
                     configuration: simpleDialogConfiguration,
-                    confirmingText: Mvx.IoCProvider.Resolve<Services.ILocalizeService>().Translate("Confirm"),
+                    confirmingText: Mvx.IoCProvider.Resolve<ILocalizeService>().Translate("Confirm"),
                     dismissiveText: null);
 
                 switch (view.SelectedIndex)
@@ -363,73 +339,6 @@ namespace MyApp.ViewModels
                 await navigationService.Navigate<SearchViewModel>();
             });
 
-        //public MvxAsyncCommand<Post> CardItemTappedCommand =>
-        //    new MvxAsyncCommand<Post>(async (Id) =>
-        //    {
-        //        var z=Id;
-
-        //        await MaterialDialog.Instance.SnackbarAsync(Id.ToString());
-        //    });
-
-
-        //public ICommand CardTappedCommands { get; set; }
-
-        //private object cardDescription;
-
-        //public object CardDescription
-        //{
-        //    get { return cardDescription; }
-        //    set 
-        //    {
-        //        cardDescription = value;
-        //    }
-        //} 
-
-        //private void CardTappedEvent(object args)
-        //{
-        //    if (args is SfCardLayout cardLayout)
-        //        CardDescription = ((MainViewModel) cardLayout.BindingContext).BlogPosts[cardLayout.VisibleCardIndex]
-        //            .Id;
-        //    var z=cardDescription;
-        //}  
-
-
-        //public ICommand DeleteCommand { get; }
-
-        //private async Task DeleteExec(object model)
-        //{
-        //    if (model is SfCardLayout cardLayout)
-        //        CardDescription = ((MainViewModel) cardLayout.BindingContext).BlogPosts[cardLayout.VisibleCardIndex]
-        //            .Id;
-        //    var z=cardDescription;
-
-        //    await MaterialDialog.Instance.SnackbarAsync(model.ToString());
-        //}
-
-
-        private ICommand cardTappedCommands;
-        public ICommand CardTappedCommands { get; set; }
-        private void CardTappedEvent(object args)
-        {
-            var fwsd=args as SfCardView;
-            var cardLayout = args as SfCardLayout;
-            var njk = (cardLayout.BindingContext as MainViewModel).BlogPosts[cardLayout.VisibleCardIndex].Id;
-        }
-
-        private IMvxAsyncCommand<string> _cardTappedCommand;
-
-        public IMvxAsyncCommand<string> CardTappedCommand
-        {
-            get
-            {
-                _cardTappedCommand = _cardTappedCommand ?? new MvxAsyncCommand<string>(CardTapped);
-                return _cardTappedCommand;
-            }
-        }
-
-        private async Task CardTapped(string Id)
-        {
-            await navigationService.Navigate<PostViewModel>();
-        }
+        #endregion
     }
 }

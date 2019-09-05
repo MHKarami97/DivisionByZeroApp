@@ -1,35 +1,30 @@
 ﻿using System;
+using MvvmCross;
+using MyApp.Models;
 using Xamarin.Forms;
+using MyApp.Helpers;
 using Acr.UserDialogs;
-using MvvmCross.Logging;
 using Xamarin.Essentials;
 using System.Diagnostics;
 using MvvmCross.Commands;
 using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
 using Plugin.SecureStorage;
-using MyApp.Models;
 using System.Threading.Tasks;
 using System.Collections.ObjectModel;
-using MvvmCross;
-using MyApp.Helpers;
+
 
 namespace MyApp.ViewModels
 {
     public class MasterViewModel : MvxViewModel
     {
-        private readonly IMvxNavigationService navigationService;
-        private readonly IMvxLogProvider mvxLogProvider;
-        private readonly Services.IAppSettings settings;
-        private readonly IUserDialogs userDialogs;
-        private readonly IMvxLog log;
+        private readonly IMvxNavigationService _navigationService;
+        private readonly IUserDialogs _userDialogs;
 
-        public MasterViewModel(IMvxNavigationService navigationService, IMvxLogProvider mvxLogProvider, Services.IAppSettings settings, IUserDialogs userDialogs)
+        public MasterViewModel(IMvxNavigationService navigationService, IUserDialogs userDialogs)
         {
-            this.navigationService = navigationService;
-            this.mvxLogProvider = mvxLogProvider;
-            this.settings = settings;
-            this.userDialogs = userDialogs;
+            _navigationService = navigationService;
+            _userDialogs = userDialogs;
         }
 
         public override async void Start()
@@ -65,36 +60,24 @@ namespace MyApp.ViewModels
 
                     MenuItemList = menuItems;
                 }
-
-                Time = DateTime.Now.ToString("t");
             }
             catch (Exception e)
             {
-                await userDialogs.AlertAsync(e.Message, Mvx.IoCProvider.Resolve<Services.ILocalizeService>().Translate("Error"), Mvx.IoCProvider.Resolve<Services.ILocalizeService>().Translate("Ok"));
+                await _userDialogs.AlertAsync(e.Message, Mvx.IoCProvider.Resolve<Services.ILocalizeService>().Translate("Error"), Mvx.IoCProvider.Resolve<Services.ILocalizeService>().Translate("Ok"));
             }
         }
 
-        private string _time;
-        public string Time
-        {
-            get
-            {
-                return _time;
-            }
-            set
-            {
-                if (value == _time)
-                    return;
-
-                _time = value;
-            }
-        }
+        #region Toolbar
 
         public IMvxCommand MenuLogoCommand =>
             new MvxAsyncCommand(async () =>
             {
                 await Browser.OpenAsync("http://itarfand.com", BrowserLaunchMode.SystemPreferred);
             });
+
+        #endregion
+
+
 
         #region MenuItemList;
 
@@ -127,28 +110,28 @@ namespace MyApp.ViewModels
             {
                 case "Login":
                     if (CrossSecureStorage.Current.GetValue("userToken") == null)
-                        await navigationService.Navigate<LoginViewModel>();
+                        await _navigationService.Navigate<LoginViewModel>();
                     else
-                        await navigationService.Navigate<ProfileViewModel>();
+                        await _navigationService.Navigate<ProfileViewModel>();
                     break;
 
                 case "Profile":
                     if (CrossSecureStorage.Current.GetValue("userToken") == null)
-                        await navigationService.Navigate<LoginViewModel>();
+                        await _navigationService.Navigate<LoginViewModel>();
                     else
-                        await navigationService.Navigate<ProfileViewModel>();
+                        await _navigationService.Navigate<ProfileViewModel>();
                     break;
 
                 case "Category":
-                    await navigationService.Navigate<CategoryViewModel>();
+                    await _navigationService.Navigate<CategoryViewModel>();
                     break;
 
                 case "About":
-                    await navigationService.Navigate<AboutViewModel>();
+                    await _navigationService.Navigate<AboutViewModel>();
                     break;
 
                 case "Help":
-                    await navigationService.Navigate<HelpViewModel>();
+                    await _navigationService.Navigate<HelpViewModel>();
                     break;
 
                 case "Share":

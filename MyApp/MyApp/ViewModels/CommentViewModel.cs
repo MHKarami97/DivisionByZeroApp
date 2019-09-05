@@ -1,60 +1,53 @@
-﻿using System;
+﻿using MyApp.Models;
 using Acr.UserDialogs;
 using MvvmCross.Commands;
 using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
-using MyApp.Models;
-using MyApp.Services;
+using System.Collections.Generic;
 
 namespace MyApp.ViewModels
 {
     public class CommentViewModel : MvxViewModel
     {
-        private readonly IMvxNavigationService navigationService;
-        private readonly ILocalizeService localizeService;
-        private readonly Services.IAppSettings settings;
-        private readonly IUserDialogs userDialogs;
+        private readonly IMvxNavigationService _navigationService;
+        private readonly IUserDialogs _userDialogs;
 
-        public CommentViewModel(IMvxNavigationService navigationService, IAppSettings settings, IUserDialogs userDialogs, ILocalizeService localizeService)
+        public CommentViewModel(IMvxNavigationService navigationService, IUserDialogs userDialogs)
         {
-            this.navigationService = navigationService;
-            this.localizeService = localizeService;
-            this.userDialogs = userDialogs;
-            this.settings = settings;
-
-            SinglePost = new Post
-            {
-                Id = 1,
-                Image = "http://loremflickr.com/600/600/nature?filename=simple.jpg",
-                Title = "title of post",
-                CommentStatus = true,
-                PostAuthor = "ali",
-                Date = DateTime.Now.ToString("d"),
-                ShortContent = "short content of post",
-                Visit = 20,
-                Tags = "new,blog,comment",
-                Content = "this is my post \n how are you? \n is this page good?",
-                CategoryId = 2,
-                Address = "post",
-                LanguageId = 1,
-                Type = 1,
-                Like = 20,
-                Comment = 400
-            };
+            _navigationService = navigationService;
+            _userDialogs = userDialogs;
         }
 
-        public Post SinglePost { get; set; }
+        public override async void Start()
+        {
+        }
+
+        #region Property
+
+        public List<Post> PostComments { get; set; }
+
+        #endregion
+
+        #region Events
+
+        
+
+        #endregion
+
+        #region Toolbar
 
         public IMvxAsyncCommand ToolbarSearchCommand =>
             new MvxAsyncCommand(async () =>
             {
-                await navigationService.Navigate<SearchViewModel>();
+                await _navigationService.Navigate<SearchViewModel>();
             });
 
         public IMvxAsyncCommand ToolbarHomeCommand =>
             new MvxAsyncCommand(async () =>
             {
-                await navigationService.Navigate<RootViewModel>();
+                await _navigationService.Navigate<RootViewModel>();
             });
+
+        #endregion
     }
 }
