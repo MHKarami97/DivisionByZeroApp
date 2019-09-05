@@ -18,13 +18,11 @@ namespace MyApp.ViewModels
 
         public override void Prepare(object parameter)
         {
-            Id = (int)parameter;
+            Id = parameter;
         }
 
         public override async Task Initialize()
         {
-            var id = Id;
-
             SinglePost = new Post
             {
                 Id = 1,
@@ -50,7 +48,7 @@ namespace MyApp.ViewModels
 
         public Post SinglePost { get; set; }
 
-        public int Id { get; set; }
+        public object Id { get; set; }
 
         #endregion
 
