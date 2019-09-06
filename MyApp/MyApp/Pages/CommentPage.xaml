@@ -11,21 +11,11 @@
              BackgroundColor="{StaticResource white}"
              Title="{res:Translate Comment}">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="{res:Translate Post}"
-                     Command="{Binding ToolbarPostCommand}"
+        <ToolbarItem Text="{res:Translate NewComment}"
+                     Command="{Binding ToolbarNewCommentCommand}"
                      Order="Primary"
                      Priority="2"
                      IconImageSource="post.png" />
-        <ToolbarItem Text="{res:Translate Home}"
-                     Command="{Binding ToolbarHomeCommand}"
-                     Order="Primary"
-                     Priority="1"
-                     IconImageSource="home.png" />
-        <ToolbarItem Text="{res:Translate Search}"
-                     Command="{Binding ToolbarSearchCommand}"
-                     Order="Primary"
-                     Priority="0"
-                     IconImageSource="loupe.png" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <Grid>

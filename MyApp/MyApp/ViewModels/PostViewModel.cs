@@ -34,7 +34,14 @@ namespace MyApp.ViewModels
                 ShortContent = "short content of post",
                 Visit = 20,
                 Tags = "new,blog,comment",
-                Content = "this is my post \n how are you? \n is this page good?",
+                Content = "this is my post \n how are you? \n is this page good?"
+                         + "this is my post \n how are you? \n is this page good?"
+                        + "this is my post \n how are you? \n is this page good?"
+                        + "this is my post \n how are you? \n is this page good?"
+                         + "this is my post \n how are you? \n is this page good?"
+                         + "this is my post \n how are you? \n is this page good?"
+                         + "this is my post \n how are you? \n is this page good?"
+                        + "this is my post \n how are you? \n is this page good?",
                 CategoryId = 2,
                 Address = "post",
                 LanguageId = 1,
@@ -53,6 +60,18 @@ namespace MyApp.ViewModels
         #endregion
 
         #region Events
+
+        public IMvxAsyncCommand CommentClickCommand =>
+            new MvxAsyncCommand(async () =>
+            {
+                await _navigationService.Navigate<CommentViewModel>();
+            });
+
+        public IMvxAsyncCommand LikeClickCommand =>
+            new MvxAsyncCommand(async () =>
+            {
+                await _navigationService.Navigate<CommentViewModel>();
+            });
 
         #endregion
 

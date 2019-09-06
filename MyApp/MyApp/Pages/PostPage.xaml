@@ -21,76 +21,79 @@
                      IconImageSource="loupe.png" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <Grid>
-            <StackLayout Margin="0">
+        <Grid Margin="0">
+            <ScrollView Orientation="Vertical" VerticalOptions="FillAndExpand">
                 <Grid>
-                    <ScrollView Orientation="Vertical" VerticalOptions="FillAndExpand">
-                        <StackLayout>
-                            <Grid HeightRequest="300">
-                                <graphics:SfGradientView>
-                                    <graphics:SfGradientView.BackgroundBrush>
-                                        <graphics:SfLinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                                            <graphics:SfLinearGradientBrush.GradientStops>
-                                                <graphics:SfGradientStop Color="{StaticResource orange1}" Offset="0.0" />
-                                                <graphics:SfGradientStop Color="{StaticResource orange2}" Offset="0.5" />
-                                                <graphics:SfGradientStop Color="{StaticResource orange3}" Offset="1.0" />
-                                            </graphics:SfLinearGradientBrush.GradientStops>
-                                        </graphics:SfLinearGradientBrush>
-                                    </graphics:SfGradientView.BackgroundBrush>
-                                </graphics:SfGradientView>
-                                <StackLayout>
-                                    <border:SfBorder 
+                    <StackLayout>
+                        <Grid>
+                            <graphics:SfGradientView>
+                                <graphics:SfGradientView.BackgroundBrush>
+                                    <graphics:SfLinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                        <graphics:SfLinearGradientBrush.GradientStops>
+                                            <graphics:SfGradientStop Color="{StaticResource orange1}" Offset="0.0" />
+                                            <graphics:SfGradientStop Color="{StaticResource orange1}" Offset="0.4" />
+                                            <graphics:SfGradientStop Color="{StaticResource white}" Offset="1.0" />
+                                        </graphics:SfLinearGradientBrush.GradientStops>
+                                    </graphics:SfLinearGradientBrush>
+                                </graphics:SfGradientView.BackgroundBrush>
+                            </graphics:SfGradientView>
+
+                            <StackLayout>
+                                <border:SfBorder
                                         BackgroundColor="Transparent"
                                         BorderColor="Transparent"
                                         HorizontalOptions="CenterAndExpand" 
                                         VerticalOptions="StartAndExpand"
-                                        CornerRadius="30"
-                                        Margin="0">
-                                        <ContentView>
-                                            <forms:CachedImage HorizontalOptions="Center"
+                                        CornerRadius="20"
+                                        Margin="0,0,0,10">
+                                    <ContentView>
+                                        <forms:CachedImage HorizontalOptions="Center"
                                                                VerticalOptions="Center"
                                                                WidthRequest="190"
                                                                HeightRequest="190"
                                                                DownsampleToViewSize="true"
                                                                FadeAnimationEnabled="True"
                                                                Source = "{Binding SinglePost.Image}">
-                                            </forms:CachedImage>
-                                        </ContentView>
-                                    </border:SfBorder>
-                                </StackLayout>
-                                <StackLayout>
-                                    <Label HorizontalOptions="CenterAndExpand"
-                                           VerticalOptions="EndAndExpand"
-                                           Margin="5,0,5,75"
-                                           Text="{Binding SinglePost.Title}"
-                                           TextColor="{StaticResource white}"
-                                           FontSize="Title"/>
-                                </StackLayout>
-                            </Grid>
-                            <StackLayout>
-                                <border:SfBorder 
+                                        </forms:CachedImage>
+                                    </ContentView>
+                                </border:SfBorder>
+                            </StackLayout>
+
+                        </Grid>
+
+                        <StackLayout>
+                            <Label HorizontalOptions="CenterAndExpand"
+                                   VerticalOptions="CenterAndExpand"
+                                   Margin="5,1,5,5"
+                                   TextColor="{StaticResource black}"
+                                   Text="{Binding SinglePost.Title}"
+                                   FontSize="Title"/>
+                        </StackLayout>
+
+                        <StackLayout>
+                            <border:SfBorder 
                                         BackgroundColor="{StaticResource white1}"
                                         BorderColor="{StaticResource white1}"
                                         HorizontalOptions="Center" 
                                         VerticalOptions="Center"
                                         HasShadow="True"
                                         CornerRadius="20"
-                                        Margin="20,-40,20,5">
-                                    <ContentView Padding="4">
-                                        <Grid HeightRequest="60">
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="*" />
-                                                <RowDefinition Height="*" />
-                                            </Grid.RowDefinitions>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="*" />
-                                                <ColumnDefinition Width="1" />
-                                                <ColumnDefinition Width="*" />
-                                                <ColumnDefinition Width="1" />
-                                                <ColumnDefinition Width="*" />
-                                            </Grid.ColumnDefinitions>
+                                        Margin="20,2,20,5">
+                                <ContentView Padding="4">
+                                    <Grid HeightRequest="60">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*" />
+                                            <RowDefinition Height="*" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="1" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="1" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
 
-                                            <Label 
+                                        <Label 
                                                    HorizontalOptions="CenterAndExpand"
                                                    VerticalOptions="CenterAndExpand"
                                                    Grid.Row="0"
@@ -98,7 +101,7 @@
                                                    FontSize="Large"
                                                    Text="{Binding SinglePost.Visit}"/>
 
-                                            <BoxView
+                                        <BoxView
                                                      Grid.Row="0"
                                                      Grid.Column="1"
                                                      WidthRequest="1"
@@ -106,7 +109,7 @@
                                                      BackgroundColor="{StaticResource black}"
                                                      CornerRadius="2"/>
 
-                                            <Label 
+                                        <Label 
                                                    HorizontalOptions="CenterAndExpand"
                                                    VerticalOptions="CenterAndExpand"
                                                    Grid.Row="0"
@@ -114,7 +117,7 @@
                                                    FontSize="Large"
                                                    Text="{Binding SinglePost.Comment}"/>
 
-                                            <BoxView 
+                                        <BoxView 
                                                      Grid.Row="0"
                                                      Grid.Column="3"
                                                      WidthRequest="2"
@@ -122,7 +125,7 @@
                                                      BackgroundColor="{StaticResource black}"
                                                      CornerRadius="2"/>
 
-                                            <Label 
+                                        <Label 
                                                    HorizontalOptions="CenterAndExpand"
                                                    VerticalOptions="CenterAndExpand"
                                                    Grid.Row="0"
@@ -130,8 +133,8 @@
                                                    FontSize="Large"
                                                    Text="{Binding SinglePost.Like}"/>
 
-         
-                                            <Label 
+
+                                        <Label 
                                                    HorizontalOptions="CenterAndExpand"
                                                    VerticalOptions="CenterAndExpand"
                                                    Grid.Row="1"
@@ -139,7 +142,7 @@
                                                    FontSize="Small"
                                                    Text="{res:Translate Visit}"/>
 
-                                            <Label 
+                                        <Label 
                                                    HorizontalOptions="CenterAndExpand"
                                                    VerticalOptions="CenterAndExpand"
                                                    Grid.Row="1"
@@ -147,7 +150,7 @@
                                                    FontSize="Small"
                                                    Text="{res:Translate Comment}"/>
 
-                                            <Label
+                                        <Label
                                                    HorizontalOptions="CenterAndExpand"
                                                    VerticalOptions="CenterAndExpand"
                                                    Grid.Row="1"
@@ -155,24 +158,153 @@
                                                    FontSize="Small"
                                                    Text="{res:Translate Like}"/>
 
+                                    </Grid>
+                                </ContentView>
+                            </border:SfBorder>
+                        </StackLayout>
+
+                        <StackLayout Padding="10">
+                            <Label 
+                                        HorizontalOptions="StartAndExpand"
+                                        FontSize="18"
+                                        TextColor="{StaticResource black}"
+                                        Text="{Binding SinglePost.ShortContent}"/>
+                        </StackLayout>
+
+                        <StackLayout>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*" />
+                                    <ColumnDefinition Width="1*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+
+                                <border:SfBorder 
+                                        Grid.Column="0"
+                                        Grid.Row="0"
+                                        BackgroundColor="{StaticResource white1}"
+                                        BorderColor="{StaticResource white1}"
+                                        VerticalOptions="Center"
+                                        HasShadow="True"
+                                        CornerRadius="2"
+                                        Margin="8,5,2,5">
+                                    <border:SfBorder.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding LikeClickCommand}" />
+                                    </border:SfBorder.GestureRecognizers>
+                                    <ContentView Padding="5">
+                                        <Grid HeightRequest="60">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*" />
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="3*" />
+                                            </Grid.ColumnDefinitions>
+
+                                            <Label 
+                                                   HorizontalOptions="Center"
+                                                   VerticalOptions="Center"
+                                                   Grid.Row="0"
+                                                   Grid.Column="1"
+                                                   FontSize="Large"
+                                                   TextColor="{StaticResource black}"
+                                                   Text="{res:Translate Like}"/>
+
+                                            <forms:CachedImage HorizontalOptions="Center"
+                                                                   VerticalOptions="Center"
+                                                                   WidthRequest="20"
+                                                                   HeightRequest="20"
+                                                                   Grid.Row="0"
+                                                                   Grid.Column="0"
+                                                                   DownsampleToViewSize="true"
+                                                                   FadeAnimationEnabled="True"
+                                                                   Source = "like.png">
+                                            </forms:CachedImage>
                                         </Grid>
                                     </ContentView>
                                 </border:SfBorder>
-                            </StackLayout>
-                            <StackLayout Padding="10">
-                                <Label 
-                                       HorizontalOptions="StartAndExpand"
-                                       FontSize="Title"
-                                       Text="{Binding SinglePost.ShortContent}"/>
-                                <Label
-                                       HorizontalOptions="StartAndExpand"
-                                       FontSize="18"
-                                       Text="{Binding SinglePost.Content}"/>
-                            </StackLayout>
+                                <border:SfBorder 
+                                    Grid.Column="1"
+                                    Grid.Row="0"
+                                    BackgroundColor="{StaticResource white1}"
+                                    BorderColor="{StaticResource white1}"
+                                    VerticalOptions="Center"
+                                    HasShadow="True"
+                                    CornerRadius="2"
+                                    Margin="2,5,8,5">
+                                    <border:SfBorder.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding CommentClickCommand}" />
+                                    </border:SfBorder.GestureRecognizers>
+                                    <ContentView Padding="5">
+                                        <Grid HeightRequest="60">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*" />
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="3*" />
+                                            </Grid.ColumnDefinitions>
+
+                                            <Label 
+                                                    HorizontalOptions="Center"
+                                                    VerticalOptions="Center"
+                                                    Grid.Row="0"
+                                                    Grid.Column="1"
+                                                    FontSize="Large"
+                                                    TextColor="{StaticResource black}"
+                                                    Text="{res:Translate Comment}"/>
+
+                                            <forms:CachedImage HorizontalOptions="Center"
+                                                                   VerticalOptions="Center"
+                                                                   WidthRequest="20"
+                                                                   HeightRequest="20"
+                                                                   Grid.Row="0"
+                                                                   Grid.Column="0"
+                                                                   DownsampleToViewSize="true"
+                                                                   FadeAnimationEnabled="True"
+                                                                   Source = "comment.png">
+                                            </forms:CachedImage>
+                                        </Grid>
+                                    </ContentView>
+                                </border:SfBorder>
+                            </Grid>
                         </StackLayout>
-                    </ScrollView>
+
+                        <StackLayout Padding="10">
+                            <border:SfBorder
+                                        BorderColor="{StaticResource white1}"
+                                        BackgroundColor="{StaticResource white}"
+                                        HorizontalOptions="Fill" 
+                                        VerticalOptions="Fill"
+                                        HasShadow="True"
+                                        CornerRadius="3">
+                                <ContentView>
+                                    <Grid Padding="4">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <Label
+                                            Grid.Row="0"
+                                            Grid.Column="0"
+                                            HorizontalOptions="StartAndExpand"
+                                            FontSize="18"
+                                            TextColor="{StaticResource black}"
+                                            Text="{Binding SinglePost.Content}"/>
+                                    </Grid>
+                                </ContentView>
+                            </border:SfBorder>
+                        </StackLayout>
+
+                    </StackLayout>
                 </Grid>
-            </StackLayout>
+            </ScrollView>
         </Grid>
     </ContentPage.Content>
 </mvx:MvxContentPage>

@@ -24,7 +24,7 @@ namespace MyApp.ViewModels
 
         #region Property
 
-        public List<Post> PostComments { get; set; }
+        public List<CommentModel> Comments { get; set; }
 
         #endregion
 
@@ -36,13 +36,7 @@ namespace MyApp.ViewModels
 
         #region Toolbar
 
-        public IMvxAsyncCommand ToolbarSearchCommand =>
-            new MvxAsyncCommand(async () =>
-            {
-                await _navigationService.Navigate<SearchViewModel>();
-            });
-
-        public IMvxAsyncCommand ToolbarHomeCommand =>
+        public IMvxAsyncCommand ToolbarNewCommentCommand =>
             new MvxAsyncCommand(async () =>
             {
                 await _navigationService.Navigate<RootViewModel>();
