@@ -42,4 +42,10 @@
     <PackageReference Include="Acr.UserDialogs" Version="7.0.4" />
     <PackageReference Include="Com.Airbnb.Xamarin.Forms.Lottie" Version="3.0.1" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Pages\Register.xaml.cs">
+      <DependentUpon>Register.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
 </Project>

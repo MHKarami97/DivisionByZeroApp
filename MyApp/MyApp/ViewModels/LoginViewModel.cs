@@ -34,7 +34,7 @@ namespace MyApp.ViewModels
 
         public string MainPageButtonText { get; set; }
 
-        public bool NotValidPhone { get; set; }
+        public bool NotValid { get; set; }
 
         public UserModel User { get; set; }
 
@@ -47,22 +47,15 @@ namespace MyApp.ViewModels
            {
                try
                {
-                   if (!string.IsNullOrEmpty(User.PhoneNumber) && User.PhoneNumber.Length == 11)
+                   if (!string.IsNullOrEmpty(User.Email) && Security.EmailValid(User.Email))
                    {
-                        //var view = new SfTextInputLayout
-                        //{
-                        //    Hint = Mvx.IoCProvider.Resolve<ILocalizeService>().Translate("VerifyCode"),
-                        //    CharMaxLength = 5
-                        //};
-
-                        var view = new MaterialTextField
+                       var view = new MaterialTextField
                        {
                            HelperTextColor = Material.GetResource<Color>(MaterialConstants.Color.ON_SECONDARY),
-                           ErrorText = Mvx.IoCProvider.Resolve<ILocalizeService>().Translate("NotValidVerifyCode"),
-                           Placeholder = Mvx.IoCProvider.Resolve<ILocalizeService>().Translate("VerifyCode"),
-                           InputType = MaterialTextFieldInputType.Telephone,
-                           IsMaxLengthCounterVisible = true,
-                           MaxLength = 5
+                           ErrorText = Mvx.IoCProvider.Resolve<ILocalizeService>().Translate("NotValidPassword"),
+                           Placeholder = Mvx.IoCProvider.Resolve<ILocalizeService>().Translate("Password"),
+                           InputType = MaterialTextFieldInputType.Password,
+                           IsMaxLengthCounterVisible = true
                        };
 
                        var simpleDialogConfiguration = new MaterialAlertDialogConfiguration
@@ -77,26 +70,39 @@ namespace MyApp.ViewModels
                        };
 
                        var result = await MaterialDialog.Instance.ShowCustomContentAsync(view,
-                           Mvx.IoCProvider.Resolve<ILocalizeService>().Translate("YourPhoneNumber") + User.PhoneNumber,
+                           null,
                            null,
                            Mvx.IoCProvider.Resolve<ILocalizeService>().Translate("Verify"),
-                            Mvx.IoCProvider.Resolve<ILocalizeService>().Translate("ChangePhone"),
+                            Mvx.IoCProvider.Resolve<ILocalizeService>().Translate("Edit"),
                             simpleDialogConfiguration);
 
                        if (result.Equals(true))
                        {
-                            //var t = view.Text;
+                           //var t = view.Text;
 
-                            //var param = new Dictionary<string, WebSiteUser> { { "user", User } }; 
+                           //var param = new Dictionary<string, WebSiteUser> { { "user", User } }; 
 
-                            await _navigationService.Navigate<RootViewModel>();
+                           await _navigationService.Navigate<RootViewModel>();
                        }
                    }
                    else
                    {
-                       NotValidPhone = true;
-                       await MaterialDialog.Instance.SnackbarAsync(message: Mvx.IoCProvider.Resolve<ILocalizeService>().Translate("NotValidPhone"));
+                       NotValid = true;
+                       await MaterialDialog.Instance.SnackbarAsync(Mvx.IoCProvider.Resolve<ILocalizeService>().Translate("NotValidEmail"));
                    }
+               }
+               catch (Exception e)
+               {
+                   await _userDialogs.AlertAsync(e.Message, Mvx.IoCProvider.Resolve<ILocalizeService>().Translate("Error"), Mvx.IoCProvider.Resolve<ILocalizeService>().Translate("Ok"));
+               }
+           });
+
+        public IMvxAsyncCommand SignupCommand =>
+           new MvxAsyncCommand(async () =>
+           {
+               try
+               {
+                   await _navigationService.Navigate<RegisterViewModel>();
                }
                catch (Exception e)
                {

@@ -244,4 +244,37 @@
   <data name="ShareText" xml:space="preserve">
     <value>با تشکر</value>
   </data>
+  <data name="Password" xml:space="preserve">
+    <value>رمز عبور</value>
+  </data>
+  <data name="EmailPlaceholder" xml:space="preserve">
+    <value>email@example.com</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>ویرایش</value>
+  </data>
+  <data name="NotValidEmail" xml:space="preserve">
+    <value>ایمیل نامعتبر است</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>عضویت</value>
+  </data>
+  <data name="NewMember" xml:space="preserve">
+    <value>عضو جدید هستید؟ عضویت</value>
+  </data>
+  <data name="NotValidPassword" xml:space="preserve">
+    <value>رمز عبور نامعتبر است</value>
+  </data>
+  <data name="ConfirmPassword" xml:space="preserve">
+    <value>تایید رمز عبور</value>
+  </data>
+  <data name="HaveAccount" xml:space="preserve">
+    <value>اکانت دارید؟ ورود</value>
+  </data>
+  <data name="NotValidData" xml:space="preserve">
+    <value>اطلاعات وارد شده اشتباه است</value>
+  </data>
+  <data name="NotValidRegisterPassword" xml:space="preserve">
+    <value>رمز عبور باید حداقل 8 کاراکتر و شامل عدد و حروف کوچک باشد</value>
+  </data>
 </root>
