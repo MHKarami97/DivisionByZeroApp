@@ -40,9 +40,9 @@
                 <StackLayout Grid.Row="0" Margin="0,0,0,0">
                     <forms:AnimationView
                         Animation="{OnPlatform 
-                            UWP='Assets/Animations/user-card.json',
-                            Android='Animations/user-card.json',
-                            iOS='Animations/user-card.json'}"
+                            UWP='Assets/Animations/profile2.json',
+                            Android='Animations/profile2.json',
+                            iOS='Animations/profile2.json'}"
                         IsPlaying="True"
                         Loop="True"
                         WidthRequest="100"
@@ -64,12 +64,12 @@
                         <ScrollView>
                             <StackLayout>
                                 <inputLayout:SfTextInputLayout 
+                                    Margin="0,5,0,1"
                                     Hint="{res:Translate Phone}"
                                     LeadingViewPosition="Inside">
                                     <Entry Text="{Binding User.PhoneNumber}"
                                        IsEnabled="False"
-                                       TextColor="{StaticResource black}"
-                                       />
+                                       TextColor="{StaticResource black}"/>
                                     <inputLayout:SfTextInputLayout.LeadingView>
                                         <Label
                                         Text="&#x1F4F1;">
@@ -78,68 +78,67 @@
                                 </inputLayout:SfTextInputLayout>
 
                                 <inputLayout:SfTextInputLayout
-                            Hint="{res:Translate NationalCode}"
-                            LeadingViewPosition="Inside"
-                            >
+                                    Margin="0,5,0,1"
+                                    Hint="{res:Translate NationalCode}"
+                                    LeadingViewPosition="Inside">
                                     <Entry Text="{Binding User.NationalCode}"
-                                           IsEnabled="False"
-                                           TextColor="{StaticResource black}"
-                                           />
+                                                   IsEnabled="False"
+                                                   TextColor="{StaticResource black}"/>
                                     <inputLayout:SfTextInputLayout.LeadingView>
                                         <Label
-                                            Text="&#x1F310;">
+                                                    Text="&#x1F310;">
                                         </Label>
                                     </inputLayout:SfTextInputLayout.LeadingView>
                                 </inputLayout:SfTextInputLayout>
 
                                 <inputLayout:SfTextInputLayout
-                            Hint="{res:Translate Email}"
-                            LeadingViewPosition="Inside" 
-                            >
+                                    Margin="0,5,0,1"
+                                    Hint="{res:Translate Email}"
+                                    LeadingViewPosition="Inside">
                                     <Entry Text="{Binding User.Email}"
-                                           TextColor="{StaticResource black}"
-                                           />
+                                                   TextColor="{StaticResource black}"/>
                                     <inputLayout:SfTextInputLayout.LeadingView>
                                         <Label
-                                            Text="&#x0040;">
+                                                    Text="&#x0040;">
                                         </Label>
                                     </inputLayout:SfTextInputLayout.LeadingView>
                                 </inputLayout:SfTextInputLayout>
 
                                 <inputLayout:SfTextInputLayout
-                            Hint="{res:Translate Name}"
-                            LeadingViewPosition="Inside"
-                            >
+                                    Margin="0,5,0,1"
+                                    Hint="{res:Translate Name}"
+                                    LeadingViewPosition="Inside">
                                     <Entry Text="{Binding User.Name}"
-                                           TextColor="{StaticResource black}"
-                                           />
+                                                   TextColor="{StaticResource black}"/>
                                     <inputLayout:SfTextInputLayout.LeadingView>
                                         <Label
-                                            Text="&#x1F464;">
+                                                    Text="&#x1F464;">
                                         </Label>
                                     </inputLayout:SfTextInputLayout.LeadingView>
                                 </inputLayout:SfTextInputLayout>
 
                                 <inputLayout:SfTextInputLayout
-                            Hint="{res:Translate LastName}"
-                            LeadingViewPosition="Inside">
+                                    Margin="0,5,0,1"
+                                    Hint="{res:Translate LastName}"
+                                    LeadingViewPosition="Inside">
                                     <Entry Text="{Binding User.LastName}"
-                                       TextColor="{StaticResource black}"/>
+                                               TextColor="{StaticResource black}"/>
                                     <inputLayout:SfTextInputLayout.LeadingView>
                                         <Label
-                                           Text="&#x1F464;">
+                                                   Text="&#x1F464;">
                                         </Label>
                                     </inputLayout:SfTextInputLayout.LeadingView>
                                 </inputLayout:SfTextInputLayout>
 
                                 <inputLayout:SfTextInputLayout
-                            Hint="{res:Translate BirthDay}"
-                            LeadingViewPosition="Inside">
+                                    Margin="0,5,0,1"
+                                    Hint="{res:Translate BirthDay}"
+                                    LeadingViewPosition="Inside">
                                     <Entry Text="{Binding User.BirthDay}" 
-                                       TextColor="{StaticResource black}"/>
+                                               TextColor="{StaticResource black}"/>
                                     <inputLayout:SfTextInputLayout.LeadingView>
                                         <Label 
-                                        Text="&#x1F5D3;">
+                                                Text="&#x1F5D3;">
                                         </Label>
                                     </inputLayout:SfTextInputLayout.LeadingView>
                                 </inputLayout:SfTextInputLayout>
