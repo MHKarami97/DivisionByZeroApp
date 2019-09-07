@@ -297,4 +297,7 @@
   <data name="NotValidRegisterPassword" xml:space="preserve">
     <value>Password must be more than 8 character and have digit and lowercase</value>
   </data>
+  <data name="NewComment" xml:space="preserve">
+    <value>New Comment</value>
+  </data>
 </root>

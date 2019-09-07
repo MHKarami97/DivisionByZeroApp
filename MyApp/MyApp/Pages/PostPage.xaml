@@ -195,7 +195,7 @@
                                         <TapGestureRecognizer Command="{Binding LikeClickCommand}" />
                                     </border:SfBorder.GestureRecognizers>
                                     <ContentView Padding="5">
-                                        <Grid HeightRequest="60">
+                                        <Grid HeightRequest="40">
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="*" />
                                             </Grid.RowDefinitions>
@@ -239,7 +239,7 @@
                                         <TapGestureRecognizer Command="{Binding CommentClickCommand}" />
                                     </border:SfBorder.GestureRecognizers>
                                     <ContentView Padding="5">
-                                        <Grid HeightRequest="60">
+                                        <Grid HeightRequest="40">
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="*" />
                                             </Grid.RowDefinitions>
