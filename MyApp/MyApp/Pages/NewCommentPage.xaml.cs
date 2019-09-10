@@ -2,9 +2,9 @@
 
 namespace MyApp.Pages
 {
-    public partial class Category : MvxContentPage
+    public partial class NewCommentPage : MvxContentPage
     {
-        public Category()
+        public NewCommentPage()
         {
             InitializeComponent();
         }

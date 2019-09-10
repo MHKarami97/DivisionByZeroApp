@@ -7,9 +7,12 @@
              xmlns:graphics="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
-             x:Class="MyApp.Pages.Register"
-             Title="{res:Translate Register}">
+             x:Class="MyApp.Pages.LoginPage"
+             Title="{res:Translate Login}">
     <ContentPage.ToolbarItems>
+        <!--<ToolbarItem Text="{Binding Time}"
+                     Order="Primary"
+                     Priority="1"/>-->
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <Grid>
@@ -29,7 +32,7 @@
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" />
-                        <RowDefinition Height="3*" />
+                        <RowDefinition Height="2*" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
                     <StackLayout Grid.Row="0">
@@ -62,49 +65,15 @@
                                         BackgroundColor="{StaticResource white}"
                                         HorizontalOptions="Fill"
                                         VerticalOptions="CenterAndExpand"
-                                        Margin="10,2,10,0"
+                                        Margin="10,0,10,0"
                                         HeightRequest="40">
                                         <Entry Text="{Binding User.Email}"
-                                               Placeholder="{res:Translate Email}"
+                                               Placeholder="{res:Translate EmailPlaceholder}"
                                                TextColor="{StaticResource black}"
                                                PlaceholderColor="{StaticResource black}"
                                                HorizontalOptions="Fill"
                                                VerticalOptions="Fill"
                                                Keyboard="Email"/>
-                                    </Frame>
-                                    <Frame
-                                        CornerRadius="50"
-                                        BorderColor="{StaticResource lightGray}"
-                                        IsClippedToBounds="true"
-                                        BackgroundColor="{StaticResource white}"
-                                        HorizontalOptions="Fill"
-                                        VerticalOptions="CenterAndExpand"
-                                        Margin="10,2,10,0"
-                                        HeightRequest="40">
-                                        <Entry Text="{Binding User.Password}"
-                                               Placeholder="{res:Translate Password}"
-                                               TextColor="{StaticResource black}"
-                                               PlaceholderColor="{StaticResource black}"
-                                               HorizontalOptions="Fill"
-                                               VerticalOptions="Fill"
-                                               IsPassword="True"/>
-                                    </Frame>
-                                    <Frame
-                                        CornerRadius="50"
-                                        BorderColor="{StaticResource lightGray}"
-                                        IsClippedToBounds="true"
-                                        BackgroundColor="{StaticResource white}"
-                                        HorizontalOptions="Fill"
-                                        VerticalOptions="CenterAndExpand"
-                                        Margin="10,2,10,0"
-                                        HeightRequest="40">
-                                        <Entry Text="{Binding User.ConfirmPassword}"
-                                               Placeholder="{res:Translate ConfirmPassword}"
-                                               TextColor="{StaticResource black}"
-                                               PlaceholderColor="{StaticResource black}"
-                                               HorizontalOptions="Fill"
-                                               VerticalOptions="Fill"
-                                               IsPassword="True"/>
                                     </Frame>
                                     <buttons:SfButton
                                         CornerRadius="30"
@@ -114,23 +83,23 @@
                                         FontSize="15"
                                         TextColor="{StaticResource white}"
                                         BackgroundColor="{StaticResource orange2}"
-                                        Text="{res:Translate Register}"
-                                        Command="{Binding SignupCommand}"/>
+                                        Text="{res:Translate Login}"
+                                        Command="{Binding LoginCommand}"/>
                                 </StackLayout>
                             </ContentView>
                         </border:SfBorder>
-
+                       
                     </StackLayout>
                     <StackLayout Grid.Row="2">
                         <Label 
-                            Text="{res:Translate HaveAccount}"
+                            Text="{res:Translate NewMember}"
                             HorizontalOptions="CenterAndExpand"
                             VerticalOptions="EndAndExpand"
                             Margin="20"
                             FontAttributes="Bold"
                             TextColor="{StaticResource white1}">
                             <Label.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding LoginCommand}" />
+                                <TapGestureRecognizer Command="{Binding SignupCommand}" />
                             </Label.GestureRecognizers>
                         </Label>
                     </StackLayout>

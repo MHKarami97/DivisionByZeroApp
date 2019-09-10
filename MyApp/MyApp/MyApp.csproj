@@ -45,8 +45,17 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Pages\Register.xaml.cs">
-      <DependentUpon>Register.xaml</DependentUpon>
+    <Compile Update="Pages\CategoryPage.xaml.cs">
+      <DependentUpon>CategoryPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\LoginPage.xaml.cs">
+      <DependentUpon>LoginPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\NewCommentPage.xaml.cs">
+      <DependentUpon>NewCommentPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\RegisterPage.xaml.cs">
+      <DependentUpon>RegisterPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 </Project>

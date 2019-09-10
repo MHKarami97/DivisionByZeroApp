@@ -2,9 +2,9 @@
 
 namespace MyApp.Pages
 {
-    public partial class Register : MvxContentPage
+    public partial class LoginPage : MvxContentPage
     {
-        public Register()
+        public LoginPage()
         {
             InitializeComponent();
         }
