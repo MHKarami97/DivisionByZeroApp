@@ -21,6 +21,8 @@
 			<Color x:Key="purple1">#C638A8</Color>
 			<Color x:Key="purple2">#935EF2</Color>
 			<Color x:Key="purple3">#5058D4</Color>
+			<Color x:Key="blue1">#0450C2</Color>
+			<Color x:Key="yellow">#FEAC2C</Color>
 
 			<Color x:Key="Primary">#7b1fa2</Color>
             <Color x:Key="PrimaryDark">#6a1b9a</Color>

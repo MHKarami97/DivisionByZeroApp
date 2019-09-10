@@ -110,6 +110,7 @@
     <AndroidAsset Include="Assets\Fonts\TeshrinARLT-Regular.ttf" />
     <AndroidAsset Include="Assets\Fonts\TeshrinARLT-Thin.ttf" />
     <AndroidAsset Include="Assets\Animations\profile2.json" />
+    <AndroidAsset Include="Assets\Animations\comment.json" />
     <None Include="packages.config" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Properties\AndroidManifest.xml" />

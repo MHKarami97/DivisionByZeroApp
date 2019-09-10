@@ -1,6 +1,5 @@
 ﻿using System;
 using MvvmCross;
-using MyApp.Models;
 using MyApp.Helpers;
 using Acr.UserDialogs;
 using MvvmCross.Commands;
@@ -9,12 +8,12 @@ using MvvmCross.ViewModels;
 
 namespace MyApp.ViewModels
 {
-    public class NewComment : MvxViewModel
+    public class NewCommentViewModel : MvxViewModel
     {
         private readonly IMvxNavigationService _navigationService;
         private readonly IUserDialogs _userDialogs;
 
-        public NewComment(IMvxNavigationService navigationService, IUserDialogs userDialogs)
+        public NewCommentViewModel(IMvxNavigationService navigationService, IUserDialogs userDialogs)
         {
             _navigationService = navigationService;
             _userDialogs = userDialogs;
@@ -22,26 +21,17 @@ namespace MyApp.ViewModels
 
         public override async void Start()
         {
-            User = new UserModel
-            {
-                PhoneNumber = "9390709197",
-                Name = "ali",
-                LastName = "mohammadi",
-                Email = "mhkarami1997@gmail.com",
-                BirthDay = DateTime.Now.Date,
-                NationalCode = 123445
-            };
         }
 
         #region Property
 
-        public UserModel User { get; set; }
+        public string CommentText { get; set; }
 
         #endregion
 
         #region Events
 
-        public IMvxAsyncCommand UpdateCommand =>
+        public IMvxAsyncCommand SendCommentCommand =>
             new MvxAsyncCommand(async () =>
             {
                 try
@@ -57,12 +47,6 @@ namespace MyApp.ViewModels
         #endregion
 
         #region Toolbar
-
-        public IMvxAsyncCommand ToolbarHomeCommand =>
-            new MvxAsyncCommand(async () =>
-            {
-                await _navigationService.Navigate<RootViewModel>();
-            });
 
         #endregion
     }

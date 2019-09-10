@@ -111,7 +111,7 @@ namespace MyApp.ViewModels
         public IMvxAsyncCommand ToolbarNewCommentCommand =>
             new MvxAsyncCommand(async () =>
             {
-                await _navigationService.Navigate<RootViewModel>();
+                await _navigationService.Navigate<NewCommentViewModel>();
             });
 
         #endregion

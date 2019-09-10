@@ -300,4 +300,13 @@
   <data name="NewComment" xml:space="preserve">
     <value>New Comment</value>
   </data>
+  <data name="SendComment" xml:space="preserve">
+    <value>Send Comment</value>
+  </data>
+  <data name="YourComment" xml:space="preserve">
+    <value>Your Comment</value>
+  </data>
+  <data name="HelpComment" xml:space="preserve">
+    <value>Enter your comment about this post</value>
+  </data>
 </root>

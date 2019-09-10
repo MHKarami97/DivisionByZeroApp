@@ -280,4 +280,13 @@
   <data name="NewComment" xml:space="preserve">
     <value>نظر جدید</value>
   </data>
+  <data name="SendComment" xml:space="preserve">
+    <value>ارسال نظر</value>
+  </data>
+  <data name="YourComment" xml:space="preserve">
+    <value>نظر شما</value>
+  </data>
+  <data name="HelpComment" xml:space="preserve">
+    <value>نظر خود را درباره این مطلب اعلام کنید</value>
+  </data>
 </root>

@@ -8,154 +8,95 @@
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              xmlns:graphics="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"
              xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
-             xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+             xmlns:xForms="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms"
              Title="{res:Translate NewComment}">
     <ContentPage.ToolbarItems>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="3*" />
+            </Grid.RowDefinitions>
+
             <graphics:SfGradientView>
                 <graphics:SfGradientView.BackgroundBrush>
                     <graphics:SfLinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
                         <graphics:SfLinearGradientBrush.GradientStops>
                             <graphics:SfGradientStop Color="{StaticResource orange1}" Offset="0.0" />
-                            <graphics:SfGradientStop Color="{StaticResource orange1}" Offset="0.4" />
-                            <graphics:SfGradientStop Color="{StaticResource orange2}" Offset="0.6" />
-                            <graphics:SfGradientStop Color="{StaticResource orange3}" Offset="1.0" />
+                            <graphics:SfGradientStop Color="{StaticResource white}" Offset="0.7" />
+                            <graphics:SfGradientStop Color="{StaticResource white1}" Offset="1.0" />
                         </graphics:SfLinearGradientBrush.GradientStops>
                     </graphics:SfLinearGradientBrush>
                 </graphics:SfGradientView.BackgroundBrush>
             </graphics:SfGradientView>
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="4*" />
-                </Grid.RowDefinitions>
 
-                <StackLayout Grid.Row="0" Margin="0,0,0,0">
-                    <forms:AnimationView
+            <StackLayout Grid.Row="0" Margin="0,0,0,0">
+                <forms:AnimationView
                         Animation="{OnPlatform 
-                            UWP='Assets/Animations/profile2.json',
-                            Android='Animations/profile2.json',
-                            iOS='Animations/profile2.json'}"
+                            UWP='Assets/Animations/comment.json',
+                            Android='Animations/comment.json',
+                            iOS='Animations/comment.json'}"
                         IsPlaying="True"
                         Loop="True"
-                        WidthRequest="100"
-                        HeightRequest="100"
+                        WidthRequest="200"
+                        HeightRequest="200"
                         Margin="0,0,0,0"
                         HorizontalOptions="Fill"
                         VerticalOptions="Fill"/>
-                </StackLayout>
+            </StackLayout>
 
-                <border:SfBorder 
-                    Grid.Row="1"
-                    BackgroundColor="{StaticResource white}"
-                    BorderColor="{StaticResource white}"
-                    HorizontalOptions="FillAndExpand" 
-                    VerticalOptions="FillAndExpand"
-                    CornerRadius="2"
-                    Margin="4,0,4,0">
-                    <ContentView>
-                        <ScrollView>
-                            <StackLayout>
-                                <inputLayout:SfTextInputLayout 
-                                    Margin="0,5,0,1"
-                                    Hint="{res:Translate Phone}"
-                                    LeadingViewPosition="Inside">
-                                    <Entry Text="{Binding User.PhoneNumber}"
-                                       IsEnabled="False"
-                                       TextColor="{StaticResource black}"/>
-                                    <inputLayout:SfTextInputLayout.LeadingView>
-                                        <Label
-                                        Text="&#x1F4F1;">
-                                        </Label>
-                                    </inputLayout:SfTextInputLayout.LeadingView>
-                                </inputLayout:SfTextInputLayout>
+            <ScrollView Grid.Row="1">
 
-                                <inputLayout:SfTextInputLayout
-                                    Margin="0,5,0,1"
-                                    Hint="{res:Translate NationalCode}"
-                                    LeadingViewPosition="Inside">
-                                    <Entry Text="{Binding User.NationalCode}"
-                                                   IsEnabled="False"
-                                                   TextColor="{StaticResource black}"/>
-                                    <inputLayout:SfTextInputLayout.LeadingView>
-                                        <Label
-                                                    Text="&#x1F310;">
-                                        </Label>
-                                    </inputLayout:SfTextInputLayout.LeadingView>
-                                </inputLayout:SfTextInputLayout>
+                <StackLayout>
 
-                                <inputLayout:SfTextInputLayout
-                                    Margin="0,5,0,1"
-                                    Hint="{res:Translate Email}"
-                                    LeadingViewPosition="Inside">
-                                    <Entry Text="{Binding User.Email}"
-                                                   TextColor="{StaticResource black}"/>
-                                    <inputLayout:SfTextInputLayout.LeadingView>
-                                        <Label
-                                                    Text="&#x0040;">
-                                        </Label>
-                                    </inputLayout:SfTextInputLayout.LeadingView>
-                                </inputLayout:SfTextInputLayout>
+                    <inputLayout:SfTextInputLayout 
+                                    Margin="5,15,5,5"
+                                    HorizontalOptions="CenterAndExpand"
+                                    VerticalOptions="CenterAndExpand"
+                                    FocusedColor="{StaticResource green}"
+                                    IsHintAlwaysFloated="true"
+                                    HelperText="{res:Translate HelpComment}"
+                                    Hint="{res:Translate YourComment}">
+                        <Editor Text="{Binding CommentText}"
+                                            HeightRequest="220"
+                                            IsSpellCheckEnabled="True"
+                                            TextColor="{StaticResource black}"/>
+                        <inputLayout:SfTextInputLayout.HintLabelStyle>
+                            <inputLayout:LabelStyle FontSize="18" FontAttributes="Bold"/>
+                        </inputLayout:SfTextInputLayout.HintLabelStyle>
+                    </inputLayout:SfTextInputLayout>
 
-                                <inputLayout:SfTextInputLayout
-                                    Margin="0,5,0,1"
-                                    Hint="{res:Translate Name}"
-                                    LeadingViewPosition="Inside">
-                                    <Entry Text="{Binding User.Name}"
-                                                   TextColor="{StaticResource black}"/>
-                                    <inputLayout:SfTextInputLayout.LeadingView>
-                                        <Label
-                                                    Text="&#x1F464;">
-                                        </Label>
-                                    </inputLayout:SfTextInputLayout.LeadingView>
-                                </inputLayout:SfTextInputLayout>
+                    <xForms:SfRating
+                        Margin="0,5,0,0"
+                        ItemCount="5"
+                        Value="2.5"
+                        Precision="Exact"
+                        ItemSize="40"
+                        HeightRequest="40"
+                        HorizontalOptions="CenterAndExpand"
+                        VerticalOptions="CenterAndExpand">
+                        <xForms:SfRating.RatingSettings>
+                            <xForms:SfRatingSettings RatedFill="{StaticResource yellow}" UnRatedFill="{StaticResource gray3}"/>
+                        </xForms:SfRating.RatingSettings>
+                    </xForms:SfRating>
 
-                                <inputLayout:SfTextInputLayout
-                                    Margin="0,5,0,1"
-                                    Hint="{res:Translate LastName}"
-                                    LeadingViewPosition="Inside">
-                                    <Entry Text="{Binding User.LastName}"
-                                               TextColor="{StaticResource black}"/>
-                                    <inputLayout:SfTextInputLayout.LeadingView>
-                                        <Label
-                                                   Text="&#x1F464;">
-                                        </Label>
-                                    </inputLayout:SfTextInputLayout.LeadingView>
-                                </inputLayout:SfTextInputLayout>
-
-                                <inputLayout:SfTextInputLayout
-                                    Margin="0,5,0,1"
-                                    Hint="{res:Translate BirthDay}"
-                                    LeadingViewPosition="Inside">
-                                    <Entry Text="{Binding User.BirthDay}" 
-                                               TextColor="{StaticResource black}"/>
-                                    <inputLayout:SfTextInputLayout.LeadingView>
-                                        <Label 
-                                                Text="&#x1F5D3;">
-                                        </Label>
-                                    </inputLayout:SfTextInputLayout.LeadingView>
-                                </inputLayout:SfTextInputLayout>
-
-                                <buttons:SfButton
+                    <buttons:SfButton
                                     CornerRadius="30"
-                                    Margin="20,1,20,5"
+                                    Margin="20,0,20,5"
                                     HeightRequest="50"
                                     FontSize="15"
                                     HasShadow="True"
+                                    HorizontalOptions="CenterAndExpand"
+                                    VerticalOptions="EndAndExpand"
                                     BorderColor="{StaticResource orange3}"
                                     TextColor="{StaticResource white}"
                                     BackgroundColor="{StaticResource orange3}"
-                                    Text="{res:Translate Update}"
-                                    HorizontalOptions="CenterAndExpand"
-                                    VerticalOptions="CenterAndExpand"
-                                    Command="{Binding UpdateCommand}"/>
-                            </StackLayout>
-                        </ScrollView>
-                    </ContentView>
-                </border:SfBorder>
-            </Grid>
+                                    Text="{res:Translate SendComment}"
+                                    Command="{Binding SendCommentCommand}"/>
+                </StackLayout>
+            </ScrollView>
+
         </Grid>
     </ContentPage.Content>
 </mvx:MvxContentPage>

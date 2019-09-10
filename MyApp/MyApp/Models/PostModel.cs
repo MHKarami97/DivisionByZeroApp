@@ -1,8 +1,8 @@
 ﻿namespace MyApp.Models
 {
-    public class Post
+    public class PostModel
     {
-        public long Id { get; set; }
+        public int Id { get; set; }
         public string PostAuthor { get; set; }
         public string Date { get; set; }
         public string Title { get; set; }

@@ -1,4 +1,5 @@
 ﻿using MvvmCross.Forms.Core;
+using Xamarin.Forms;
 
 namespace MyApp
 {
@@ -12,6 +13,25 @@ namespace MyApp
             InitializeComponent();
 
             XF.Material.Forms.Material.Init(this, "Material.Configuration");
+
+//#if DEBUG
+//            EnableDebugRainbows(true);
+//#endif
+        }
+
+        void EnableDebugRainbows(bool shouldUseDebugRainbows)
+        {
+            Resources.Add(new Style(typeof(ContentPage))
+            {
+                ApplyToDerivedTypes = true,
+                Setters = {
+                    new Setter
+                    {
+                        Property = Xamarin.Forms.DebugRainbows.DebugRainbow.IsDebugProperty,
+                        Value = shouldUseDebugRainbows
+                    }
+                }
+            });
         }
 
         protected override void OnStart()

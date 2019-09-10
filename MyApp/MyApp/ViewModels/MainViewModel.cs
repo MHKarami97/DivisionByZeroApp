@@ -41,12 +41,13 @@ namespace MyApp.ViewModels
             {
                 IsRefresh = false;
 
-                var blogPost = new List<Post>();
+                var blogPost = new List<PostModel>();
                 var cats = new List<CategoryModel>();
+                var banners = new List<BannerModel>();
 
                 using (userDialogs.Loading("Loading"))
                 {
-                    blogPost.Add(new Post
+                    blogPost.Add(new PostModel
                     {
                         Id = 1,
                         Type = 1,
@@ -63,8 +64,7 @@ namespace MyApp.ViewModels
                         Address = "address",
                         LanguageId = 1
                     });
-
-                    blogPost.Add(new Post
+                    blogPost.Add(new PostModel
                     {
                         Id = 2,
                         Type = 1,
@@ -81,8 +81,7 @@ namespace MyApp.ViewModels
                         Address = "address",
                         LanguageId = 1
                     });
-
-                    blogPost.Add(new Post
+                    blogPost.Add(new PostModel
                     {
                         Id = 3,
                         Type = 1,
@@ -99,8 +98,7 @@ namespace MyApp.ViewModels
                         Address = "address",
                         LanguageId = 1
                     });
-
-                    blogPost.Add(new Post
+                    blogPost.Add(new PostModel
                     {
                         Id = 4,
                         Type = 1,
@@ -117,8 +115,7 @@ namespace MyApp.ViewModels
                         Address = "address",
                         LanguageId = 1
                     });
-
-                    blogPost.Add(new Post
+                    blogPost.Add(new PostModel
                     {
                         Id = 5,
                         Type = 1,
@@ -135,10 +132,7 @@ namespace MyApp.ViewModels
                         Address = "address",
                         LanguageId = 1
                     });
-                }
 
-                using (userDialogs.Loading("Loading"))
-                {
                     cats.Add(new CategoryModel
                     {
                         Id = 1,
@@ -189,10 +183,49 @@ namespace MyApp.ViewModels
                         Id = 10,
                         Title = "my item"
                     });
+
+                    banners.Add(new BannerModel
+                    {
+                        Id = 1,
+                        Address = "https://itarfand.com",
+                        Image = "http://loremflickr.com/600/600/nature?filename=simple.jpg",
+                        Type = 1
+                    });
+                    banners.Add(new BannerModel
+                    {
+                        Id = 2,
+                        Address = "https://itarfand.com",
+                        Image = "http://loremflickr.com/600/600/nature?filename=simple.jpg",
+                        Type = 1
+                    });
+                    banners.Add(new BannerModel
+                    {
+                        Id = 3,
+                        Address = "https://itarfand.com",
+                        Image = "http://loremflickr.com/600/600/nature?filename=simple.jpg",
+                        Type = 1
+                    });
+                    banners.Add(new BannerModel
+                    {
+                        Id = 4,
+                        Address = "https://itarfand.com",
+                        Image = "http://loremflickr.com/600/600/nature?filename=simple.jpg",
+                        Type = 1
+                    });
+                    banners.Add(new BannerModel
+                    {
+                        Id = 5,
+                        Address = "https://itarfand.com",
+                        Image = "http://loremflickr.com/600/600/nature?filename=simple.jpg",
+                        Type = 1
+                    });
                 }
 
                 BlogPosts = blogPost;
+                Banners = banners;
                 Cats = cats;
+
+                SingleImage = "http://loremflickr.com/600/600/nature?filename=simple.jpg";
 
                 ImageCollection.Add(new CarouselModel("http://loremflickr.com/600/600/nature?filename=simple.jpg"));
                 ImageCollection.Add(new CarouselModel("http://loremflickr.com/600/600/nature?filename=simple.jpg"));
@@ -277,9 +310,13 @@ namespace MyApp.ViewModels
 
         public List<CategoryModel> Cats { get; set; }
 
-        public List<Post> BlogPosts { get; set; }
+        public List<BannerModel> Banners { get; set; }
+
+        public List<PostModel> BlogPosts { get; set; }
 
         public bool IsRefresh { get; set; }
+
+        public string SingleImage { get; set; }
 
         #endregion
 

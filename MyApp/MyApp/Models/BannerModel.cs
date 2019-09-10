@@ -1,9 +1,10 @@
 ﻿namespace MyApp.Models
 {
-    public class CategoryModel
+    public class BannerModel
     {
         public int Id { get; set; }
-        public string Title { get; set; }
         public string Image { get; set; }
+        public string Address { get; set; }
+        public int Type { get; set; }
     }
 }

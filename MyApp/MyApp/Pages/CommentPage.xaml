@@ -14,7 +14,7 @@
              Title="{res:Translate Comment}">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="{res:Translate NewComment}"
-                     Command="{Binding ToolbarProfileCommand}"
+                     Command="{Binding ToolbarNewCommentCommand}"
                      Order="Primary"
                      Priority="1"
                      IconImageSource="add.png" />
@@ -154,6 +154,7 @@
                                             <Label
                                             Grid.Row="1"
                                             Grid.Column="1"
+                                            Grid.ColumnSpan="2"
                                             TextColor="{StaticResource black}"
                                             Text="{Binding Comment}"
                                             HorizontalOptions="StartAndExpand"

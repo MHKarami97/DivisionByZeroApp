@@ -23,7 +23,7 @@ namespace MyApp.ViewModels
 
         public override async Task Initialize()
         {
-            SinglePost = new Post
+            SinglePost = new PostModel
             {
                 Id = 1,
                 Image = "http://loremflickr.com/600/600/nature?filename=simple.jpg",
@@ -53,7 +53,7 @@ namespace MyApp.ViewModels
 
         #region Propery
 
-        public Post SinglePost { get; set; }
+        public PostModel SinglePost { get; set; }
 
         public object Id { get; set; }
 

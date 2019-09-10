@@ -87,6 +87,53 @@
                                     </xForms:SfListView>
                                 </StackLayout>
 
+                                <StackLayout>
+                                    <xForms:SfListView Orientation="Horizontal"
+                                                   VerticalOptions="Center"
+                                                   IsScrollBarVisible="False"
+                                                   HorizontalOptions="Center"
+                                                   HeightRequest="200"
+                                                   Margin="0,8,0,8"
+                                                   Padding="0"
+                                                   ItemSpacing="3"
+                                                   IsTabStop="True"
+                                                   AutoFitMode="DynamicHeight"
+                                                   FlowDirection="LeftToRight"
+                                                   ItemsSource="{Binding Banners}" >
+                                        <xForms:SfListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <border:SfBorder 
+                                                BackgroundColor="{StaticResource white}"
+                                                BorderColor="{StaticResource white}"
+                                                HorizontalOptions="Center" 
+                                                VerticalOptions="Center"
+                                                CornerRadius="3"
+                                                Padding="0"
+                                                HasShadow="True">
+                                                    <ContentView>
+                                                        <Grid>
+                                                            <forms:CachedImage
+                                                Aspect="AspectFill"
+                                                HeightRequest="200"
+                                                DownsampleToViewSize="true"
+                                                FadeAnimationEnabled="True"
+                                                Source = "{Binding Image}">
+                                                            </forms:CachedImage>
+
+                                                        </Grid>
+                                                    </ContentView>
+                                                </border:SfBorder>
+                                            </DataTemplate>
+                                        </xForms:SfListView.ItemTemplate>
+                                    </xForms:SfListView>
+
+                                    <BoxView HorizontalOptions="Fill"
+                                             HeightRequest="2"
+                                             Margin="30,5,30,5"
+                                             BackgroundColor="{StaticResource white1}"
+                                             CornerRadius="4"/>
+                                </StackLayout>
+
                                 <StackLayout Margin="1,2,1,2">
                                     <Label Text="Last"
                                            HorizontalOptions="EndAndExpand" 
@@ -290,6 +337,24 @@
                                 </StackLayout>
 
                                 <StackLayout>
+                                    <forms:CachedImage
+                                        Margin="0,5,0,5"
+                                        Aspect="AspectFill"
+                                        HorizontalOptions="FillAndExpand"
+                                        HeightRequest="150"
+                                        DownsampleToViewSize="true"
+                                        FadeAnimationEnabled="True"
+                                        Source = "{Binding SingleImage}">
+                                    </forms:CachedImage>
+
+                                    <BoxView HorizontalOptions="Fill"
+                                             HeightRequest="2"
+                                             Margin="30,5,30,5"
+                                             BackgroundColor="{StaticResource white1}"
+                                             CornerRadius="4"/>
+                                </StackLayout>
+
+                                <StackLayout>
                                     <Label Text="Last"
                                            HorizontalOptions="EndAndExpand" 
                                            VerticalOptions="Center"
@@ -379,6 +444,7 @@
                                         </BindableLayout.ItemTemplate>
                                     </cards:SfCardLayout>
                                 </StackLayout>
+
                             </StackLayout>
                         </ScrollView>
                     </syncfusion:SfPullToRefresh.PullableContent>
