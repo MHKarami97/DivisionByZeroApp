@@ -51,7 +51,7 @@
                 <StackLayout>
 
                     <inputLayout:SfTextInputLayout 
-                                    Margin="5,15,5,5"
+                                    Margin="8,15,8,5"
                                     HorizontalOptions="CenterAndExpand"
                                     VerticalOptions="CenterAndExpand"
                                     FocusedColor="{StaticResource green}"
@@ -74,6 +74,10 @@
                         Precision="Exact"
                         ItemSize="40"
                         HeightRequest="40"
+                        TooltipTextColor="{StaticResource black}"
+                        TooltipBackgroundColor="{StaticResource white}"
+                        TooltipPlacement="TopLeft"
+                        TooltipPrecision="1"
                         HorizontalOptions="CenterAndExpand"
                         VerticalOptions="CenterAndExpand">
                         <xForms:SfRating.RatingSettings>
