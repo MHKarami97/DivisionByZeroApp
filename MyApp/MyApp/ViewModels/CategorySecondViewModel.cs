@@ -8,6 +8,8 @@ using MvvmCross.Commands;
 using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
 using System.Collections.Generic;
+using Syncfusion.XForms.Cards;
+using Xamarin.Forms;
 
 namespace MyApp.ViewModels
 {
@@ -117,7 +119,18 @@ namespace MyApp.ViewModels
 
         #region Events
 
+        public MvxAsyncCommand<object> CatTapCommand =>
+            new MvxAsyncCommand<object>(async obj =>
+            {
+                var cardView = (obj as TappedEventArgs)?.Parameter as SfCardView;
+                var cardLayout = cardView?.Parent as SfCardLayout;
 
+                var index = cardLayout?.VisibleCardIndex;
+
+                var item = Cats[index ?? 0];
+
+                await _navigationService.Navigate<CategoryPostsViewModel, object>(item.Id);
+            });
 
         #endregion
 

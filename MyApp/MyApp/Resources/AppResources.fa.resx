@@ -292,4 +292,7 @@
   <data name="SimilarPosts" xml:space="preserve">
     <value>مطالب مشابه</value>
   </data>
+  <data name="Posts" xml:space="preserve">
+    <value>مطالب</value>
+  </data>
 </root>

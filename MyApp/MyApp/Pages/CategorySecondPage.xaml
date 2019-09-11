@@ -45,6 +45,7 @@
                                                    Padding="0"
                                                    ItemSpacing="5"
                                                    AutoFitMode="DynamicHeight"
+                                                   TapCommand="{Binding CatTapCommand}"
                                                    ItemsSource="{Binding Cats}">
                         <xForms:SfListView.ItemTemplate>
                             <DataTemplate>

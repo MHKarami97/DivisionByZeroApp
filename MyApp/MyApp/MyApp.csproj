@@ -52,6 +52,9 @@
     <Compile Update="Pages\CategoryPage.xaml.cs">
       <DependentUpon>CategoryPage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Pages\CategoryPostsPage.xaml.cs">
+      <DependentUpon>CategoryPostsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Pages\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>

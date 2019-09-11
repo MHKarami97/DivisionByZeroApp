@@ -1,20 +1,19 @@
 ﻿using System;
-using Acr.UserDialogs;
-using MvvmCross.Commands;
-using MvvmCross.Navigation;
-using MvvmCross.ViewModels;
-using MyApp.Models;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using MvvmCross;
-using Plugin.SecureStorage;
+using MyApp.Models;
 using MyApp.Helpers;
-using MyApp.Services;
-using Syncfusion.XForms.Cards;
 using Xamarin.Forms;
+using MyApp.Services;
+using Acr.UserDialogs;
 using XF.Material.Forms;
-using XF.Material.Forms.Resources;
+using MvvmCross.Commands;
+using MvvmCross.ViewModels;
+using MvvmCross.Navigation;
+using Plugin.SecureStorage;
 using XF.Material.Forms.UI;
+using Syncfusion.XForms.Cards;
+using System.Collections.Generic;
+using XF.Material.Forms.Resources;
 using XF.Material.Forms.UI.Dialogs;
 using XF.Material.Forms.UI.Dialogs.Configurations;
 
@@ -270,6 +269,19 @@ namespace MyApp.ViewModels
                 var item = BlogPosts[index ?? 0];
 
                 await _navigationService.Navigate<PostViewModel, object>(item.Id);
+            });
+
+        public MvxAsyncCommand<object> CatTappedCommand =>
+            new MvxAsyncCommand<object>(async obj =>
+            {
+                var cardView = (obj as TappedEventArgs)?.Parameter as SfCardView;
+                var cardLayout = cardView?.Parent as SfCardLayout;
+
+                var index = cardLayout?.VisibleCardIndex;
+
+                var item = Cats[index ?? 0];
+
+                await _navigationService.Navigate<CategoryPostsViewModel, object>(item.Id);
             });
 
         //public IMvxAsyncCommand PullingEvent =>

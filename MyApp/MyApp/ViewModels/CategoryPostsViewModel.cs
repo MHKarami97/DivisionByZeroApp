@@ -1,25 +1,27 @@
 ﻿using System;
 using MvvmCross;
 using MyApp.Models;
+using Xamarin.Forms;
 using MyApp.Helpers;
 using MyApp.Services;
 using Acr.UserDialogs;
 using MvvmCross.Commands;
 using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
+using Syncfusion.XForms.Cards;
 using System.Collections.Generic;
 
 namespace MyApp.ViewModels
 {
-    public class PostViewModel : MvxViewModel<object>
+    public class CategoryPostsViewModel : MvxViewModel<object>
     {
         private readonly IMvxNavigationService _navigationService;
         private readonly IUserDialogs _userDialogs;
 
-        public PostViewModel(IMvxNavigationService navigationService, IUserDialogs userDialogs)
+        public CategoryPostsViewModel(IMvxNavigationService navigationService, IUserDialogs userDialogs)
         {
-            _navigationService = navigationService;
             _userDialogs = userDialogs;
+            _navigationService = navigationService;
         }
 
         public override void Prepare(object parameter)
@@ -33,34 +35,7 @@ namespace MyApp.ViewModels
             {
                 using (_userDialogs.Loading("Loading"))
                 {
-                    SinglePost = new PostModel
-                    {
-                        Id = 1,
-                        Image = "http://loremflickr.com/600/600/nature?filename=simple.jpg",
-                        Title = "title of post",
-                        CommentStatus = true,
-                        PostAuthor = "ali",
-                        Date = DateTime.Now.ToString("d"),
-                        ShortContent = "short content of post",
-                        Visit = 20,
-                        Tags = "new,blog,comment",
-                        Content = "this is my post \n how are you? \n is this page good?"
-                              + "this is my post \n how are you? \n is this page good?"
-                              + "this is my post \n how are you? \n is this page good?"
-                              + "this is my post \n how are you? \n is this page good?"
-                              + "this is my post \n how are you? \n is this page good?"
-                              + "this is my post \n how are you? \n is this page good?"
-                              + "this is my post \n how are you? \n is this page good?"
-                              + "this is my post \n how are you? \n is this page good?",
-                        CategoryId = 2,
-                        Address = "post",
-                        LanguageId = 1,
-                        Type = 1,
-                        Like = 20,
-                        Comment = 400
-                    };
-
-                    var similars = new List<PostShortModel>
+                    var posts = new List<PostShortModel>
                      {
                         new PostShortModel
                         {
@@ -118,7 +93,7 @@ namespace MyApp.ViewModels
                         }
                 };
 
-                    SimilarPosts = similars;
+                    Posts = posts;
                 }
             }
             catch (Exception e)
@@ -129,28 +104,27 @@ namespace MyApp.ViewModels
             }
         }
 
-        #region Propery
-
-        public PostModel SinglePost { get; set; }
-
-        public List<PostShortModel> SimilarPosts { get; set; }
+        #region Property
 
         public object Id { get; set; }
+
+        public List<PostShortModel> Posts { get; set; }
 
         #endregion
 
         #region Events
 
-        public IMvxAsyncCommand CommentClickCommand =>
-            new MvxAsyncCommand(async () =>
+        public MvxAsyncCommand<object> PostTapCommand =>
+            new MvxAsyncCommand<object>(async obj =>
             {
-                await _navigationService.Navigate<CommentViewModel>();
-            });
+                var cardView = (obj as TappedEventArgs)?.Parameter as SfCardView;
+                var cardLayout = cardView?.Parent as SfCardLayout;
 
-        public IMvxAsyncCommand LikeClickCommand =>
-            new MvxAsyncCommand(async () =>
-            {
-                await _navigationService.Navigate<CommentViewModel>();
+                var index = cardLayout?.VisibleCardIndex;
+
+                var item = Posts[index ?? 0];
+
+                await _navigationService.Navigate<PostViewModel, object>(item.Id);
             });
 
         #endregion

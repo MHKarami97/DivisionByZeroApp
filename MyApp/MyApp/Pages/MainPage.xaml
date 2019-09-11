@@ -64,6 +64,7 @@
                                                    ItemSpacing="5"
                                                    ItemSize="100"
                                                    FlowDirection="RightToLeft"
+                                                   TapCommand="{Binding CatTappedCommand}"
                                                    ItemsSource="{Binding Cats}" >
                                         <xForms:SfListView.ItemTemplate>
                                             <DataTemplate>
@@ -99,6 +100,7 @@
                                                    IsTabStop="True"
                                                    AutoFitMode="DynamicHeight"
                                                    FlowDirection="LeftToRight"
+                                                   TapCommand="{Binding CardTappedCommand}"
                                                    ItemsSource="{Binding Banners}" >
                                         <xForms:SfListView.ItemTemplate>
                                             <DataTemplate>

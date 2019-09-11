@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<mvx:MvxContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:res="clr-namespace:MyApp.Resources;assembly=MyApp"
+             xmlns:mvx="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+             xmlns:graphics="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"
+             xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+             xmlns:xForms="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             x:Class="MyApp.Pages.CategoryPostsPage"
+             BackgroundColor="{StaticResource white}"
+             Title="{res:Translate Posts}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="{res:Translate Home}"
+                     Command="{Binding ToolbarHomeCommand}"
+                     Order="Primary"
+                     Priority="1"
+                     IconImageSource="home.png" />
+        <ToolbarItem Text="{res:Translate Search}"
+                     Command="{Binding ToolbarSearchCommand}"
+                     Order="Primary"
+                     Priority="0"
+                     IconImageSource="loupe.png" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <Grid>
+            <graphics:SfGradientView>
+                <graphics:SfGradientView.BackgroundBrush>
+                    <graphics:SfLinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                        <graphics:SfLinearGradientBrush.GradientStops>
+                            <graphics:SfGradientStop Color="{StaticResource orange1}" Offset="0.0" />
+                            <graphics:SfGradientStop Color="{StaticResource white}" Offset="0.5" />
+                            <graphics:SfGradientStop Color="{StaticResource white1}" Offset="1.0" />
+                        </graphics:SfLinearGradientBrush.GradientStops>
+                    </graphics:SfLinearGradientBrush>
+                </graphics:SfGradientView.BackgroundBrush>
+            </graphics:SfGradientView>
+
+            <StackLayout>
+                <ScrollView Margin="1,5,1,5" Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <xForms:SfListView Orientation="Vertical"
+                                                   VerticalOptions="Fill"
+                                                   IsScrollBarVisible="False"
+                                                   HorizontalOptions="Fill"
+                                                   Margin="0,1,0,1"
+                                                   Padding="0"
+                                                   ItemSpacing="3"
+                                                   IsTabStop="True"
+                                                   AutoFitMode="DynamicHeight"
+                                                   FlowDirection="LeftToRight"
+                                                   TapCommand="{Binding PostTapCommand}"
+                                                   ItemsSource="{Binding Posts}" >
+                        <xForms:SfListView.ItemTemplate>
+                            <DataTemplate>
+                                <border:SfBorder 
+                                                BackgroundColor="{StaticResource white}"
+                                                BorderColor="{StaticResource white}"
+                                                HorizontalOptions="Center" 
+                                                VerticalOptions="Center"
+                                                CornerRadius="3"
+                                                Padding="8"
+                                                HasShadow="True">
+                                    <ContentView>
+                                        <Grid HeightRequest="150">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="2*" />
+                                            </Grid.ColumnDefinitions>
+
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="4*" />
+                                                <RowDefinition Height="*" />
+                                            </Grid.RowDefinitions>
+
+                                            <forms:CachedImage
+                                                        Grid.Row="0"
+                                                        Grid.Column="0"
+                                                        HorizontalOptions="Center"
+                                                                   VerticalOptions="Center"
+                                                                   WidthRequest="100"
+                                                                   HeightRequest="100"
+                                                                   DownsampleToViewSize="true"
+                                                                   FadeAnimationEnabled="True"
+                                                                   Source = "{Binding Image}">
+                                                <forms:CachedImage.Transformations>
+                                                    <transformations:CircleTransformation />
+                                                </forms:CachedImage.Transformations>
+                                            </forms:CachedImage>
+
+                                            <Label
+                                                Grid.Row="0"
+                                                Grid.Column="1"
+                                                TextColor="{StaticResource black}"
+                                                Text="{Binding Title}"
+                                                FontSize="16"
+                                                Margin="2,15,2,2"
+                                                HeightRequest="50"
+                                                HorizontalOptions="StartAndExpand"
+                                                VerticalOptions="StartAndExpand"/>
+
+                                            <forms:CachedImage
+                                               Grid.Row="1"
+                                               Grid.Column="0"
+                                               HorizontalOptions="StartAndExpand"
+                                               VerticalOptions="EndAndExpand"
+                                               WidthRequest="20"
+                                               HeightRequest="20"
+                                               DownsampleToViewSize="true"
+                                               FadeAnimationEnabled="True"
+                                               Source = "star.png">
+                                            </forms:CachedImage>
+
+                                            <Label
+                                                Grid.Row="1"
+                                                Grid.Column="0"
+                                                TextColor="{StaticResource black}"
+                                                Text="{Binding Like}"
+                                                Margin="26,0,0,0"
+                                                HorizontalOptions="StartAndExpand"
+                                                VerticalOptions="EndAndExpand"/>
+
+                                            <forms:CachedImage
+                                                Grid.Row="1"
+                                                Grid.Column="1"
+                                                HorizontalOptions="EndAndExpand"
+                                                VerticalOptions="EndAndExpand"
+                                                WidthRequest="20"
+                                                HeightRequest="20"
+                                                DownsampleToViewSize="true"
+                                                FadeAnimationEnabled="True"
+                                                Source = "eye.png">
+                                            </forms:CachedImage>
+
+                                            <Label
+                                                Grid.Row="1"
+                                                Grid.Column="1"
+                                                TextColor="{StaticResource black}"
+                                                Text="{Binding Visit}"
+                                                Margin="0,0,26,0"
+                                                HorizontalOptions="EndAndExpand"
+                                                VerticalOptions="EndAndExpand"/>
+
+                                        </Grid>
+                                    </ContentView>
+                                </border:SfBorder>
+                            </DataTemplate>
+                        </xForms:SfListView.ItemTemplate>
+                    </xForms:SfListView>
+                </ScrollView>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</mvx:MvxContentPage>

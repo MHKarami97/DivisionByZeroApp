@@ -312,4 +312,7 @@
   <data name="SimilarPosts" xml:space="preserve">
     <value>Similar Posts</value>
   </data>
+  <data name="Posts" xml:space="preserve">
+    <value>Posts</value>
+  </data>
 </root>
