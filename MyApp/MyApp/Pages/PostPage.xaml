@@ -6,6 +6,7 @@
              xmlns:graphics="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"
              xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+             xmlns:xForms="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              x:Class="MyApp.Pages.PostPage"
              BackgroundColor="{StaticResource white}">
     <ContentPage.ToolbarItems>
@@ -301,6 +302,69 @@
                                 </ContentView>
                             </border:SfBorder>
                         </StackLayout>
+
+                        <StackLayout>
+
+                            <Label Text="{res:Translate SimilarPosts}"
+                                   HorizontalOptions="EndAndExpand" 
+                                   VerticalOptions="Center"
+                                   FontSize="Title"
+                                   Margin="5,1,20,1"
+                                   TextColor="{StaticResource PrimaryDark}"
+                                   FontFamily="{StaticResource FontFamily.TeshrinRegular}"/>
+
+                            <xForms:SfListView Orientation="Horizontal"
+                                                   VerticalOptions="Center"
+                                                   IsScrollBarVisible="False"
+                                                   HorizontalOptions="Center"
+                                                   HeightRequest="200"
+                                                   Margin="0,8,0,8"
+                                                   Padding="0"
+                                                   ItemSpacing="3"
+                                                   IsTabStop="True"
+                                                   AutoFitMode="DynamicHeight"
+                                                   FlowDirection="LeftToRight"
+                                                   ItemsSource="{Binding SimilarPosts}" >
+                                        <xForms:SfListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <border:SfBorder 
+                                                BackgroundColor="{StaticResource white}"
+                                                BorderColor="{StaticResource white}"
+                                                HorizontalOptions="Center" 
+                                                VerticalOptions="Center"
+                                                CornerRadius="3"
+                                                Padding="0"
+                                                HasShadow="True">
+                                                    <ContentView>
+                                                        <Grid>
+                                                            <forms:CachedImage
+                                                                Aspect="AspectFill"
+                                                                HeightRequest="200"
+                                                                DownsampleToViewSize="true"
+                                                                FadeAnimationEnabled="True"
+                                                                Source = "{Binding Image}">
+                                                           </forms:CachedImage>
+
+                                                            <Label Text="{Binding Title}"
+                                                                   FontSize="16"
+                                                                   Margin="5,5,5,5"
+                                                                   TextColor="{StaticResource black}"
+                                                                   HorizontalOptions="StartAndExpand"
+                                                                   VerticalOptions="EndAndExpand"/>
+
+                                                        </Grid>
+                                                    </ContentView>
+                                                </border:SfBorder>
+                                            </DataTemplate>
+                                        </xForms:SfListView.ItemTemplate>
+                                    </xForms:SfListView>
+
+                                    <BoxView HorizontalOptions="Fill"
+                                             HeightRequest="2"
+                                             Margin="30,5,30,5"
+                                             BackgroundColor="{StaticResource white1}"
+                                             CornerRadius="4"/>
+                                </StackLayout>
 
                     </StackLayout>
                 </Grid>

@@ -20,19 +20,15 @@ using XF.Material.Forms.UI.Dialogs.Configurations;
 
 namespace MyApp.ViewModels
 {
-    public class MainViewModel : MvxViewModel<Dictionary<string, string>>
+    public class MainViewModel : MvxViewModel
     {
-        private readonly IMvxNavigationService navigationService;
-        private readonly IUserDialogs userDialogs;
+        private readonly IMvxNavigationService _navigationService;
+        private readonly IUserDialogs _userDialogs;
 
         public MainViewModel(IMvxNavigationService navigationService, IUserDialogs userDialogs)
         {
-            this.navigationService = navigationService;
-            this.userDialogs = userDialogs;
-        }
-
-        public override void Prepare(Dictionary<string, string> parameter)
-        {
+            _navigationService = navigationService;
+            _userDialogs = userDialogs;
         }
 
         public override async void Start()
@@ -45,7 +41,7 @@ namespace MyApp.ViewModels
                 var cats = new List<CategoryModel>();
                 var banners = new List<BannerModel>();
 
-                using (userDialogs.Loading("Loading"))
+                using (_userDialogs.Loading("Loading"))
                 {
                     blogPost.Add(new PostModel
                     {
@@ -239,25 +235,42 @@ namespace MyApp.ViewModels
             }
             catch (Exception e)
             {
-                await userDialogs.AlertAsync(e.Message, Mvx.IoCProvider.Resolve<ILocalizeService>().Translate("Error"), Mvx.IoCProvider.Resolve<ILocalizeService>().Translate("Ok"));
+                await _userDialogs.AlertAsync(e.Message, Mvx.IoCProvider.Resolve<ILocalizeService>().Translate("Error"), Mvx.IoCProvider.Resolve<ILocalizeService>().Translate("Ok"));
 
                 throw;
             }
         }
 
+        #region Property
+
+        public List<CarouselModel> ImageCollection { get; set; } = new List<CarouselModel>();
+
+        public List<CategoryModel> Cats { get; set; }
+
+        public List<BannerModel> Banners { get; set; }
+
+        public List<PostModel> BlogPosts { get; set; }
+
+        public bool IsRefresh { get; set; }
+
+        public string SingleImage { get; set; }
+
+        #endregion
+
         #region Events
 
-        private async Task CardTapped(object args)
-        {
-            var cardView = (args as TappedEventArgs)?.Parameter as SfCardView;
-            var cardLayout = cardView?.Parent as SfCardLayout;
+        public MvxAsyncCommand<object> CardTappedCommand =>
+            new MvxAsyncCommand<object>(async obj =>
+            {
+                var cardView = (obj as TappedEventArgs)?.Parameter as SfCardView;
+                var cardLayout = cardView?.Parent as SfCardLayout;
 
-            var index = cardLayout?.VisibleCardIndex;
+                var index = cardLayout?.VisibleCardIndex;
 
-            var item = BlogPosts[index ?? 0];
+                var item = BlogPosts[index ?? 0];
 
-            await navigationService.Navigate<PostViewModel, object>(item.Id);
-        }
+                await _navigationService.Navigate<PostViewModel, object>(item.Id);
+            });
 
         //public IMvxAsyncCommand PullingEvent =>
         //    new MvxAsyncCommand(async () =>
@@ -293,39 +306,12 @@ namespace MyApp.ViewModels
 
         #endregion
 
-        #region Property
-
-        public List<CarouselModel> ImageCollection { get; set; } = new List<CarouselModel>();
-
-        private IMvxAsyncCommand<object> _cardTappedCommand;
-
-        public IMvxAsyncCommand<object> CardTappedCommand
-        {
-            get
-            {
-                _cardTappedCommand = _cardTappedCommand ?? new MvxAsyncCommand<object>(CardTapped);
-                return _cardTappedCommand;
-            }
-        }
-
-        public List<CategoryModel> Cats { get; set; }
-
-        public List<BannerModel> Banners { get; set; }
-
-        public List<PostModel> BlogPosts { get; set; }
-
-        public bool IsRefresh { get; set; }
-
-        public string SingleImage { get; set; }
-
-        #endregion
-
         #region Toolbar
 
         public IMvxAsyncCommand ToolbarProfileCommand =>
             new MvxAsyncCommand(async () =>
             {
-                await navigationService.Navigate<ProfileViewModel>();
+                await _navigationService.Navigate<ProfileViewModel>();
             });
 
         public IMvxAsyncCommand ToolbarLangCommand =>
@@ -373,7 +359,7 @@ namespace MyApp.ViewModels
         public IMvxAsyncCommand ToolbarSearchCommand =>
             new MvxAsyncCommand(async () =>
             {
-                await navigationService.Navigate<SearchViewModel>();
+                await _navigationService.Navigate<SearchViewModel>();
             });
 
         #endregion

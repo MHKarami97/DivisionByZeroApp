@@ -7,7 +7,7 @@
              xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
              xmlns:xForms="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
-             x:Class="MyApp.Pages.CategoryPage"
+             x:Class="MyApp.Pages.CategorySecondPage"
              Title="{res:Translate Category}">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="{res:Translate Home}"
@@ -44,12 +44,8 @@
                                                    Margin="0,20,0,0"
                                                    Padding="0"
                                                    ItemSpacing="5"
-                                                   ItemSize="130"
-                                                   TapCommand="{Binding CategoryTapCommand}"
+                                                   AutoFitMode="DynamicHeight"
                                                    ItemsSource="{Binding Cats}">
-                        <xForms:SfListView.LayoutManager>
-                            <xForms:GridLayout SpanCount = "2"/>
-                        </xForms:SfListView.LayoutManager>
                         <xForms:SfListView.ItemTemplate>
                             <DataTemplate>
                                 <StackLayout>
@@ -64,7 +60,7 @@
                                         <ContentView>
                                             <Grid HorizontalOptions="Center"
                                               VerticalOptions="Center"
-                                              Padding="0">
+                                              Padding="0" HeightRequest="200">
                                                 <Grid.RowDefinitions>
                                                     <RowDefinition Height="*"/>
                                                 </Grid.RowDefinitions>
@@ -73,19 +69,19 @@
                                                 </Grid.ColumnDefinitions>
 
                                                 <forms:CachedImage
-                                                HorizontalOptions="FillAndExpand"
-                                                VerticalOptions="FillAndExpand"
-                                                Grid.Row="0"
-                                                Grid.Column="0"
-                                                RetryCount="3"
-                                                RetryDelay="250"
-                                                Margin="0"
-                                                Aspect="AspectFill"
-                                                DownsampleToViewSize="true"
-                                                LoadingPlaceholder="loading.png"
-                                                ErrorPlaceholder="warning.png"
-                                                FadeAnimationEnabled="True"
-                                                Source = "{Binding Image}">
+                                                    HorizontalOptions="FillAndExpand"
+                                                    VerticalOptions="FillAndExpand"
+                                                    Grid.Row="0"
+                                                    Grid.Column="0"
+                                                    RetryCount="3"
+                                                    RetryDelay="250"
+                                                    Margin="0"
+                                                    Aspect="AspectFill"
+                                                    DownsampleToViewSize="true"
+                                                    LoadingPlaceholder="loading.png"
+                                                    ErrorPlaceholder="warning.png"
+                                                    FadeAnimationEnabled="True"
+                                                    Source = "{Binding Image}">
                                                 </forms:CachedImage>
 
                                                 <Frame

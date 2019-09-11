@@ -46,6 +46,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Pages\CategorySecondPage.xaml.cs">
+      <DependentUpon>CategorySecondPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Pages\CategoryPage.xaml.cs">
       <DependentUpon>CategoryPage.xaml</DependentUpon>
     </Compile>

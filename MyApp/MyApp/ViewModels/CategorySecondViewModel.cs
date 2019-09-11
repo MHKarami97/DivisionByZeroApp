@@ -1,27 +1,30 @@
 ﻿using System;
 using MvvmCross;
 using MyApp.Models;
-using Xamarin.Forms;
 using MyApp.Helpers;
 using MyApp.Services;
 using Acr.UserDialogs;
 using MvvmCross.Commands;
 using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
-using Syncfusion.XForms.Cards;
 using System.Collections.Generic;
 
 namespace MyApp.ViewModels
 {
-    public class CategoryViewModel : MvxViewModel
+    public class CategorySecondViewModel : MvxViewModel<object>
     {
         private readonly IMvxNavigationService _navigationService;
         private readonly IUserDialogs _userDialogs;
 
-        public CategoryViewModel(IMvxNavigationService navigationService, IUserDialogs userDialogs)
+        public CategorySecondViewModel(IMvxNavigationService navigationService, IUserDialogs userDialogs)
         {
             _userDialogs = userDialogs;
             _navigationService = navigationService;
+        }
+
+        public override void Prepare(object parameter)
+        {
+            Id = parameter;
         }
 
         public override async void Start()
@@ -106,24 +109,15 @@ namespace MyApp.ViewModels
 
         #region Property
 
+        public object Id { get; set; }
+
         public List<CategoryModel> Cats { get; set; }
 
         #endregion
 
         #region Events
 
-        public MvxAsyncCommand<object> CategoryTapCommand =>
-            new MvxAsyncCommand<object>(async obj =>
-            {
-                var cardView = (obj as TappedEventArgs)?.Parameter as SfCardView;
-                var cardLayout = cardView?.Parent as SfCardLayout;
 
-                var index = cardLayout?.VisibleCardIndex;
-
-                var item = Cats[index ?? 0];
-
-                await _navigationService.Navigate<CategorySecondViewModel, object>(item.Id);
-            });
 
         #endregion
 
