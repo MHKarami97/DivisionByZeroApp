@@ -65,4 +65,13 @@
       <DependentUpon>RegisterPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Entities\Entities.csproj" />
+    <ProjectReference Include="..\..\ServerConnect\ServerConnect.csproj" />
+  </ItemGroup>
 </Project>

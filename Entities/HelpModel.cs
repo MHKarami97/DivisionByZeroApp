@@ -1,4 +1,4 @@
-﻿namespace MyApp.Models
+﻿namespace Entities
 {
     public class HelpModel
     {

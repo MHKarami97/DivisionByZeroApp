@@ -1,5 +1,5 @@
 ﻿using System;
-using MyApp.Models;
+using Entities;
 using Acr.UserDialogs;
 using MvvmCross.Commands;
 using MvvmCross.Navigation;

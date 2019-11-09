@@ -1,6 +1,6 @@
 ﻿using System;
 using MvvmCross;
-using MyApp.Models;
+using Entities;
 using MyApp.Helpers;
 using Acr.UserDialogs;
 using MvvmCross.Commands;

@@ -1,6 +1,5 @@
 ﻿using System;
 using MvvmCross;
-using MyApp.Models;
 using Xamarin.Forms;
 using MyApp.Helpers;
 using MyApp.Services;
@@ -10,6 +9,7 @@ using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
 using Syncfusion.XForms.Cards;
 using System.Collections.Generic;
+using Entities;
 
 namespace MyApp.ViewModels
 {

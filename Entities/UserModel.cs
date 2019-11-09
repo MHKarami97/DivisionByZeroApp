@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MyApp.Models
+namespace Entities
 {
     public class UserModel
     {
