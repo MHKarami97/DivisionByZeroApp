@@ -6,6 +6,9 @@ using MvvmCross.ViewModels;
 using Plugin.SecureStorage;
 using System.Globalization;
 using MvvmCross.Plugin.Json;
+using MyApp.Rest.Api;
+using MyApp.Rest.Interfaces;
+using MyApp.Rest.Repositories;
 
 namespace MyApp
 {
@@ -23,6 +26,7 @@ namespace MyApp
                 .AsTypes()
                 .RegisterAsLazySingleton();
 
+            Mvx.IoCProvider.RegisterType(typeof(IRepository<,>), typeof(Repository<,>));
             Mvx.IoCProvider.RegisterType<Services.IAppSettings, Services.AppSettings>();
             Mvx.IoCProvider.RegisterType<IMvxJsonConverter, MvxJsonConverter>();
             Mvx.IoCProvider.RegisterSingleton(() => UserDialogs.Instance);

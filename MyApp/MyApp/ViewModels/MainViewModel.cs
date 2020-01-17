@@ -13,6 +13,7 @@ using Plugin.SecureStorage;
 using XF.Material.Forms.UI;
 using Syncfusion.XForms.Cards;
 using System.Collections.Generic;
+using MyApp.Rest.Api;
 using XF.Material.Forms.Resources;
 using XF.Material.Forms.UI.Dialogs;
 using XF.Material.Forms.UI.Dialogs.Configurations;
@@ -227,8 +228,7 @@ namespace MyApp.ViewModels
                 ImageCollection.Add(new CarouselModel("http://loremflickr.com/600/600/nature?filename=simple.jpg"));
                 ImageCollection.Add(new CarouselModel("http://loremflickr.com/600/600/nature?filename=simple.jpg"));
                 ImageCollection.Add(new CarouselModel("http://loremflickr.com/600/600/nature?filename=simple.jpg"));
-                ImageCollection.Add(new CarouselModel("http://loremflickr.com/600/600/nature?filename=simple.jpg"));
-                ImageCollection.Add(new CarouselModel("http://loremflickr.com/600/600/nature?filename=simple.jpg"));
+                ImageCollection.Add(new CarouselModel("http://loremflickr.com/600/600/nature?filename=simple.jpg")); ImageCollection.Add(new CarouselModel("http://loremflickr.com/600/600/nature?filename=simple.jpg"));
 
                 //await MaterialDialog.Instance.SnackbarAsync(message: Mvx.IoCProvider.Resolve<Services.ILocalizeService>().Translate("HelloMessage") + " " + Mvx.IoCProvider.Resolve<Services.ILocalizeService>().Translate("AppName"));
             }

@@ -4,8 +4,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
     x:Class="MyApp.App"
     xmlns:mvx="clr-namespace:MvvmCross.Forms.Core;assembly=MvvmCross.Forms"
-    xmlns:resources="clr-namespace:XF.Material.Forms.Resources;assembly=XF.Material.Forms"
-    xmlns:typography="clr-namespace:XF.Material.Forms.Resources.Typography;assembly=XF.Material.Forms">
+    xmlns:typography="clr-namespace:XF.Material.Forms.Resources.Typography;assembly=XF.Material"
+    xmlns:resources="clr-namespace:XF.Material.Forms.Resources;assembly=XF.Material">
 	<mvx:MvxFormsApplication.Resources>
 		<ResourceDictionary>
 			<Color x:Key="white">#f2f2f2</Color>

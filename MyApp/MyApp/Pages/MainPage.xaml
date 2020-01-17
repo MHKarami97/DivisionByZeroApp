@@ -117,11 +117,12 @@
                                                             <forms:CachedImage
                                                 Aspect="AspectFill"
                                                 HeightRequest="200"
+                                                LoadingPlaceholder="loading.png"
+                                                ErrorPlaceholder="warning.png"
                                                 DownsampleToViewSize="true"
                                                 FadeAnimationEnabled="True"
                                                 Source = "{Binding Image}">
                                                             </forms:CachedImage>
-
                                                         </Grid>
                                                     </ContentView>
                                                 </border:SfBorder>

@@ -3,6 +3,9 @@ using MvvmCross.Commands;
 using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
 using System.Collections.Generic;
+using MyApp.Rest.Api;
+using MyApp.Rest.Entities.Post;
+using MyApp.Rest.Repositories;
 
 namespace MyApp.ViewModels
 {
@@ -27,6 +30,10 @@ namespace MyApp.ViewModels
                 "help",
                 "app"
             };
+
+            var result = await new PostApi(new Repository<Post, int>()).Get();
+
+            var t = result;
         }
 
         #region Property
