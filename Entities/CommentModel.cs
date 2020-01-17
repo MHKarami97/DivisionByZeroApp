@@ -1,12 +1,13 @@
-﻿namespace Entities
+﻿using System;
+using Entities.Common;
+
+namespace Entities
 {
-    public class CommentModel
+    public class CommentModel:BaseEntity
     {
-        public int Id { get; set; }
-        public string Comment { get; set; }
-        public string Time { get; set; }
-        public string Author { get; set; }
-        public string AuthorImage { get; set; }
+        public string Text { get; set; }
+        public DateTime Time { get; set; }
+        public string UserFullName { get; set; }
         public double Star { get; set; }
         public int Like { get; set; }
     }

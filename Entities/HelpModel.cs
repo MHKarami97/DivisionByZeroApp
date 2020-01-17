@@ -1,8 +1,9 @@
-﻿namespace Entities
+﻿using Entities.Common;
+
+namespace Entities
 {
-    public class HelpModel
+    public class HelpModel:BaseEntity
     {
-        public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
     }
