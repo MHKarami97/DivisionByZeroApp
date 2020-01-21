@@ -46,138 +46,118 @@ namespace MyApp.ViewModels
                     blogPost.Add(new PostModel
                     {
                         Id = 1,
-                        Type = 1,
                         Visit = 1,
-                        Title = "this is my blog title in site how you",
+                        Title = "my blog title",
                         Date = DateTime.Now.ToString("d"),
-                        CategoryId = 1,
-                        ShortContent = "short content",
-                        PostAuthor = "email@email.com",
+                        CategoryName = "hjb",
+                        ShortDescription = "short content",
+                        UserFullName = "email@email.com",
                         Image = "logo.png",
-                        CommentStatus = true,
-                        Tags = "hello,tag",
-                        Content = null,
-                        Address = "address",
-                        LanguageId = 1
+                        Description = null,
+                        Address = "address"
                     });
                     blogPost.Add(new PostModel
                     {
                         Id = 2,
-                        Type = 1,
                         Visit = 1,
                         Title = "my blog title",
                         Date = DateTime.Now.ToString("d"),
-                        CategoryId = 1,
-                        ShortContent = "short content",
-                        PostAuthor = "email@email.com",
+                        CategoryName = "hjb",
+                        ShortDescription = "short content",
+                        UserFullName = "email@email.com",
                         Image = "logo.png",
-                        CommentStatus = true,
-                        Tags = "hello,tag",
-                        Content = null,
-                        Address = "address",
-                        LanguageId = 1
+                        Description = null,
+                        Address = "address"
                     });
                     blogPost.Add(new PostModel
                     {
                         Id = 3,
-                        Type = 1,
                         Visit = 1,
                         Title = "my blog title",
                         Date = DateTime.Now.ToString("d"),
-                        CategoryId = 1,
-                        ShortContent = "short content",
-                        PostAuthor = "email@email.com",
+                        CategoryName = "hjb",
+                        ShortDescription = "short content",
+                        UserFullName = "email@email.com",
                         Image = "logo.png",
-                        CommentStatus = true,
-                        Tags = "hello,tag",
-                        Content = null,
-                        Address = "address",
-                        LanguageId = 1
+                        Description = null,
+                        Address = "address"
                     });
                     blogPost.Add(new PostModel
                     {
                         Id = 4,
-                        Type = 1,
                         Visit = 1,
                         Title = "my blog title",
                         Date = DateTime.Now.ToString("d"),
-                        CategoryId = 1,
-                        ShortContent = "short content",
-                        PostAuthor = "email@email.com",
+                        CategoryName = "hjb",
+                        ShortDescription = "short content",
+                        UserFullName = "email@email.com",
                         Image = "logo.png",
-                        CommentStatus = true,
-                        Tags = "hello,tag",
-                        Content = null,
-                        Address = "address",
-                        LanguageId = 1
+                        Description = null,
+                        Address = "address"
                     });
                     blogPost.Add(new PostModel
                     {
                         Id = 5,
-                        Type = 1,
                         Visit = 1,
                         Title = "my blog title",
                         Date = DateTime.Now.ToString("d"),
-                        CategoryId = 1,
-                        ShortContent = "short content",
-                        PostAuthor = "email@email.com",
+                        CategoryName = "hjb",
+                        ShortDescription = "short content",
+                        UserFullName = "email@email.com",
                         Image = "logo.png",
-                        CommentStatus = true,
-                        Tags = "hello,tag",
-                        Content = null,
-                        Address = "address",
-                        LanguageId = 1
+                        Description = null,
+                        Address = "address"
                     });
 
                     cats.Add(new CategoryModel
                     {
                         Id = 1,
-                        Title = "my item"
+                        Name = "my item"
                     });
                     cats.Add(new CategoryModel
                     {
                         Id = 2,
-                        Title = "my item"
+                        Name = "my item"
                     });
                     cats.Add(new CategoryModel
                     {
                         Id = 3,
-                        Title = "my item"
+                        Name = "my item"
                     });
                     cats.Add(new CategoryModel
                     {
                         Id = 4,
-                        Title = "my item"
+                        Name = "my item"
                     });
                     cats.Add(new CategoryModel
                     {
                         Id = 5,
-                        Title = "my item"
+                        Name = "my item"
                     });
                     cats.Add(new CategoryModel
                     {
                         Id = 6,
-                        Title = "my item"
+                        Name = "my item"
                     });
                     cats.Add(new CategoryModel
                     {
                         Id = 7,
-                        Title = "my item"
+                        Name = "my item"
                     });
                     cats.Add(new CategoryModel
                     {
                         Id = 8,
-                        Title = "my item"
+                        Name = "my item"
                     });
                     cats.Add(new CategoryModel
                     {
                         Id = 9,
-                        Title = "my item"
+                        Name = "my item"
                     });
                     cats.Add(new CategoryModel
                     {
                         Id = 10,
-                        Title = "my item"
+                        Name = "my item"
                     });
 
                     banners.Add(new BannerModel

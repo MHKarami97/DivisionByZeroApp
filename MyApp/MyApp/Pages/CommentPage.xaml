@@ -119,7 +119,7 @@
                                                                    HeightRequest="80"
                                                                    DownsampleToViewSize="true"
                                                                    FadeAnimationEnabled="True"
-                                                                   Source = "{Binding AuthorImage}">
+                                                                   Source = "{Binding UserImage}">
                                                 <forms:CachedImage.Transformations>
                                                     <transformations:CircleTransformation />
                                                 </forms:CachedImage.Transformations>
@@ -129,7 +129,7 @@
                                             Grid.Row="0"
                                             Grid.Column="1"
                                             TextColor="{StaticResource black}"
-                                            Text="{Binding Author}"
+                                            Text="{Binding UserFullName}"
                                             FontAttributes="Bold"
                                             HorizontalOptions="StartAndExpand"
                                             VerticalOptions="CenterAndExpand"/>
@@ -159,7 +159,7 @@
                                             Grid.Column="1"
                                             Grid.ColumnSpan="2"
                                             TextColor="{StaticResource black}"
-                                            Text="{Binding Comment}"
+                                            Text="{Binding Text}"
                                             FontSize="16"
                                             Margin="0,-10,0,0"
                                             HorizontalOptions="StartAndExpand"

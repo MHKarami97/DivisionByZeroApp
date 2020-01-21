@@ -12,5 +12,8 @@ namespace Entities
         public string CategoryName { get; set; }
         public string UserFullName { get; set; }
         public string FullTitle { get; set; }
+        public int Like { get; set; }
+        public int Visit { get; set; }
+        public string Date { get; set; }
     }
 }

@@ -116,7 +116,7 @@
                                                    Grid.Row="0"
                                                    Grid.Column="2"
                                                    FontSize="Large"
-                                                   Text="{Binding SinglePost.Comment}"/>
+                                                   Text="{Binding SinglePost.Visit}"/>
 
                                         <BoxView 
                                                      Grid.Row="0"
@@ -169,7 +169,7 @@
                                         HorizontalOptions="StartAndExpand"
                                         FontSize="18"
                                         TextColor="{StaticResource black}"
-                                        Text="{Binding SinglePost.ShortContent}"/>
+                                        Text="{Binding SinglePost.ShortDescription}"/>
                         </StackLayout>
 
                         <StackLayout>
@@ -297,7 +297,7 @@
                                             HorizontalOptions="StartAndExpand"
                                             FontSize="18"
                                             TextColor="{StaticResource black}"
-                                            Text="{Binding SinglePost.Content}"/>
+                                            Text="{Binding SinglePost.Description}"/>
                                     </Grid>
                                 </ContentView>
                             </border:SfBorder>

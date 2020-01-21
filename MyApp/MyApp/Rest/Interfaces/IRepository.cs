@@ -1,25 +1,27 @@
 ﻿using System.Collections.Generic;
-using System.Threading.Tasks;
 using MyApp.Rest.Entities.Common;
+using System.Threading.Tasks;
 using Refit;
 
 namespace MyApp.Rest.Interfaces
 {
-    public interface IRepository<T, in TKey> where T : class
+    public interface IRepository<in TSelect, TReturn, in TKey>
+        where TSelect : class
+        where TReturn : class
     {
         [Get("/{id}")]
-        Task<ApiResult<T>> Get(TKey id);
+        Task<ApiResult<TReturn>> Get(TKey id);
 
         [Get("")]
-        Task<List<ApiResult<T>>> GetAll();
+        Task<ApiResult<List<TReturn>>> GetAll();
 
         [Post("")]
-        Task<ApiResult<T>> Create([Body] T input,[Header("Authorization")] string authorization);
+        Task<ApiResult<TReturn>> Create([Body] TSelect input, [Header("Authorization")] string authorization);
 
         [Put("/{id}")]
-        Task<ApiResult<T>> Update(TKey id, [Body]T input,[Header("Authorization")] string authorization);
+        Task<ApiResult<TReturn>> Update(TKey id, [Body]TSelect input, [Header("Authorization")] string authorization);
 
         [Delete("/{id}")]
-        Task<ApiNullResult> Delete(TKey id,[Header("Authorization")] string authorization);
+        Task<ApiNullResult> Delete(TKey id, [Header("Authorization")] string authorization);
     }
 }

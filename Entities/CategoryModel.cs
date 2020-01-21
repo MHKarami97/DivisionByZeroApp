@@ -6,7 +6,7 @@ namespace Entities
     {
         public string Name { get; set; }
         public int? ParentCategoryId { get; set; }
-
         public string ParentCategoryName { get; set; }
+        public string Image { get; set; }
     }
 }

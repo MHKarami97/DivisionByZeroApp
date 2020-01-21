@@ -25,11 +25,11 @@ namespace MyApp.ViewModels
             User = new UserModel
             {
                 PhoneNumber = "9390709197",
-                Name = "ali",
-                LastName = "mohammadi",
+                FullName = "ali",
                 Email = "mhkarami1997@gmail.com",
-                BirthDay = DateTime.Now.Date,
-                NationalCode = 123445
+                Birthday = DateTime.Now.Date,
+                Gender = GenderType.Male,
+                UserName = "mhkarami1997"
             };
         }
 

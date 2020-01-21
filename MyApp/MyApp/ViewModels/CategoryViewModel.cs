@@ -35,61 +35,61 @@ namespace MyApp.ViewModels
                     cats.Add(new CategoryModel
                     {
                         Id = 1,
-                        Title = "my item",
+                        Name = "my item",
                         Image = "http://loremflickr.com/600/600/nature?filename=simple.jpg"
                     });
                     cats.Add(new CategoryModel
                     {
                         Id = 2,
-                        Title = "my item",
+                        Name = "my item",
                         Image = "http://loremflickr.com/600/600/nature?filename=simple.jpg"
                     });
                     cats.Add(new CategoryModel
                     {
                         Id = 3,
-                        Title = "my item",
+                        Name = "my item",
                         Image = "http://loremflickr.com/600/600/nature?filename=simple.jpg"
                     });
                     cats.Add(new CategoryModel
                     {
                         Id = 4,
-                        Title = "my item",
+                        Name = "my item",
                         Image = "http://loremflickr.com/600/600/nature?filename=simple.jpg"
                     });
                     cats.Add(new CategoryModel
                     {
                         Id = 5,
-                        Title = "my item",
+                        Name = "my item",
                         Image = "http://loremflickr.com/600/600/nature?filename=simple.jpg"
                     });
                     cats.Add(new CategoryModel
                     {
                         Id = 6,
-                        Title = "my item",
+                        Name = "my item",
                         Image = "http://loremflickr.com/600/600/nature?filename=simple.jpg"
                     });
                     cats.Add(new CategoryModel
                     {
                         Id = 7,
-                        Title = "my item",
+                        Name = "my item",
                         Image = "http://loremflickr.com/600/600/nature?filename=simple.jpg"
                     });
                     cats.Add(new CategoryModel
                     {
                         Id = 8,
-                        Title = "my item",
+                        Name = "my item",
                         Image = "http://loremflickr.com/600/600/nature?filename=simple.jpg"
                     });
                     cats.Add(new CategoryModel
                     {
                         Id = 9,
-                        Title = "my item",
+                        Name = "my item",
                         Image = "http://loremflickr.com/600/600/nature?filename=simple.jpg"
                     });
                     cats.Add(new CategoryModel
                     {
                         Id = 10,
-                        Title = "my item",
+                        Name = "my item",
                         Image = "http://loremflickr.com/600/600/nature?filename=simple.jpg"
                     });
                 }

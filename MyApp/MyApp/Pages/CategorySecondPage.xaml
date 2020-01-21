@@ -110,7 +110,7 @@
                                                 <Label 
                                                     HorizontalOptions="StartAndExpand"
                                                     VerticalOptions="EndAndExpand"
-                                                    Text="{Binding Title}"
+                                                    Text="{Binding Name}"
                                                     TextColor="{StaticResource white}"
                                                     Margin="10"
                                                     Grid.Row="0"

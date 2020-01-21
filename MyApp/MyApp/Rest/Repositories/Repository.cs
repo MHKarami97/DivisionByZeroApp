@@ -3,13 +3,15 @@ using Refit;
 
 namespace MyApp.Rest.Repositories
 {
-    public class Repository<T, TKey> where T : class
+    public class Repository<TSelect, TReturn, TKey>
+        where TSelect : class
+        where TReturn : class
     {
-        private const string BaseUrl = "https://localhost:44339/api/v1/";
+        private const string BaseUrl = "http://95.216.12.8:82/api/v1/";
 
-        public IRepository<T, TKey> Get(string address)
+        public IRepository<TSelect, TReturn, TKey> Get(string address)
         {
-            return RestService.For<IRepository<T, TKey>>(BaseUrl + address);
+            return RestService.For<IRepository<TSelect, TReturn, TKey>>(BaseUrl + address);
         }
     }
 }

@@ -5,7 +5,6 @@ using MvvmCross.ViewModels;
 using System.Collections.Generic;
 using MyApp.Rest.Api;
 using MyApp.Rest.Entities.Post;
-using MyApp.Rest.Repositories;
 
 namespace MyApp.ViewModels
 {
@@ -31,7 +30,7 @@ namespace MyApp.ViewModels
                 "app"
             };
 
-            var result = await new PostApi(new Repository<Post, int>()).Get();
+            var result = await new Api<Post, Post, int>("post").GetAll();
 
             var t = result;
         }

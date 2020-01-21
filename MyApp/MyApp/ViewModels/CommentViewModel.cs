@@ -34,45 +34,45 @@ namespace MyApp.ViewModels
                     comm.Add(new CommentModel
                     {
                         Id = 1,
-                        Author = "Mohammad",
-                        AuthorImage = "http://loremflickr.com/600/600/nature?filename=simple.jpg",
+                        UserFullName = "Mohammad",
+                        UserImage = "http://loremflickr.com/600/600/nature?filename=simple.jpg",
                         Like = 2,
                         Star = 4,
                         Time = DateTime.Now.ToString("MMMM"),
-                        Comment = "hello, this is my comment"
+                        Text = "hello, this is my comment"
                     });
 
                     comm.Add(new CommentModel
                     {
                         Id = 2,
-                        Author = "Ali",
-                        AuthorImage = "http://loremflickr.com/600/600/nature?filename=simple.jpg",
-                        Like = 6,
-                        Star = 5,
+                        UserFullName = "Mohammad",
+                        UserImage = "http://loremflickr.com/600/600/nature?filename=simple.jpg",
+                        Like = 2,
+                        Star = 4,
                         Time = DateTime.Now.ToString("MMMM"),
-                        Comment = "the best post in the world"
+                        Text = "hello, this is my comment"
                     });
 
                     comm.Add(new CommentModel
                     {
                         Id = 3,
-                        Author = "Hossein",
-                        AuthorImage = "http://loremflickr.com/600/600/nature?filename=simple.jpg",
-                        Like = 22,
-                        Star = 4.4,
+                        UserFullName = "Mohammad",
+                        UserImage = "http://loremflickr.com/600/600/nature?filename=simple.jpg",
+                        Like = 2,
+                        Star = 4,
                         Time = DateTime.Now.ToString("MMMM"),
-                        Comment = "very good post about what we do in the weekend"
+                        Text = "hello, this is my comment"
                     });
 
                     comm.Add(new CommentModel
                     {
                         Id = 4,
-                        Author = "Maraym",
-                        AuthorImage = "http://loremflickr.com/600/600/nature?filename=simple.jpg",
-                        Like = 8,
-                        Star = 2.5,
+                        UserFullName = "Mohammad",
+                        UserImage = "http://loremflickr.com/600/600/nature?filename=simple.jpg",
+                        Like = 2,
+                        Star = 4,
                         Time = DateTime.Now.ToString("MMMM"),
-                        Comment = "Thank you about this post"
+                        Text = "hello, this is my comment"
                     });
                 }
 

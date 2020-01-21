@@ -1,8 +1,9 @@
-﻿using Entities.Common;
+﻿using System;
+using Entities.Common;
 
-namespace MyApp.Rest.Entities.Post
+namespace Entities
 {
-    public class Post : BaseEntity
+    public class PostShortModel : BaseEntity
     {
         public string Title { get; set; }
         public string Description { get; set; }

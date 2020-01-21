@@ -38,26 +38,22 @@ namespace MyApp.ViewModels
                         Id = 1,
                         Image = "http://loremflickr.com/600/600/nature?filename=simple.jpg",
                         Title = "title of post",
-                        CommentStatus = true,
-                        PostAuthor = "ali",
-                        Date = DateTime.Now.ToString("d"),
-                        ShortContent = "short content of post",
-                        Visit = 20,
-                        Tags = "new,blog,comment",
-                        Content = "this is my post \n how are you? \n is this page good?"
-                              + "this is my post \n how are you? \n is this page good?"
-                              + "this is my post \n how are you? \n is this page good?"
-                              + "this is my post \n how are you? \n is this page good?"
-                              + "this is my post \n how are you? \n is this page good?"
-                              + "this is my post \n how are you? \n is this page good?"
-                              + "this is my post \n how are you? \n is this page good?"
-                              + "this is my post \n how are you? \n is this page good?",
-                        CategoryId = 2,
+                        ShortDescription = "short content of post",
+                        Description = "this is my post \n how are you? \n is this page good?"
+                                      + "this is my post \n how are you? \n is this page good?"
+                                      + "this is my post \n how are you? \n is this page good?"
+                                      + "this is my post \n how are you? \n is this page good?"
+                                      + "this is my post \n how are you? \n is this page good?"
+                                      + "this is my post \n how are you? \n is this page good?"
+                                      + "this is my post \n how are you? \n is this page good?"
+                                      + "this is my post \n how are you? \n is this page good?",
                         Address = "post",
-                        LanguageId = 1,
-                        Type = 1,
-                        Like = 20,
-                        Comment = 400
+                        FullTitle = "bjbj",
+                        CategoryName = "jnj",
+                        UserFullName = "jnknk",
+                        Date = "fdc",
+                        Like = 1,
+                        Visit = 1
                     };
 
                     var similars = new List<PostShortModel>
