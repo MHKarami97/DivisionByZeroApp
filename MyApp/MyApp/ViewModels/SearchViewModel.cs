@@ -12,11 +12,13 @@ namespace MyApp.ViewModels
     {
         private readonly IMvxNavigationService _navigationService;
         private readonly IUserDialogs _userDialogs;
+        private Api<Post, Post, int> _api;
 
         public SearchViewModel(IMvxNavigationService navigationService, IUserDialogs userDialogs)
         {
             _navigationService = navigationService;
             _userDialogs = userDialogs;
+            _api = new Api<Post, Post, int>("post");
         }
 
         public override async void Start()
@@ -30,9 +32,7 @@ namespace MyApp.ViewModels
                 "app"
             };
 
-            var result = await new Api<Post, Post, int>("post").GetAll();
-
-            var t = result;
+            var result = await _api.GetAll();
         }
 
         #region Property

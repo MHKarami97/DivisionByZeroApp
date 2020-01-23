@@ -1,7 +1,6 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using MvvmCross;
 using MyApp.Helpers;
-using Xamarin.Forms;
 using MyApp.Services;
 using Xamarin.Essentials;
 using MvvmCross.Commands;
@@ -18,7 +17,7 @@ namespace MyApp.ViewModels
         {
             _navigationService = navigationService;
 
-            Version = Mvx.IoCProvider.Resolve<ILocalizeService>().Translate("Version")+" " + VersionTracking.CurrentVersion;
+            Version = Mvx.IoCProvider.Resolve<ILocalizeService>().Translate("Version") + " " + VersionTracking.CurrentVersion;
         }
 
         #region Property
@@ -44,13 +43,25 @@ namespace MyApp.ViewModels
         public IMvxCommand CallByPhoneCommand =>
             new MvxCommand(() =>
             {
-                Device.OpenUri(new Uri("tel://989390709197"));
+                PhoneDialer.Open(989390709197.ToString());
+
+                //Device.OpenUri(new Uri("tel://989390709197"));
             });
 
-        public IMvxCommand CallByEmailCommand =>
-            new MvxCommand(() =>
+        public IMvxAsyncCommand CallByEmailCommand =>
+            new MvxAsyncCommand(async () =>
             {
-                Device.OpenUri(new Uri("mailto:mhkarami1997@gmail.com"));
+                var message = new EmailMessage
+                {
+                    Subject = "contact us",
+                    Body = "hello",
+                    To = new List<string> { "mhkarami1997@gmail.com" },
+                    //Cc = ccRecipients,
+                    //Bcc = bccRecipients
+                };
+                await Email.ComposeAsync(message);
+
+                //Device.OpenUri(new Uri("mailto:mhkarami1997@gmail.com"));
             });
 
         #endregion
