@@ -10,6 +10,7 @@ using MvvmCross.ViewModels;
 using Syncfusion.XForms.Cards;
 using System.Collections.Generic;
 using Entities;
+using MyApp.Rest.Api.Custom;
 
 namespace MyApp.ViewModels
 {
@@ -17,16 +18,18 @@ namespace MyApp.ViewModels
     {
         private readonly IMvxNavigationService _navigationService;
         private readonly IUserDialogs _userDialogs;
+        private PostApi<PostModel> _api;
 
-        public CategoryPostsViewModel(IMvxNavigationService navigationService, IUserDialogs userDialogs)
+        public CategoryPostsViewModel(IMvxNavigationService navigationService, IUserDialogs userDialogs, PostApi<PostModel> api)
         {
             _userDialogs = userDialogs;
+            _api = api;
             _navigationService = navigationService;
         }
 
         public override void Prepare(object parameter)
         {
-            Id = parameter;
+            Id = Convert.ToInt32(parameter);
         }
 
         public override async void Start()
@@ -35,65 +38,9 @@ namespace MyApp.ViewModels
             {
                 using (_userDialogs.Loading("Loading"))
                 {
-                    var posts = new List<PostShortModel>
-                     {
-                        new PostShortModel
-                        {
-                            Id = 1,
-                            Like = 2,
-                            Visit = 3,
-                            Title = "Post title",
-                            Date = DateTime.Now.ToString("d"),
-                            Image = "http://loremflickr.com/600/600/nature?filename=simple.jpg"
-                        },
-                        new PostShortModel
-                        {
-                            Id = 2,
-                            Like = 5,
-                            Visit = 6,
-                            Title = "My post title",
-                            Date = DateTime.Now.ToString("d"),
-                            Image = "http://loremflickr.com/600/600/nature?filename=simple.jpg"
-                        },
-                        new PostShortModel
-                        {
-                            Id = 3,
-                            Like = 2,
-                            Visit = 3,
-                            Title = "this is title of post",
-                            Date = DateTime.Now.ToString("d"),
-                            Image = "http://loremflickr.com/600/600/nature?filename=simple.jpg"
-                        },
-                        new PostShortModel
-                        {
-                            Id = 4,
-                            Like = 2,
-                            Visit = 3,
-                            Title = "Post title",
-                            Date = DateTime.Now.ToString("d"),
-                            Image = "http://loremflickr.com/600/600/nature?filename=simple.jpg"
-                        },
-                        new PostShortModel
-                        {
-                            Id = 5,
-                            Like = 2,
-                            Visit = 3,
-                            Title = "Post title",
-                            Date = DateTime.Now.ToString("d"),
-                            Image = "http://loremflickr.com/600/600/nature?filename=simple.jpg"
-                        },
-                        new PostShortModel
-                        {
-                            Id = 6,
-                            Like = 2,
-                            Visit = 3,
-                            Title = "Post title",
-                            Date = DateTime.Now.ToString("d"),
-                            Image = "http://loremflickr.com/600/600/nature?filename=simple.jpg"
-                        }
-                };
+                    var result = await _api.GetAllByCatId(Id);
 
-                    Posts = posts;
+                    Posts = result.Data;
                 }
             }
             catch (Exception e)
@@ -106,9 +53,9 @@ namespace MyApp.ViewModels
 
         #region Property
 
-        public object Id { get; set; }
+        public int Id { get; set; }
 
-        public List<PostShortModel> Posts { get; set; }
+        public List<PostModel> Posts { get; set; }
 
         #endregion
 

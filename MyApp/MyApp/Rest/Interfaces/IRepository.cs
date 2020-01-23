@@ -8,6 +8,7 @@ namespace MyApp.Rest.Interfaces
     public interface IRepository<in TSelect, TReturn, in TKey>
         where TSelect : class
         where TReturn : class
+        where TKey : struct
     {
         [Get("/{id}")]
         Task<ApiResult<TReturn>> Get(TKey id);

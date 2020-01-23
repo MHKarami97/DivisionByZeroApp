@@ -6,10 +6,11 @@ namespace MyApp.Rest.Repositories
     public class Repository<TSelect, TReturn, TKey>
         where TSelect : class
         where TReturn : class
+        where TKey : struct
     {
-        private const string BaseUrl = "http://95.216.12.8:82/api/v1/";
+        protected const string BaseUrl = "http://95.216.12.8:82/api/v1/";
 
-        public IRepository<TSelect, TReturn, TKey> Get(string address)
+        public virtual IRepository<TSelect, TReturn, TKey> Get(string address)
         {
             return RestService.For<IRepository<TSelect, TReturn, TKey>>(BaseUrl + address);
         }
