@@ -6,26 +6,25 @@ using MyApp.Rest.Repositories.Custom;
 
 namespace MyApp.Rest.Api.Custom
 {
-    public abstract class CommentApi<TSelect, TReturn, TKey> : Api<TSelect, TReturn, TKey>
+    public class SearchApi<TSelect, TReturn, TKey> : Api<TSelect, TReturn, TKey>
         where TSelect : BaseEntity<TKey>, new()
         where TReturn : BaseEntity<TKey>, new()
-        where TKey : struct
     {
-        private readonly CommentRepository<TSelect, TReturn, TKey> _repository;
+        private readonly SearchRepository<TSelect, TReturn, TKey> _repository;
 
-        public CommentApi(string witch, string authorization = null)
+        public SearchApi(string witch, string authorization = null)
             : base(witch, authorization)
         {
-            _repository = new CommentRepository<TSelect, TReturn, TKey>();
+            _repository = new SearchRepository<TSelect, TReturn, TKey>();
         }
 
-        public async Task<ApiResult<List<TReturn>>> GetAllByPostId(TKey id)
+        public async Task<ApiResult<List<TReturn>>> Search(TKey str)
         {
             ApiResult<List<TReturn>> results = null;
 
-            var apiService = _repository.GetPost(Address + "/" + nameof(GetAllByPostId));
+            var apiService = _repository.GetPost(Address + "/" + nameof(Search));
 
-            await apiService.GetAllByPostId(id)
+            await apiService.Search(str)
                 .ContinueWith(result =>
                 {
                     if (result.IsCompleted && result.Status == TaskStatus.RanToCompletion)
@@ -47,21 +46,20 @@ namespace MyApp.Rest.Api.Custom
         }
     }
 
-    public class CommentApi<TSelect, TKey> : CommentApi<TSelect, TSelect, TKey>
+    public class SearchApi<TSelect, TKey> : SearchApi<TSelect, TSelect, TKey>
         where TSelect : BaseEntity<TKey>, new()
-        where TKey : struct
     {
-        public CommentApi(string witch, string authorization = null)
+        public SearchApi(string witch, string authorization = null)
             : base(witch, authorization)
         {
 
         }
     }
 
-    public class CommentApi<TSelect> : CommentApi<TSelect, TSelect, int>
+    public class SearchApi<TSelect> : SearchApi<TSelect, TSelect, int>
         where TSelect : BaseEntity<int>, new()
     {
-        public CommentApi(string witch, string authorization = null)
+        public SearchApi(string witch, string authorization = null)
             : base(witch, authorization)
         {
 

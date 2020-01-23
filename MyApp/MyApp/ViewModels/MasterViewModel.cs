@@ -36,12 +36,12 @@ namespace MyApp.ViewModels
                 {
                     var menuItems = new MvxObservableCollection<MenuItemModel>
                     {
-                        new MenuItemModel{Id = 1,Title = Mvx.IoCProvider.Resolve<Services.ILocalizeService>().Translate("Login"), Icon = "avatarblack.png",Target = "Login"},
-                        new MenuItemModel{Id = 2,Title = Mvx.IoCProvider.Resolve<Services.ILocalizeService>().Translate("Category"), Icon = "backend.png",Target = "Category"},
-                        new MenuItemModel{Id = 3,Title = Mvx.IoCProvider.Resolve<Services.ILocalizeService>().Translate("About"), Icon = "information.png",Target = "About"},
-                        new MenuItemModel{Id = 4,Title = Mvx.IoCProvider.Resolve<Services.ILocalizeService>().Translate("Help"), Icon = "help.png",Target = "Help"},
-                        new MenuItemModel{Id = 5,Title = Mvx.IoCProvider.Resolve<Services.ILocalizeService>().Translate("Share"), Icon = "share.png",Target = "Share"},
-                        new MenuItemModel{Id = 6,Title = Mvx.IoCProvider.Resolve<Services.ILocalizeService>().Translate("Exit"), Icon = "logout.png",Target = "Exit"}
+                        new MenuItemModel{Id = 1,Title = Mvx.IoCProvider.Resolve<ILocalizeService>().Translate("Login"), Icon = "avatarblack.png",Target = "Login"},
+                        new MenuItemModel{Id = 2,Title = Mvx.IoCProvider.Resolve<ILocalizeService>().Translate("Category"), Icon = "backend.png",Target = "Category"},
+                        new MenuItemModel{Id = 3,Title = Mvx.IoCProvider.Resolve<ILocalizeService>().Translate("About"), Icon = "information.png",Target = "About"},
+                        new MenuItemModel{Id = 4,Title = Mvx.IoCProvider.Resolve<ILocalizeService>().Translate("Help"), Icon = "help.png",Target = "Help"},
+                        new MenuItemModel{Id = 5,Title = Mvx.IoCProvider.Resolve<ILocalizeService>().Translate("Share"), Icon = "share.png",Target = "Share"},
+                        new MenuItemModel{Id = 6,Title = Mvx.IoCProvider.Resolve<ILocalizeService>().Translate("Exit"), Icon = "logout.png",Target = "Exit"}
                     };
 
                     MenuItemList = menuItems;
@@ -50,13 +50,13 @@ namespace MyApp.ViewModels
                 {
                     var menuItems = new MvxObservableCollection<MenuItemModel>
                     {
-                        new MenuItemModel{Id = 1,Title = Mvx.IoCProvider.Resolve<Services.ILocalizeService>().Translate("Account"), Icon = "avatarblack.png",Target = "Profile"},
-                        new MenuItemModel{Id = 2,Title = Mvx.IoCProvider.Resolve<Services.ILocalizeService>().Translate("Category"), Icon = "backend.png",Target = "Category"},
-                        new MenuItemModel{Id = 3,Title = Mvx.IoCProvider.Resolve<Services.ILocalizeService>().Translate("About"), Icon = "information.png",Target = "About"},
-                        new MenuItemModel{Id = 4,Title = Mvx.IoCProvider.Resolve<Services.ILocalizeService>().Translate("Help"), Icon = "help.png",Target = "Help"},
-                        new MenuItemModel{Id = 5,Title = Mvx.IoCProvider.Resolve<Services.ILocalizeService>().Translate("Share"), Icon = "share.png",Target = "Share"},
-                        new MenuItemModel{Id = 6,Title = Mvx.IoCProvider.Resolve<Services.ILocalizeService>().Translate("LogOut"), Icon = "exit.png",Target = "LogOut"},
-                        new MenuItemModel{Id = 7,Title = Mvx.IoCProvider.Resolve<Services.ILocalizeService>().Translate("Exit"), Icon = "logout.png",Target = "Exit"}
+                        new MenuItemModel{Id = 1,Title = Mvx.IoCProvider.Resolve<ILocalizeService>().Translate("Account"), Icon = "avatarblack.png",Target = "Profile"},
+                        new MenuItemModel{Id = 2,Title = Mvx.IoCProvider.Resolve<ILocalizeService>().Translate("Category"), Icon = "backend.png",Target = "Category"},
+                        new MenuItemModel{Id = 3,Title = Mvx.IoCProvider.Resolve<ILocalizeService>().Translate("About"), Icon = "information.png",Target = "About"},
+                        new MenuItemModel{Id = 4,Title = Mvx.IoCProvider.Resolve<ILocalizeService>().Translate("Help"), Icon = "help.png",Target = "Help"},
+                        new MenuItemModel{Id = 5,Title = Mvx.IoCProvider.Resolve<ILocalizeService>().Translate("Share"), Icon = "share.png",Target = "Share"},
+                        new MenuItemModel{Id = 6,Title = Mvx.IoCProvider.Resolve<ILocalizeService>().Translate("LogOut"), Icon = "exit.png",Target = "LogOut"},
+                        new MenuItemModel{Id = 7,Title = Mvx.IoCProvider.Resolve<ILocalizeService>().Translate("Exit"), Icon = "logout.png",Target = "Exit"}
                     };
 
                     MenuItemList = menuItems;
@@ -64,7 +64,7 @@ namespace MyApp.ViewModels
             }
             catch (Exception)
             {
-                await _userDialogs.AlertAsync(Mvx.IoCProvider.Resolve<ILocalizeService>().Translate("Error"), Mvx.IoCProvider.Resolve<Services.ILocalizeService>().Translate("Error"), Mvx.IoCProvider.Resolve<Services.ILocalizeService>().Translate("Ok"));
+                await _userDialogs.AlertAsync(Mvx.IoCProvider.Resolve<ILocalizeService>().Translate("Error"), Mvx.IoCProvider.Resolve<ILocalizeService>().Translate("Error"), Mvx.IoCProvider.Resolve<ILocalizeService>().Translate("Ok"));
             }
         }
 
@@ -138,8 +138,8 @@ namespace MyApp.ViewModels
                 case "Share":
                     await Share.RequestAsync(new ShareTextRequest
                     {
-                        Text = Mvx.IoCProvider.Resolve<Services.ILocalizeService>().Translate("ShareText"),
-                        Title = Mvx.IoCProvider.Resolve<Services.ILocalizeService>().Translate("AppName")
+                        Text = Mvx.IoCProvider.Resolve<ILocalizeService>().Translate("ShareText"),
+                        Title = Mvx.IoCProvider.Resolve<ILocalizeService>().Translate("AppName")
                     });
                     break;
 

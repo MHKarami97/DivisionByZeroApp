@@ -18,11 +18,11 @@ namespace MyApp.ViewModels
         private readonly IUserDialogs _userDialogs;
         private readonly CommentApi<CommentModel> _api;
 
-        public CommentViewModel(IMvxNavigationService navigationService, IUserDialogs userDialogs, CommentApi<CommentModel> api)
+        public CommentViewModel(IMvxNavigationService navigationService, IUserDialogs userDialogs)
         {
-            _navigationService = navigationService;
             _userDialogs = userDialogs;
-            _api = api;
+            _navigationService = navigationService;
+            _api = new CommentApi<CommentModel>("comment");
         }
 
         public override void Prepare(object parameter)

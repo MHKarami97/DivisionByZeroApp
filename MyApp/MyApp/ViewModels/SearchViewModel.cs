@@ -3,8 +3,9 @@ using MvvmCross.Commands;
 using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
 using System.Collections.Generic;
+using Entities;
 using MyApp.Rest.Api;
-using MyApp.Rest.Entities.Post;
+using MyApp.Rest.Api.Custom;
 
 namespace MyApp.ViewModels
 {
@@ -12,13 +13,13 @@ namespace MyApp.ViewModels
     {
         private readonly IMvxNavigationService _navigationService;
         private readonly IUserDialogs _userDialogs;
-        private Api<Post, Post, int> _api;
+        private readonly SearchApi<SearchModel, SearchModel, string> _api;
 
         public SearchViewModel(IMvxNavigationService navigationService, IUserDialogs userDialogs)
         {
             _navigationService = navigationService;
             _userDialogs = userDialogs;
-            _api = new Api<Post, Post, int>("post");
+            _api = new SearchApi<SearchModel, SearchModel, string>("search");
         }
 
         public override async void Start()
@@ -32,12 +33,14 @@ namespace MyApp.ViewModels
                 "app"
             };
 
-            var result = await _api.GetAll();
+            var result = await _api.Search(SearchText);
         }
 
         #region Property
 
         public List<string> SearchDataSource { get; set; }
+
+        public string SearchText { get; set; }
 
         #endregion
 

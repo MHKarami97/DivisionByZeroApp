@@ -1,14 +1,14 @@
 ﻿using System.Threading.Tasks;
 using MyApp.Rest.Repositories;
 using System.Collections.Generic;
+using Entities.Common;
 using MyApp.Rest.Entities.Common;
 
 namespace MyApp.Rest.Api
 {
     public class Api<TSelect, TReturn, TKey>
-        where TSelect : class
-        where TReturn : class
-        where TKey : struct
+        where TSelect : BaseEntity<TKey>, new()
+        where TReturn : BaseEntity<TKey>, new()
     {
         protected readonly string Address;
         protected readonly string Authorization;
@@ -158,8 +158,7 @@ namespace MyApp.Rest.Api
     }
 
     public class Api<TSelect, TKey> : Api<TSelect, TSelect, TKey>
-        where TSelect : class
-        where TKey : struct
+        where TSelect : BaseEntity<TKey>, new()
     {
         public Api(string witch, string authorization = null)
             : base(witch, authorization)
@@ -169,7 +168,7 @@ namespace MyApp.Rest.Api
     }
 
     public class Api<TSelect> : Api<TSelect, TSelect, int>
-        where TSelect : class
+        where TSelect : BaseEntity<int>, new()
     {
         public Api(string witch, string authorization = null)
             : base(witch, authorization)

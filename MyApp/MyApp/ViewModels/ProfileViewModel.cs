@@ -6,7 +6,9 @@ using Acr.UserDialogs;
 using MvvmCross.Commands;
 using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
+using MyApp.Rest.Api;
 using MyApp.Services;
+using Plugin.SecureStorage;
 
 namespace MyApp.ViewModels
 {
@@ -14,24 +16,36 @@ namespace MyApp.ViewModels
     {
         private readonly IMvxNavigationService _navigationService;
         private readonly IUserDialogs _userDialogs;
+        private readonly Api<UserModel> _api;
 
         public ProfileViewModel(IMvxNavigationService navigationService, IUserDialogs userDialogs)
         {
             _navigationService = navigationService;
             _userDialogs = userDialogs;
+            _api = new Api<UserModel>("user");
         }
 
         public override async void Start()
         {
-            User = new UserModel
+            try
             {
-                PhoneNumber = "9390709197",
-                FullName = "ali",
-                Email = "mhkarami1997@gmail.com",
-                Birthday = DateTime.Now.Date,
-                Gender = GenderType.Male,
-                UserName = "mhkarami1997"
-            };
+                var userId = CrossSecureStorage.Current.GetValue("userId");
+
+                if (string.IsNullOrEmpty(userId))
+                    await _navigationService.Navigate<LoginViewModel>();
+
+
+                using (_userDialogs.Loading("Loading"))
+                {
+                    var result = await _api.Get(Convert.ToInt32(userId));
+
+                    User = result.Data;
+                }
+            }
+            catch (Exception)
+            {
+                await _userDialogs.AlertAsync(Mvx.IoCProvider.Resolve<ILocalizeService>().Translate("Error"), Mvx.IoCProvider.Resolve<ILocalizeService>().Translate("Error"), Mvx.IoCProvider.Resolve<ILocalizeService>().Translate("Ok"));
+            }
         }
 
         #region Property
@@ -51,7 +65,7 @@ namespace MyApp.ViewModels
                 }
                 catch (Exception)
                 {
-                    await _userDialogs.AlertAsync(Mvx.IoCProvider.Resolve<ILocalizeService>().Translate("Error"), Mvx.IoCProvider.Resolve<Services.ILocalizeService>().Translate("Error"), Mvx.IoCProvider.Resolve<Services.ILocalizeService>().Translate("Ok"));
+                    await _userDialogs.AlertAsync(Mvx.IoCProvider.Resolve<ILocalizeService>().Translate("Error"), Mvx.IoCProvider.Resolve<ILocalizeService>().Translate("Error"), Mvx.IoCProvider.Resolve<ILocalizeService>().Translate("Ok"));
                 }
             });
 

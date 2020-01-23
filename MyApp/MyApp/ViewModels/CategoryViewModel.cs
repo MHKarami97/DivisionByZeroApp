@@ -20,11 +20,11 @@ namespace MyApp.ViewModels
         private readonly IUserDialogs _userDialogs;
         private readonly CategoryApi<CategoryModel> _api;
 
-        public CategoryViewModel(IMvxNavigationService navigationService, IUserDialogs userDialogs, CategoryApi<CategoryModel> api)
+        public CategoryViewModel(IMvxNavigationService navigationService, IUserDialogs userDialogs)
         {
             _userDialogs = userDialogs;
-            _api = api;
             _navigationService = navigationService;
+            _api = new CategoryApi<CategoryModel>("category");
         }
 
         public override async void Start()

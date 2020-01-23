@@ -20,11 +20,11 @@ namespace MyApp.ViewModels
         private readonly IUserDialogs _userDialogs;
         private readonly PostApi<PostModel> _api;
 
-        public CategoryPostsViewModel(IMvxNavigationService navigationService, IUserDialogs userDialogs, PostApi<PostModel> api)
+        public CategoryPostsViewModel(IMvxNavigationService navigationService, IUserDialogs userDialogs)
         {
-            _api = api;
             _userDialogs = userDialogs;
             _navigationService = navigationService;
+            _api = new PostApi<PostModel>("post");
         }
 
         public override void Prepare(object parameter)

@@ -1,18 +1,19 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using Entities.Common;
 using MyApp.Rest.Entities.Common;
 using MyApp.Rest.Repositories.Custom;
 
 namespace MyApp.Rest.Api.Custom
 {
     public abstract class CategoryApi<TSelect, TReturn, TKey> : Api<TSelect, TReturn, TKey>
-        where TSelect : class
-        where TReturn : class
+        where TSelect : BaseEntity<TKey>, new()
+        where TReturn : BaseEntity<TKey>, new()
         where TKey : struct
     {
         private readonly CategoryRepository<TSelect, TReturn, TKey> _repository;
 
-        protected CategoryApi(string witch, string authorization = null)
+        public CategoryApi(string witch, string authorization = null)
             : base(witch, authorization)
         {
             _repository = new CategoryRepository<TSelect, TReturn, TKey>();
@@ -74,7 +75,7 @@ namespace MyApp.Rest.Api.Custom
     }
 
     public class CategoryApi<TSelect, TKey> : CategoryApi<TSelect, TSelect, TKey>
-        where TSelect : class
+        where TSelect : BaseEntity<TKey>, new()
         where TKey : struct
     {
         public CategoryApi(string witch, string authorization = null)
@@ -85,7 +86,7 @@ namespace MyApp.Rest.Api.Custom
     }
 
     public class CategoryApi<TSelect> : CategoryApi<TSelect, TSelect, int>
-        where TSelect : class
+        where TSelect : BaseEntity<int>, new()
     {
         public CategoryApi(string witch, string authorization = null)
             : base(witch, authorization)

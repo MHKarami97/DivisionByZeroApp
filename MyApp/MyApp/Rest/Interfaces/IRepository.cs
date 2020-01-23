@@ -1,14 +1,14 @@
 ﻿using System.Collections.Generic;
 using MyApp.Rest.Entities.Common;
 using System.Threading.Tasks;
+using Entities.Common;
 using Refit;
 
 namespace MyApp.Rest.Interfaces
 {
     public interface IRepository<in TSelect, TReturn, in TKey>
-        where TSelect : class
-        where TReturn : class
-        where TKey : struct
+        where TSelect : BaseEntity<TKey>, new()
+        where TReturn : BaseEntity<TKey>, new()
     {
         [Get("/{id}")]
         Task<ApiResult<TReturn>> Get(TKey id);

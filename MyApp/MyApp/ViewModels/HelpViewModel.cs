@@ -14,10 +14,10 @@ namespace MyApp.ViewModels
         private readonly IUserDialogs _userDialogs;
         private readonly Api<HelpModel> _api;
 
-        public HelpViewModel(IMvxNavigationService navigationService, IUserDialogs userDialogs, Api<HelpModel> api)
+        public HelpViewModel(IMvxNavigationService navigationService, IUserDialogs userDialogs)
         {
             _userDialogs = userDialogs;
-            _api = api;
+            _api = new Api<HelpModel>("help");
             _navigationService = navigationService;
         }
 

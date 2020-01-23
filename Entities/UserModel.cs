@@ -1,8 +1,9 @@
 ﻿using System;
+using Entities.Common;
 
 namespace Entities
 {
-    public class UserModel
+    public class UserModel : BaseEntity
     {
         public string UserName { get; set; }
         public string Email { get; set; }
