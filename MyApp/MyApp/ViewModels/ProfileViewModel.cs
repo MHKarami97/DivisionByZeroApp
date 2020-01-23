@@ -6,6 +6,7 @@ using Acr.UserDialogs;
 using MvvmCross.Commands;
 using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
+using MyApp.Services;
 
 namespace MyApp.ViewModels
 {
@@ -50,7 +51,7 @@ namespace MyApp.ViewModels
                 }
                 catch (Exception e)
                 {
-                    await _userDialogs.AlertAsync(e.Message, Mvx.IoCProvider.Resolve<Services.ILocalizeService>().Translate("Error"), Mvx.IoCProvider.Resolve<Services.ILocalizeService>().Translate("Ok"));
+                    await _userDialogs.AlertAsync(Mvx.IoCProvider.Resolve<ILocalizeService>().Translate("Error"), Mvx.IoCProvider.Resolve<Services.ILocalizeService>().Translate("Error"), Mvx.IoCProvider.Resolve<Services.ILocalizeService>().Translate("Ok"));
                 }
             });
 

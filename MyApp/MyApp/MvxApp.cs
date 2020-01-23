@@ -26,7 +26,7 @@ namespace MyApp
                 .AsTypes()
                 .RegisterAsLazySingleton();
 
-            Mvx.IoCProvider.RegisterType(typeof(IRepository<,>), typeof(Repository<,>));
+            Mvx.IoCProvider.RegisterType(typeof(IRepository<,,>), typeof(Repository<,,>));
             Mvx.IoCProvider.RegisterType<Services.IAppSettings, Services.AppSettings>();
             Mvx.IoCProvider.RegisterType<IMvxJsonConverter, MvxJsonConverter>();
             Mvx.IoCProvider.RegisterSingleton(() => UserDialogs.Instance);

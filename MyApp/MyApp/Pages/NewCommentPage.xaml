@@ -70,7 +70,7 @@
                     <xForms:SfRating
                         Margin="0,5,0,0"
                         ItemCount="5"
-                        Value="2.5"
+                        Value="{Binding TotalRate}"
                         Precision="Exact"
                         ItemSize="40"
                         HeightRequest="40"
