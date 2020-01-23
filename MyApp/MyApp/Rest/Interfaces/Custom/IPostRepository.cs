@@ -13,5 +13,8 @@ namespace MyApp.Rest.Interfaces.Custom
     {
         [Get("/{id}")]
         Task<ApiResult<List<TReturn>>> GetAllByCatId(TKey id);
+
+        [Get("/{id}")]
+        Task<ApiResult<List<TReturn>>> GetSimilar(TKey id);
     }
 }

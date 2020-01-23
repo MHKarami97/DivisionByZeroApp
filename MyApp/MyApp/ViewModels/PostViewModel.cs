@@ -8,6 +8,7 @@ using MvvmCross.Commands;
 using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
 using System.Collections.Generic;
+using MyApp.Rest.Api.Custom;
 
 namespace MyApp.ViewModels
 {
@@ -15,11 +16,13 @@ namespace MyApp.ViewModels
     {
         private readonly IMvxNavigationService _navigationService;
         private readonly IUserDialogs _userDialogs;
+        private readonly PostApi<PostModel> _api;
 
-        public PostViewModel(IMvxNavigationService navigationService, IUserDialogs userDialogs)
+        public PostViewModel(IMvxNavigationService navigationService, IUserDialogs userDialogs, PostApi<PostModel> api)
         {
             _navigationService = navigationService;
             _userDialogs = userDialogs;
+            _api = api;
         }
 
         public override void Prepare(object parameter)
@@ -33,91 +36,15 @@ namespace MyApp.ViewModels
             {
                 using (_userDialogs.Loading("Loading"))
                 {
-                    SinglePost = new PostModel
-                    {
-                        Id = 1,
-                        Image = "http://loremflickr.com/600/600/nature?filename=simple.jpg",
-                        Title = "title of post",
-                        ShortDescription = "short content of post",
-                        Description = "this is my post \n how are you? \n is this page good?"
-                                      + "this is my post \n how are you? \n is this page good?"
-                                      + "this is my post \n how are you? \n is this page good?"
-                                      + "this is my post \n how are you? \n is this page good?"
-                                      + "this is my post \n how are you? \n is this page good?"
-                                      + "this is my post \n how are you? \n is this page good?"
-                                      + "this is my post \n how are you? \n is this page good?"
-                                      + "this is my post \n how are you? \n is this page good?",
-                        Address = "post",
-                        FullTitle = "bjbj",
-                        CategoryName = "jnj",
-                        UserFullName = "jnknk",
-                        Date = "fdc",
-                        Like = 1,
-                        Visit = 1
-                    };
+                    var result = await _api.Get(Convert.ToInt32(Id));
+                    var resultSimilar = await _api.GetSimilar(Convert.ToInt32(Id));
 
-                    var similars = new List<PostShortModel>
-                     {
-                        new PostShortModel
-                        {
-                            Id = 1,
-                            Like = 2,
-                            Visit = 3,
-                            Title = "Post title",
-                            Date = DateTime.Now.ToString("d"),
-                            Image = "http://loremflickr.com/600/600/nature?filename=simple.jpg"
-                        },
-                        new PostShortModel
-                        {
-                            Id = 2,
-                            Like = 5,
-                            Visit = 6,
-                            Title = "My post title",
-                            Date = DateTime.Now.ToString("d"),
-                            Image = "http://loremflickr.com/600/600/nature?filename=simple.jpg"
-                        },
-                        new PostShortModel
-                        {
-                            Id = 3,
-                            Like = 2,
-                            Visit = 3,
-                            Title = "this is title of post",
-                            Date = DateTime.Now.ToString("d"),
-                            Image = "http://loremflickr.com/600/600/nature?filename=simple.jpg"
-                        },
-                        new PostShortModel
-                        {
-                            Id = 4,
-                            Like = 2,
-                            Visit = 3,
-                            Title = "Post title",
-                            Date = DateTime.Now.ToString("d"),
-                            Image = "http://loremflickr.com/600/600/nature?filename=simple.jpg"
-                        },
-                        new PostShortModel
-                        {
-                            Id = 5,
-                            Like = 2,
-                            Visit = 3,
-                            Title = "Post title",
-                            Date = DateTime.Now.ToString("d"),
-                            Image = "http://loremflickr.com/600/600/nature?filename=simple.jpg"
-                        },
-                        new PostShortModel
-                        {
-                            Id = 6,
-                            Like = 2,
-                            Visit = 3,
-                            Title = "Post title",
-                            Date = DateTime.Now.ToString("d"),
-                            Image = "http://loremflickr.com/600/600/nature?filename=simple.jpg"
-                        }
-                };
+                    SinglePost = result.Data;
 
-                    SimilarPosts = similars;
+                    SimilarPosts = resultSimilar.Data;
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 await _userDialogs.AlertAsync(Mvx.IoCProvider.Resolve<ILocalizeService>().Translate("Error"), Mvx.IoCProvider.Resolve<ILocalizeService>().Translate("Error"), Mvx.IoCProvider.Resolve<ILocalizeService>().Translate("Ok"));
 
@@ -129,7 +56,7 @@ namespace MyApp.ViewModels
 
         public PostModel SinglePost { get; set; }
 
-        public List<PostShortModel> SimilarPosts { get; set; }
+        public List<PostModel> SimilarPosts { get; set; }
 
         public object Id { get; set; }
 

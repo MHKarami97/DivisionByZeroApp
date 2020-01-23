@@ -91,7 +91,7 @@ namespace MyApp.ViewModels
                        await MaterialDialog.Instance.SnackbarAsync(Mvx.IoCProvider.Resolve<ILocalizeService>().Translate("NotValidEmail"));
                    }
                }
-               catch (Exception e)
+               catch (Exception)
                {
                    await _userDialogs.AlertAsync(Mvx.IoCProvider.Resolve<ILocalizeService>().Translate("Error"), Mvx.IoCProvider.Resolve<ILocalizeService>().Translate("Error"), Mvx.IoCProvider.Resolve<ILocalizeService>().Translate("Ok"));
                }
@@ -104,7 +104,7 @@ namespace MyApp.ViewModels
                {
                    await _navigationService.Navigate<RegisterViewModel>();
                }
-               catch (Exception e)
+               catch (Exception)
                {
                    await _userDialogs.AlertAsync(Mvx.IoCProvider.Resolve<ILocalizeService>().Translate("Error"), Mvx.IoCProvider.Resolve<ILocalizeService>().Translate("Error"), Mvx.IoCProvider.Resolve<ILocalizeService>().Translate("Ok"));
                }

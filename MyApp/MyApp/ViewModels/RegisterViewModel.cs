@@ -72,7 +72,7 @@ namespace MyApp.ViewModels
                        await MaterialDialog.Instance.SnackbarAsync(Mvx.IoCProvider.Resolve<ILocalizeService>().Translate("NotValidData"));
                    }
                }
-               catch (Exception e)
+               catch (Exception)
                {
                    await _userDialogs.AlertAsync(Mvx.IoCProvider.Resolve<ILocalizeService>().Translate("Error"), Mvx.IoCProvider.Resolve<ILocalizeService>().Translate("Error"), Mvx.IoCProvider.Resolve<ILocalizeService>().Translate("Ok"));
                }
@@ -85,7 +85,7 @@ namespace MyApp.ViewModels
                {
                    await _navigationService.Navigate<LoginViewModel>();
                }
-               catch (Exception e)
+               catch (Exception)
                {
                    await _userDialogs.AlertAsync(Mvx.IoCProvider.Resolve<ILocalizeService>().Translate("Error"), Mvx.IoCProvider.Resolve<ILocalizeService>().Translate("Error"), Mvx.IoCProvider.Resolve<ILocalizeService>().Translate("Ok"));
                }

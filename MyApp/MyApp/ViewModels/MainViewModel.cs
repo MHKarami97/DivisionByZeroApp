@@ -212,7 +212,7 @@ namespace MyApp.ViewModels
 
                 //await MaterialDialog.Instance.SnackbarAsync(message: Mvx.IoCProvider.Resolve<Services.ILocalizeService>().Translate("HelloMessage") + " " + Mvx.IoCProvider.Resolve<Services.ILocalizeService>().Translate("AppName"));
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 await _userDialogs.AlertAsync(Mvx.IoCProvider.Resolve<ILocalizeService>().Translate("Error"), Mvx.IoCProvider.Resolve<ILocalizeService>().Translate("Error"), Mvx.IoCProvider.Resolve<ILocalizeService>().Translate("Ok"));
 

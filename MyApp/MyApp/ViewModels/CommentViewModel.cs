@@ -44,7 +44,7 @@ namespace MyApp.ViewModels
                 TotalRate = 3.5;
                 TotalRateText = TotalRate + " + 6k votes";
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 await _userDialogs.AlertAsync(Mvx.IoCProvider.Resolve<ILocalizeService>().Translate("Error"), Mvx.IoCProvider.Resolve<ILocalizeService>().Translate("Error"), Mvx.IoCProvider.Resolve<ILocalizeService>().Translate("Ok"));
 

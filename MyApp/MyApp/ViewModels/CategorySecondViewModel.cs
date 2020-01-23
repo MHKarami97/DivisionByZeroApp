@@ -43,7 +43,7 @@ namespace MyApp.ViewModels
                     Cats = result.Data;
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 await _userDialogs.AlertAsync(Mvx.IoCProvider.Resolve<ILocalizeService>().Translate("Error"), Mvx.IoCProvider.Resolve<ILocalizeService>().Translate("Error"), Mvx.IoCProvider.Resolve<ILocalizeService>().Translate("Ok"));
 

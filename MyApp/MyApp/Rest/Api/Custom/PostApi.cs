@@ -44,6 +44,33 @@ namespace MyApp.Rest.Api.Custom
 
             return results;
         }
+
+        public async Task<ApiResult<List<TReturn>>> GetSimilar(TKey id)
+        {
+            ApiResult<List<TReturn>> results = null;
+
+            var apiService = _repository.GetPost(Address + "/" + nameof(GetSimilar));
+
+            await apiService.GetSimilar(id)
+                .ContinueWith(result =>
+                {
+                    if (result.IsCompleted && result.Status == TaskStatus.RanToCompletion)
+                    {
+                        results = result.Result;
+                    }
+                    else if (result.IsFaulted)
+                    {
+                        if (result.Exception != null) throw result.Exception;
+                    }
+                    else if (result.IsCanceled)
+                    {
+                        if (result.Exception != null) throw result.Exception;
+                    }
+                }, TaskScheduler.FromCurrentSynchronizationContext())
+                .ConfigureAwait(true);
+
+            return results;
+        }
     }
 
     public class PostApi<TSelect, TKey> : PostApi<TSelect, TSelect, TKey>

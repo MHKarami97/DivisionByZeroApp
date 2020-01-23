@@ -62,7 +62,7 @@ namespace MyApp.ViewModels
                     MenuItemList = menuItems;
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 await _userDialogs.AlertAsync(Mvx.IoCProvider.Resolve<ILocalizeService>().Translate("Error"), Mvx.IoCProvider.Resolve<Services.ILocalizeService>().Translate("Error"), Mvx.IoCProvider.Resolve<Services.ILocalizeService>().Translate("Ok"));
             }
