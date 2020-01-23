@@ -13,7 +13,7 @@ namespace MyApp.Rest.Api.Custom
     {
         private readonly CategoryRepository<TSelect, TReturn, TKey> _repository;
 
-        public CategoryApi(string witch, string authorization = null)
+        protected CategoryApi(string witch, string authorization = null)
             : base(witch, authorization)
         {
             _repository = new CategoryRepository<TSelect, TReturn, TKey>();
@@ -23,7 +23,7 @@ namespace MyApp.Rest.Api.Custom
         {
             ApiResult<List<TReturn>> results = null;
 
-            var apiService = _repository.GetPost(Address + "/" + nameof(GetAllByCatId));
+            var apiService = _repository.GetPost(Address + "/" + System.Reflection.MethodBase.GetCurrentMethod().Name);
 
             await apiService.GetAllByCatId(id)
                 .ContinueWith(result =>
@@ -50,7 +50,7 @@ namespace MyApp.Rest.Api.Custom
         {
             ApiResult<List<TReturn>> results = null;
 
-            var apiService = _repository.GetPost(Address + "/" + nameof(GetAllMainCat));
+            var apiService = _repository.GetPost(Address + "/" + System.Reflection.MethodBase.GetCurrentMethod().Name);
 
             await apiService.GetAllMainCat()
                 .ContinueWith(result =>

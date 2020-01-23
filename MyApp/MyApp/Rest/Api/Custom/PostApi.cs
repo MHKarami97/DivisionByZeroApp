@@ -13,7 +13,7 @@ namespace MyApp.Rest.Api.Custom
     {
         private readonly PostRepository<TSelect, TReturn, TKey> _repository;
 
-        public PostApi(string witch, string authorization = null)
+        protected PostApi(string witch, string authorization = null)
             : base(witch, authorization)
         {
             _repository = new PostRepository<TSelect, TReturn, TKey>();
@@ -23,7 +23,7 @@ namespace MyApp.Rest.Api.Custom
         {
             ApiResult<List<TReturn>> results = null;
 
-            var apiService = _repository.GetPost(Address + "/" + nameof(GetAllByCatId));
+            var apiService = _repository.GetPost(Address + "/" + System.Reflection.MethodBase.GetCurrentMethod().Name);
 
             await apiService.GetAllByCatId(id)
                 .ContinueWith(result =>
@@ -50,7 +50,7 @@ namespace MyApp.Rest.Api.Custom
         {
             ApiResult<List<TReturn>> results = null;
 
-            var apiService = _repository.GetPost(Address + "/" + nameof(GetSimilar));
+            var apiService = _repository.GetPost(Address + "/" + System.Reflection.MethodBase.GetCurrentMethod().Name);
 
             await apiService.GetSimilar(id)
                 .ContinueWith(result =>

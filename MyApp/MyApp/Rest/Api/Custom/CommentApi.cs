@@ -13,7 +13,7 @@ namespace MyApp.Rest.Api.Custom
     {
         private readonly CommentRepository<TSelect, TReturn, TKey> _repository;
 
-        public CommentApi(string witch, string authorization = null)
+        protected CommentApi(string witch, string authorization = null)
             : base(witch, authorization)
         {
             _repository = new CommentRepository<TSelect, TReturn, TKey>();
@@ -23,7 +23,7 @@ namespace MyApp.Rest.Api.Custom
         {
             ApiResult<List<TReturn>> results = null;
 
-            var apiService = _repository.GetPost(Address + "/" + nameof(GetAllByPostId));
+            var apiService = _repository.GetPost(Address + "/" + System.Reflection.MethodBase.GetCurrentMethod().Name);
 
             await apiService.GetAllByPostId(id)
                 .ContinueWith(result =>

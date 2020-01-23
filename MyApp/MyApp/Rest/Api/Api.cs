@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using MyApp.Rest.Repositories;
 using System.Collections.Generic;
 using Entities.Common;
@@ -52,7 +53,7 @@ namespace MyApp.Rest.Api
         {
             ApiResult<TReturn> results = null;
 
-            var apiService = _repository.Get(Address + "/" + nameof(Get));
+            var apiService = _repository.Get(Address + "/" + System.Reflection.MethodBase.GetCurrentMethod().Name);
 
             await apiService.Get(id)
                 .ContinueWith(result =>
@@ -79,7 +80,7 @@ namespace MyApp.Rest.Api
         {
             ApiResult<TReturn> results = null;
 
-            var apiService = _repository.Get(Address + "/" + nameof(Create));
+            var apiService = _repository.Get(Address + "/" + System.Reflection.MethodBase.GetCurrentMethod().Name);
 
             await apiService.Create(input, Authorization)
                 .ContinueWith(result =>
@@ -106,7 +107,7 @@ namespace MyApp.Rest.Api
         {
             ApiResult<TReturn> results = null;
 
-            var apiService = _repository.Get(Address + "/" + nameof(Update));
+            var apiService = _repository.Get(Address + "/" + System.Reflection.MethodBase.GetCurrentMethod().Name);
 
             await apiService.Update(id, input, Authorization)
                 .ContinueWith(result =>
@@ -133,7 +134,7 @@ namespace MyApp.Rest.Api
         {
             ApiNullResult results = null;
 
-            var apiService = _repository.Get(Address + "/" + nameof(Delete));
+            var apiService = _repository.Get(Address + "/" + System.Reflection.MethodBase.GetCurrentMethod().Name);
 
             await apiService.Delete(id, Authorization)
                 .ContinueWith(result =>

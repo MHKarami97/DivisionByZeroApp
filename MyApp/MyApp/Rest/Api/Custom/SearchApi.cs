@@ -22,7 +22,7 @@ namespace MyApp.Rest.Api.Custom
         {
             ApiResult<List<TReturn>> results = null;
 
-            var apiService = _repository.GetPost(Address + "/" + nameof(Search));
+            var apiService = _repository.GetPost(Address + "/" + System.Reflection.MethodBase.GetCurrentMethod().Name);
 
             await apiService.Search(str)
                 .ContinueWith(result =>
