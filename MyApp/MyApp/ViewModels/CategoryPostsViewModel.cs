@@ -18,18 +18,18 @@ namespace MyApp.ViewModels
     {
         private readonly IMvxNavigationService _navigationService;
         private readonly IUserDialogs _userDialogs;
-        private PostApi<PostModel> _api;
+        private readonly PostApi<PostModel> _api;
 
         public CategoryPostsViewModel(IMvxNavigationService navigationService, IUserDialogs userDialogs, PostApi<PostModel> api)
         {
-            _userDialogs = userDialogs;
             _api = api;
+            _userDialogs = userDialogs;
             _navigationService = navigationService;
         }
 
         public override void Prepare(object parameter)
         {
-            Id = Convert.ToInt32(parameter);
+            Id = parameter;
         }
 
         public override async void Start()
@@ -38,7 +38,7 @@ namespace MyApp.ViewModels
             {
                 using (_userDialogs.Loading("Loading"))
                 {
-                    var result = await _api.GetAllByCatId(Id);
+                    var result = await _api.GetAllByCatId(Convert.ToInt32(Id));
 
                     Posts = result.Data;
                 }
@@ -53,7 +53,7 @@ namespace MyApp.ViewModels
 
         #region Property
 
-        public int Id { get; set; }
+        public object Id { get; set; }
 
         public List<PostModel> Posts { get; set; }
 

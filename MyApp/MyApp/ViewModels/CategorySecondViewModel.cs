@@ -8,6 +8,7 @@ using MvvmCross.Commands;
 using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
 using System.Collections.Generic;
+using MyApp.Rest.Api.Custom;
 using Syncfusion.XForms.Cards;
 using Xamarin.Forms;
 
@@ -17,9 +18,11 @@ namespace MyApp.ViewModels
     {
         private readonly IMvxNavigationService _navigationService;
         private readonly IUserDialogs _userDialogs;
+        private readonly CategoryApi<CategoryModel> _api;
 
-        public CategorySecondViewModel(IMvxNavigationService navigationService, IUserDialogs userDialogs)
+        public CategorySecondViewModel(IMvxNavigationService navigationService, IUserDialogs userDialogs, CategoryApi<CategoryModel> api)
         {
+            _api = api;
             _userDialogs = userDialogs;
             _navigationService = navigationService;
         }
@@ -33,73 +36,12 @@ namespace MyApp.ViewModels
         {
             try
             {
-                var cats = new List<CategoryModel>();
-
                 using (_userDialogs.Loading("Loading"))
                 {
-                    cats.Add(new CategoryModel
-                    {
-                        Id = 1,
-                        Name = "my item",
-                        Image = "http://loremflickr.com/600/600/nature?filename=simple.jpg"
-                    });
-                    cats.Add(new CategoryModel
-                    {
-                        Id = 2,
-                        Name = "my item",
-                        Image = "http://loremflickr.com/600/600/nature?filename=simple.jpg"
-                    });
-                    cats.Add(new CategoryModel
-                    {
-                        Id = 3,
-                        Name = "my item",
-                        Image = "http://loremflickr.com/600/600/nature?filename=simple.jpg"
-                    });
-                    cats.Add(new CategoryModel
-                    {
-                        Id = 4,
-                        Name = "my item",
-                        Image = "http://loremflickr.com/600/600/nature?filename=simple.jpg"
-                    });
-                    cats.Add(new CategoryModel
-                    {
-                        Id = 5,
-                        Name = "my item",
-                        Image = "http://loremflickr.com/600/600/nature?filename=simple.jpg"
-                    });
-                    cats.Add(new CategoryModel
-                    {
-                        Id = 6,
-                        Name = "my item",
-                        Image = "http://loremflickr.com/600/600/nature?filename=simple.jpg"
-                    });
-                    cats.Add(new CategoryModel
-                    {
-                        Id = 7,
-                        Name = "my item",
-                        Image = "http://loremflickr.com/600/600/nature?filename=simple.jpg"
-                    });
-                    cats.Add(new CategoryModel
-                    {
-                        Id = 8,
-                        Name = "my item",
-                        Image = "http://loremflickr.com/600/600/nature?filename=simple.jpg"
-                    });
-                    cats.Add(new CategoryModel
-                    {
-                        Id = 9,
-                        Name = "my item",
-                        Image = "http://loremflickr.com/600/600/nature?filename=simple.jpg"
-                    });
-                    cats.Add(new CategoryModel
-                    {
-                        Id = 10,
-                        Name = "my item",
-                        Image = "http://loremflickr.com/600/600/nature?filename=simple.jpg"
-                    });
-                }
+                    var result = await _api.GetAllByCatId(Convert.ToInt32(Id));
 
-                Cats = cats;
+                    Cats = result.Data;
+                }
             }
             catch (Exception e)
             {
