@@ -72,6 +72,33 @@ namespace MyApp.Rest.Api.Custom
 
             return results;
         }
+
+        public async Task<ApiResult<List<TReturn>>> GetCustom(int type = 1, int count = 6)
+        {
+            ApiResult<List<TReturn>> results = null;
+
+            var apiService = _repository.GetPost(Address + "/" + System.Reflection.MethodBase.GetCurrentMethod().Name);
+
+            await apiService.GetCustom(type, count)
+                .ContinueWith(result =>
+                {
+                    if (result.IsCompleted && result.Status == TaskStatus.RanToCompletion)
+                    {
+                        results = result.Result;
+                    }
+                    else if (result.IsFaulted)
+                    {
+                        if (result.Exception != null) throw result.Exception;
+                    }
+                    else if (result.IsCanceled)
+                    {
+                        if (result.Exception != null) throw result.Exception;
+                    }
+                }, TaskScheduler.FromCurrentSynchronizationContext())
+                .ConfigureAwait(true);
+
+            return results;
+        }
     }
 
     public class PostApi<TSelect, TKey> : PostApi<TSelect, TSelect, TKey>

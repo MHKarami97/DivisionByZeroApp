@@ -14,6 +14,7 @@ using XF.Material.Forms.UI;
 using Syncfusion.XForms.Cards;
 using System.Collections.Generic;
 using MyApp.Rest.Api;
+using MyApp.Rest.Api.Custom;
 using XF.Material.Forms.Resources;
 using XF.Material.Forms.UI.Dialogs;
 using XF.Material.Forms.UI.Dialogs.Configurations;
@@ -24,11 +25,17 @@ namespace MyApp.ViewModels
     {
         private readonly IMvxNavigationService _navigationService;
         private readonly IUserDialogs _userDialogs;
+        private readonly PostApi<PostModel> _apiPost;
+        private readonly Api<BannerModel> _apiBanner;
+        private readonly CategoryApi<CategoryModel> _apiCategory;
 
         public MainViewModel(IMvxNavigationService navigationService, IUserDialogs userDialogs)
         {
-            _navigationService = navigationService;
             _userDialogs = userDialogs;
+            _navigationService = navigationService;
+            _apiPost = new PostApi<PostModel>("post");
+            _apiBanner = new Api<BannerModel>("banner");
+            _apiCategory = new CategoryApi<CategoryModel>("category");
         }
 
         public override async void Start()
@@ -37,192 +44,38 @@ namespace MyApp.ViewModels
             {
                 IsRefresh = false;
 
-                var blogPost = new List<PostModel>();
-                var cats = new List<CategoryModel>();
-                var banners = new List<BannerModel>();
+                var resultPost = await _apiPost.GetCustom();
+                var resultCat = await _apiCategory.GetAllMainCat();
+                var resultBanner = await _apiBanner.GetAll();
 
                 using (_userDialogs.Loading("Loading"))
                 {
-                    blogPost.Add(new PostModel
-                    {
-                        Id = 1,
-                        Visit = 1,
-                        Title = "my blog title",
-                        Date = DateTime.Now.ToString("d"),
-                        CategoryName = "hjb",
-                        ShortDescription = "short content",
-                        UserFullName = "email@email.com",
-                        Image = "logo.png",
-                        Description = null,
-                        Address = "address"
-                    });
-                    blogPost.Add(new PostModel
-                    {
-                        Id = 2,
-                        Visit = 1,
-                        Title = "my blog title",
-                        Date = DateTime.Now.ToString("d"),
-                        CategoryName = "hjb",
-                        ShortDescription = "short content",
-                        UserFullName = "email@email.com",
-                        Image = "logo.png",
-                        Description = null,
-                        Address = "address"
-                    });
-                    blogPost.Add(new PostModel
-                    {
-                        Id = 3,
-                        Visit = 1,
-                        Title = "my blog title",
-                        Date = DateTime.Now.ToString("d"),
-                        CategoryName = "hjb",
-                        ShortDescription = "short content",
-                        UserFullName = "email@email.com",
-                        Image = "logo.png",
-                        Description = null,
-                        Address = "address"
-                    });
-                    blogPost.Add(new PostModel
-                    {
-                        Id = 4,
-                        Visit = 1,
-                        Title = "my blog title",
-                        Date = DateTime.Now.ToString("d"),
-                        CategoryName = "hjb",
-                        ShortDescription = "short content",
-                        UserFullName = "email@email.com",
-                        Image = "logo.png",
-                        Description = null,
-                        Address = "address"
-                    });
-                    blogPost.Add(new PostModel
-                    {
-                        Id = 5,
-                        Visit = 1,
-                        Title = "my blog title",
-                        Date = DateTime.Now.ToString("d"),
-                        CategoryName = "hjb",
-                        ShortDescription = "short content",
-                        UserFullName = "email@email.com",
-                        Image = "logo.png",
-                        Description = null,
-                        Address = "address"
-                    });
-
-                    cats.Add(new CategoryModel
-                    {
-                        Id = 1,
-                        Name = "my item"
-                    });
-                    cats.Add(new CategoryModel
-                    {
-                        Id = 2,
-                        Name = "my item"
-                    });
-                    cats.Add(new CategoryModel
-                    {
-                        Id = 3,
-                        Name = "my item"
-                    });
-                    cats.Add(new CategoryModel
-                    {
-                        Id = 4,
-                        Name = "my item"
-                    });
-                    cats.Add(new CategoryModel
-                    {
-                        Id = 5,
-                        Name = "my item"
-                    });
-                    cats.Add(new CategoryModel
-                    {
-                        Id = 6,
-                        Name = "my item"
-                    });
-                    cats.Add(new CategoryModel
-                    {
-                        Id = 7,
-                        Name = "my item"
-                    });
-                    cats.Add(new CategoryModel
-                    {
-                        Id = 8,
-                        Name = "my item"
-                    });
-                    cats.Add(new CategoryModel
-                    {
-                        Id = 9,
-                        Name = "my item"
-                    });
-                    cats.Add(new CategoryModel
-                    {
-                        Id = 10,
-                        Name = "my item"
-                    });
-
-                    banners.Add(new BannerModel
-                    {
-                        Id = 1,
-                        Address = "https://itarfand.com",
-                        Image = "http://loremflickr.com/600/600/nature?filename=simple.jpg",
-                        Type = 1
-                    });
-                    banners.Add(new BannerModel
-                    {
-                        Id = 2,
-                        Address = "https://itarfand.com",
-                        Image = "http://loremflickr.com/600/600/nature?filename=simple.jpg",
-                        Type = 1
-                    });
-                    banners.Add(new BannerModel
-                    {
-                        Id = 3,
-                        Address = "https://itarfand.com",
-                        Image = "http://loremflickr.com/600/600/nature?filename=simple.jpg",
-                        Type = 1
-                    });
-                    banners.Add(new BannerModel
-                    {
-                        Id = 4,
-                        Address = "https://itarfand.com",
-                        Image = "http://loremflickr.com/600/600/nature?filename=simple.jpg",
-                        Type = 1
-                    });
-                    banners.Add(new BannerModel
-                    {
-                        Id = 5,
-                        Address = "https://itarfand.com",
-                        Image = "http://loremflickr.com/600/600/nature?filename=simple.jpg",
-                        Type = 1
-                    });
+                    BlogPosts = resultPost.Data;
+                    Banners = resultBanner.Data;
+                    Cats = resultCat.Data;
                 }
-
-                BlogPosts = blogPost;
-                Banners = banners;
-                Cats = cats;
 
                 SingleImage = "http://loremflickr.com/600/600/nature?filename=simple.jpg";
 
-                ImageCollection.Add(new CarouselModel("http://loremflickr.com/600/600/nature?filename=simple.jpg"));
-                ImageCollection.Add(new CarouselModel("http://loremflickr.com/600/600/nature?filename=simple.jpg"));
-                ImageCollection.Add(new CarouselModel("http://loremflickr.com/600/600/nature?filename=simple.jpg"));
-                ImageCollection.Add(new CarouselModel("http://loremflickr.com/600/600/nature?filename=simple.jpg"));
-                ImageCollection.Add(new CarouselModel("http://loremflickr.com/600/600/nature?filename=simple.jpg"));
-                ImageCollection.Add(new CarouselModel("http://loremflickr.com/600/600/nature?filename=simple.jpg")); ImageCollection.Add(new CarouselModel("http://loremflickr.com/600/600/nature?filename=simple.jpg"));
+                // ImageCollection.Add(new CarouselModel("http://loremflickr.com/600/600/nature?filename=simple.jpg"));
+                // ImageCollection.Add(new CarouselModel("http://loremflickr.com/600/600/nature?filename=simple.jpg"));
+                // ImageCollection.Add(new CarouselModel("http://loremflickr.com/600/600/nature?filename=simple.jpg"));
+                // ImageCollection.Add(new CarouselModel("http://loremflickr.com/600/600/nature?filename=simple.jpg"));
+                // ImageCollection.Add(new CarouselModel("http://loremflickr.com/600/600/nature?filename=simple.jpg"));
+                // ImageCollection.Add(new CarouselModel("http://loremflickr.com/600/600/nature?filename=simple.jpg"));
+                // ImageCollection.Add(new CarouselModel("http://loremflickr.com/600/600/nature?filename=simple.jpg"));
 
                 //await MaterialDialog.Instance.SnackbarAsync(message: Mvx.IoCProvider.Resolve<Services.ILocalizeService>().Translate("HelloMessage") + " " + Mvx.IoCProvider.Resolve<Services.ILocalizeService>().Translate("AppName"));
             }
             catch (Exception)
             {
                 await _userDialogs.AlertAsync(Mvx.IoCProvider.Resolve<ILocalizeService>().Translate("Error"), Mvx.IoCProvider.Resolve<ILocalizeService>().Translate("Error"), Mvx.IoCProvider.Resolve<ILocalizeService>().Translate("Ok"));
-
-                throw;
             }
         }
 
         #region Property
 
-        public List<CarouselModel> ImageCollection { get; set; } = new List<CarouselModel>();
+        //public List<CarouselModel> ImageCollection { get; set; } = new List<CarouselModel>();
 
         public List<CategoryModel> Cats { get; set; }
 

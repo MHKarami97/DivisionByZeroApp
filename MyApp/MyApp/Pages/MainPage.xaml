@@ -386,7 +386,7 @@
                                                         </StackLayout>
                                                         <StackLayout Grid.Row="0"
                                                                          HorizontalOptions="StartAndExpand"
-                                                     VerticalOptions="CenterAndExpand">
+                                                                         VerticalOptions="CenterAndExpand">
                                                             <forms:CachedImage
                                                                     HorizontalOptions="Center"
                                                                     VerticalOptions="Center"
