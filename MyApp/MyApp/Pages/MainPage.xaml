@@ -209,7 +209,7 @@
                                                                              HorizontalOptions="End"
                                                                              VerticalOptions="EndAndExpand"
                                                                              Margin="10,3,30,3">
-                                                                    <Label Text="{Binding Date}" />
+                                                                    <Label Text="{Binding Time}" />
                                                                 </StackLayout>
                                                                 <StackLayout Grid.Row="2"
                                                                              HorizontalOptions="Start"
@@ -307,7 +307,7 @@
                                                                          HorizontalOptions="End"
                                                                          VerticalOptions="EndAndExpand"
                                                                          Margin="0,3,30,3">
-                                                                <Label Text="{Binding Date}" />
+                                                                <Label Text="{Binding Time}" />
                                                             </StackLayout>
                                                             <StackLayout Grid.Row="1" HorizontalOptions="Start"
                                                                                       VerticalOptions="EndAndExpand"
@@ -422,7 +422,7 @@
                                                                          HorizontalOptions="End"
                                                                          VerticalOptions="EndAndExpand"
                                                                          Margin="0,3,30,3">
-                                                            <Label Text="{Binding Date}" />
+                                                            <Label Text="{Binding Time}" />
                                                         </StackLayout>
                                                         <StackLayout Grid.Row="1" HorizontalOptions="Start"
                                                                                       VerticalOptions="EndAndExpand"

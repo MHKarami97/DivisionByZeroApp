@@ -13,7 +13,7 @@ namespace MyApp.Rest.Interfaces.Custom
         where TKey : struct
     {
         [Get("/{id}")]
-        Task<ApiResult<List<TReturn>>> GetAllByCatId(TKey id);
+        Task<ApiResult<List<TReturn>>> GetAllByCatId(TKey id, int to);
 
         [Get("/{id}")]
         Task<ApiResult<List<TReturn>>> GetSimilar(TKey id);

@@ -19,13 +19,13 @@ namespace MyApp.Rest.Api.Custom
             _repository = new PostRepository<TSelect, TReturn, TKey>();
         }
 
-        public async Task<ApiResult<List<TReturn>>> GetAllByCatId(TKey id)
+        public async Task<ApiResult<List<TReturn>>> GetAllByCatId(TKey id, int to = 0)
         {
             ApiResult<List<TReturn>> results = null;
 
             var apiService = _repository.GetPost(Address + "/" + System.Reflection.MethodBase.GetCurrentMethod().Name);
 
-            await apiService.GetAllByCatId(id)
+            await apiService.GetAllByCatId(id, to)
                 .ContinueWith(result =>
                 {
                     if (result.IsCompleted && result.Status == TaskStatus.RanToCompletion)

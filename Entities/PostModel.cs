@@ -14,6 +14,6 @@ namespace Entities
         public string FullTitle { get; set; }
         public int Like { get; set; }
         public int Visit { get; set; }
-        public string Date { get; set; }
+        public string Time { get; set; }
     }
 }
