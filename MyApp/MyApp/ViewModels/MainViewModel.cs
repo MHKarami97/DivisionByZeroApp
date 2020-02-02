@@ -156,7 +156,10 @@ namespace MyApp.ViewModels
         public IMvxAsyncCommand ToolbarProfileCommand =>
             new MvxAsyncCommand(async () =>
             {
-                await _navigationService.Navigate<ProfileViewModel>();
+                if (CrossSecureStorage.Current.GetValue("token") != null)
+                    await _navigationService.Navigate<ProfileViewModel>();
+
+                await _navigationService.Navigate<LoginViewModel>();
             });
 
         public IMvxAsyncCommand ToolbarLangCommand =>

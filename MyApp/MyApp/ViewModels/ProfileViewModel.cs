@@ -6,7 +6,7 @@ using Acr.UserDialogs;
 using MvvmCross.Commands;
 using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
-using MyApp.Rest.Api;
+using MyApp.Rest.Api.Custom;
 using MyApp.Services;
 using Plugin.SecureStorage;
 
@@ -16,13 +16,13 @@ namespace MyApp.ViewModels
     {
         private readonly IMvxNavigationService _navigationService;
         private readonly IUserDialogs _userDialogs;
-        private readonly Api<UserModel> _api;
+        private readonly UserApi<UserModel, UserModel, int> _api;
 
         public ProfileViewModel(IMvxNavigationService navigationService, IUserDialogs userDialogs)
         {
             _navigationService = navigationService;
             _userDialogs = userDialogs;
-            _api = new Api<UserModel>("user");
+            _api = new UserApi<UserModel, UserModel, int>("user");
         }
 
         public override async void Start()

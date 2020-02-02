@@ -10,6 +10,8 @@ using MvvmCross.Commands;
 using XF.Material.Forms.UI;
 using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
+using MyApp.Rest.Api.Custom;
+using Plugin.SecureStorage;
 using XF.Material.Forms.Resources;
 using XF.Material.Forms.UI.Dialogs;
 using XF.Material.Forms.UI.Dialogs.Configurations;
@@ -20,14 +22,23 @@ namespace MyApp.ViewModels
     {
         private readonly IMvxNavigationService _navigationService;
         private readonly IUserDialogs _userDialogs;
-
+        private readonly UserApi<UserModel, UserModel, int> _api;
 
         public LoginViewModel(IMvxNavigationService navigationService, IUserDialogs userDialogs)
         {
             _userDialogs = userDialogs;
             _navigationService = navigationService;
+            _api = new UserApi<UserModel, UserModel, int>("user");
 
             User = new UserModel();
+        }
+
+        public override async void Start()
+        {
+            if (CrossSecureStorage.Current.GetValue("token") != null)
+            {
+                await _navigationService.Navigate<ProfileViewModel>();
+            }
         }
 
         #region Property
@@ -82,7 +93,16 @@ namespace MyApp.ViewModels
 
                            //var param = new Dictionary<string, WebSiteUser> { { "user", User } }; 
 
-                           await _navigationService.Navigate<RootViewModel>();
+                           var apiResult = await _api.Token(User.Email, User.Password);
+
+                           if (apiResult.IsSuccess)
+                           {
+                               CrossSecureStorage.Current.SetValue("token", apiResult.Data.Access_token);
+
+                               await _navigationService.Navigate<RootViewModel>();
+                           }
+
+                           await _navigationService.Navigate<LoginViewModel>();
                        }
                    }
                    else

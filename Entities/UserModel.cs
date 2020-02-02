@@ -13,6 +13,7 @@ namespace Entities
         public DateTime Birthday { get; set; }
         public GenderType Gender { get; set; }
         public string ConfirmPassword { get; set; }
+        public string Access_token { get; set; }
     }
 
     public enum GenderType
